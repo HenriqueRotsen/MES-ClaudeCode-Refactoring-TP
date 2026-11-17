@@ -1,0 +1,172 @@
+{
+ "run_id": "F3_gson__haiku__B__r3",
+ "task": "F3_gson",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 3,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 116,
+ "agent": {
+  "tool_calls": {
+   "Bash": 8,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 10,
+  "duration_ms": 115061,
+  "duration_api_ms": 69759,
+  "total_cost_usd": 0.019733630000000002,
+  "session_id": "23f117ad-9e88-47dc-bf0e-63be39816177",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 20,
+   "output_tokens": 16763,
+   "cache_creation_input_tokens": 40892,
+   "cache_read_input_tokens": 317173
+  },
+  "final_message": "`doPeek` in `JsonReader.java` went from cyclomatic complexity 41 to 2. The full gson suite passes with `mvn -B -pl gson clean test`: 4707 tests in the main run and 23 in the second module, 0 failures, 0 errors. Only `JsonReader.java` changed; nothing under `src/test` appears in `git diff --stat`.\n\n**Approach:** `doPeek` had two phases mixed together: a scope state machine (array/object/document separators and names), then recognizing the first token of a value. It now delegates to:\n\n- `peekScopeSeparator(peekStack)` dispatches on the scope and returns `PEEKED_NONE` when a value is expected next, or a token when the scope closes or the document ends. CCN 10.\n- Per-scope helpers, each with one responsibility: `peekArrayElementSeparator`, `peekObjectName`, `consumeObjectEntrySeparator`, `peekNameStart`, `consumeNameSeparator`, `peekDocumentEnd`.\n- `peekValueStart(peekStack)` handles delimiter tokens, with `peekEmptyValueOrEndArray` for the lenient null / END_ARRAY cases and `peekLiteralValue` for keyword, number, and unquoted-string recognition.\n\n`doPeek` itself assigns `peeked` once at the end. Every caller already guards on `peeked == PEEKED_NONE`, and the original never returned `PEEKED_NONE`, so that is equivalent. Stack writes, lenient checks, and `pos` adjustments happen in the same order as before. The helpers take at most two parameters, allocate nothing, and are `private`, so the hot path only gains small calls the JIT should inline.\n\n**Complexity (lizard, CCN):**\n\n| Method | Before | After |\n|---|---|---|\n| `doPeek` | 41 | 2 |\n| `peekScopeSeparator` | \u2014 | 10 |\n| `peekValueStart` | \u2014 | 8 |\n| `peekEmptyValueOrEndArray` | \u2014 | 5 |\n| `peekNameStart` | \u2014 | 6 |\n| `consumeNameSeparator` | \u2014 | 6 |\n| `peekArrayElementSeparator` | \u2014 | 4 |\n| `consumeObjectEntrySeparator` | \u2014 | 4 |\n| `peekObjectName` | \u2014 | 3 |\n| `peekLiteralValue` | \u2014 | 4 |\n| `peekDocumentEnd` | \u2014 | 2 |\n\nAll new methods are at or below 10.\n\n**Left as-is:** `peekNumber` (CCN 39), `peekKeyword` (16) and `isLiteral` (17) are still above 10. You scoped the task to `doPeek`, so I didn't touch them; they are the next candidates if you want the same treatment.\n\n**Other notes:**\n- The 23 skipped tests were already skipped in the repo; I didn't add or change any `@Disabled` or build settings.\n- I haven't committed anything."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 157,
+  "deletions": 115,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 30
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 9
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 60,
+  "max_ccn": 39,
+  "sum_ccn": 421,
+  "avg_ccn": 7.02,
+  "n_ccn_gt10": 14,
+  "nloc": 1255
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekScopeSeparator",
+   "ccn": 10,
+   "nloc": 27,
+   "params": 1,
+   "start": 606,
+   "end": 632
+  },
+  {
+   "name": "JsonReader::peekArrayElementSeparator",
+   "ccn": 4,
+   "nloc": 13,
+   "params": 0,
+   "start": 636,
+   "end": 648
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 1,
+   "start": 654,
+   "end": 663
+  },
+  {
+   "name": "JsonReader::consumeObjectEntrySeparator",
+   "ccn": 4,
+   "nloc": 13,
+   "params": 0,
+   "start": 670,
+   "end": 682
+  },
+  {
+   "name": "JsonReader::peekNameStart",
+   "ccn": 6,
+   "nloc": 22,
+   "params": 1,
+   "start": 685,
+   "end": 706
+  },
+  {
+   "name": "JsonReader::consumeNameSeparator",
+   "ccn": 6,
+   "nloc": 16,
+   "params": 0,
+   "start": 709,
+   "end": 724
+  },
+  {
+   "name": "JsonReader::peekDocumentEnd",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 0,
+   "start": 727,
+   "end": 735
+  },
+  {
+   "name": "JsonReader::peekValueStart",
+   "ccn": 8,
+   "nloc": 21,
+   "params": 1,
+   "start": 741,
+   "end": 761
+  },
+  {
+   "name": "JsonReader::peekEmptyValueOrEndArray",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 768,
+   "end": 778
+  },
+  {
+   "name": "JsonReader::peekLiteralValue",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 0,
+   "start": 781,
+   "end": 798
+  }
+ ],
+ "valid": true
+}

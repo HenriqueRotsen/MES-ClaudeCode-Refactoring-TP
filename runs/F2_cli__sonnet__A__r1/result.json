@@ -1,0 +1,114 @@
+{
+ "run_id": "F2_cli__sonnet__A__r1",
+ "task": "F2_cli",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 1,
+ "prompt_sha256": "050cd2dd077b49dbd169d9edfd9a935da0d0bc50177226410fccda54664f7de8",
+ "base_commit": "3a53a351a66bc5634bea646008f884148864bdac",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 37,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 36541,
+  "duration_api_ms": 16797,
+  "total_cost_usd": 0.08072839999999999,
+  "session_id": "d21b3784-2e1c-4abb-aaaf-9012bb8c364c",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 2341,
+   "cache_creation_input_tokens": 12080,
+   "cache_read_input_tokens": 89784
+  },
+  "final_message": "Refatorei `PosixParser.flatten`. Agora ele s\u00f3 inicializa o estado e itera pelos tokens. O `mvn -B clean test` passou: BUILD SUCCESS, 1002 testes, 0 falhas, 0 erros e 61 ignorados. S\u00f3 `PosixParser.java` foi modificado, e nenhum teste foi tocado.\n\nA l\u00f3gica de decis\u00e3o saiu do m\u00e9todo e foi para tr\u00eas m\u00e9todos privados:\n- **`flattenToken`** escolhe o caminho: `-` ou `--` sozinhos, op\u00e7\u00e3o longa, op\u00e7\u00e3o curta ou token que n\u00e3o \u00e9 op\u00e7\u00e3o.\n- **`flattenLongOption`** trata `--foo` e `--foo=bar`, incluindo o caso amb\u00edguo.\n- **`flattenShortOption`** trata `-x`, abrevia\u00e7\u00f5es e o desmembramento de op\u00e7\u00f5es agrupadas (*bursting*). Troquei o `if/else if/else` aninhado por retornos antecipados, mantendo a mesma ordem de verifica\u00e7\u00e3o.\n\nO `addRemaining(iter)` continua dentro do la\u00e7o, como no c\u00f3digo original."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ],
+  "insertions": 58,
+  "deletions": 37,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 1002,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 61,
+  "baseline_tests": 1002,
+  "seconds": 10
+ },
+ "method_before": {
+  "ccn": 15,
+  "nloc": 46
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 7,
+  "max_ccn": 15,
+  "sum_ccn": 33,
+  "avg_ccn": 4.71,
+  "n_ccn_gt10": 1,
+  "nloc": 92
+ },
+ "file_after": {
+  "n_funcs": 10,
+  "max_ccn": 6,
+  "sum_ccn": 36,
+  "avg_ccn": 3.6,
+  "n_ccn_gt10": 0,
+  "nloc": 102
+ },
+ "new_funcs": [
+  {
+   "name": "PosixParser::flattenToken",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 161,
+   "end": 172
+  },
+  {
+   "name": "PosixParser::flattenLongOption",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 175,
+   "end": 190
+  },
+  {
+   "name": "PosixParser::flattenShortOption",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 193,
+   "end": 209
+  }
+ ],
+ "valid": true
+}

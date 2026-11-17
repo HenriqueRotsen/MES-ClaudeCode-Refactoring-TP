@@ -1,0 +1,164 @@
+{
+ "run_id": "F3_gson__sonnet__B__r2",
+ "task": "F3_gson",
+ "model": "claude-sonnet-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 2,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 89,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 87963,
+  "duration_api_ms": 43291,
+  "total_cost_usd": 0.1527961,
+  "session_id": "db56b688-61d0-48ac-9330-fa10a36d8886",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 7083,
+   "cache_creation_input_tokens": 18084,
+   "cache_read_input_tokens": 96101
+  },
+  "final_message": "Refatorei o `doPeek` de `JsonReader` e a su\u00edte passou com `mvn -B -pl gson clean test`: 4707 testes, 0 falhas, 0 erros e 23 ignorados. Os testes ignorados (`Skipped`) j\u00e1 eram assim, e eu n\u00e3o mexi em nenhum teste. O `git diff --stat` mostra s\u00f3 `JsonReader.java`, sem nada em `src/test`.\n\n**CCN do `doPeek`:** caiu de 41 para 5.\n\n**M\u00e9todos extra\u00eddos** (todos `private`, com no m\u00e1ximo 2 par\u00e2metros):\n\n| M\u00e9todo | CCN | O que faz |\n|---|---|---|\n| `peekBeforeValue` | 8 | Atualiza o escopo e consome separadores ou prefixos antes de um valor, fora de objetos. |\n| `peekArraySeparator` | 4 | L\u00ea a v\u00edrgula ou o `]` entre elementos de array. |\n| `peekObjectName` | 8 | L\u00ea o nome do membro ou o fim do objeto. |\n| `peekObjectSeparator` | 4 | L\u00ea a v\u00edrgula ou o `}` entre membros de objeto. |\n| `consumeNameValueSeparator` | 6 | Consome `:` ou `=>` entre nome e valor. |\n| `peekEndOfDocument` | 2 | Detecta EOF. |\n| `peekValueStart` | 8 | Trata aspas, `[`, `{` e delimitadores no lugar de um valor. |\n| `peekArrayDelimiterAsValue` | 5 | Trata `]`, `;` e `,` onde se esperava um valor: fim de array vazio ou null no modo lenient. |\n| `peekKeywordNumberOrUnquoted` | 4 | Tenta palavra-chave, depois n\u00famero, depois literal sem aspas. |\n\n- **Comportamento:** a ordem dos efeitos colaterais, as exce\u00e7\u00f5es e a atribui\u00e7\u00e3o de `peeked` ficaram como antes. A API p\u00fablica n\u00e3o mudou.\n- **Aloca\u00e7\u00f5es:** n\u00e3o adicionei aloca\u00e7\u00f5es, streams nem lambdas.\n- **`@SuppressWarnings(\"fallthrough\")`:** saiu do `doPeek` e foi para `peekArraySeparator` e `peekObjectSeparator`, que s\u00e3o os m\u00e9todos que ainda t\u00eam fall-through.\n- **Fora do escopo:** `peekNumber` (CCN 39) e `peek` (19) continuam altos porque n\u00e3o faziam parte da tarefa."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 157,
+  "deletions": 105,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 30
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 5,
+  "nloc": 15
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 59,
+  "max_ccn": 39,
+  "sum_ccn": 421,
+  "avg_ccn": 7.14,
+  "n_ccn_gt10": 14,
+  "nloc": 1271
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekBeforeValue",
+   "ccn": 8,
+   "nloc": 24,
+   "params": 1,
+   "start": 611,
+   "end": 634
+  },
+  {
+   "name": "JsonReader::peekArraySeparator",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 641,
+   "end": 654
+  },
+  {
+   "name": "JsonReader::peekObjectSeparator",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 658,
+   "end": 671
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 8,
+   "nloc": 35,
+   "params": 1,
+   "start": 674,
+   "end": 708
+  },
+  {
+   "name": "JsonReader::consumeNameValueSeparator",
+   "ccn": 6,
+   "nloc": 16,
+   "params": 0,
+   "start": 711,
+   "end": 726
+  },
+  {
+   "name": "JsonReader::peekEndOfDocument",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 0,
+   "start": 729,
+   "end": 738
+  },
+  {
+   "name": "JsonReader::peekArrayDelimiterAsValue",
+   "ccn": 5,
+   "nloc": 13,
+   "params": 2,
+   "start": 744,
+   "end": 757
+  },
+  {
+   "name": "JsonReader::peekValueStart",
+   "ccn": 8,
+   "nloc": 25,
+   "params": 1,
+   "start": 763,
+   "end": 787
+  },
+  {
+   "name": "JsonReader::peekKeywordNumberOrUnquoted",
+   "ccn": 4,
+   "nloc": 16,
+   "params": 0,
+   "start": 790,
+   "end": 808
+  }
+ ],
+ "valid": true
+}

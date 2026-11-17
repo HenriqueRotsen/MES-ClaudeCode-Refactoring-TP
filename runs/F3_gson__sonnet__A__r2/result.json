@@ -1,0 +1,156 @@
+{
+ "run_id": "F3_gson__sonnet__A__r2",
+ "task": "F3_gson",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 2,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 46,
+ "agent": {
+  "tool_calls": {
+   "Bash": 2,
+   "Read": 1
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 4,
+  "duration_ms": 45049,
+  "duration_api_ms": 22322,
+  "total_cost_usd": 0.0936874,
+  "session_id": "21a02ad0-b3f8-4c53-bda7-0d799304ccde",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 8,
+   "output_tokens": 3701,
+   "cache_creation_input_tokens": 12520,
+   "cache_read_input_tokens": 65814
+  },
+  "final_message": "Refatorei o `doPeek` em `JsonReader.java` e `mvn -B -pl gson clean test` passou. Rodei com `-q` e a sa\u00edda n\u00e3o mostrou falhas. N\u00e3o mexi em nenhum arquivo de teste.\n\nO `doPeek` agora s\u00f3 delega a dois m\u00e9todos privados:\n\n- **`peekStructure(peekStack)`:** trata o token estrutural esperado no escopo atual. Ele delega aos helpers `peekAfterArrayElement`, `peekObjectName`, `peekAfterObjectMember`, `peekNameValueSeparator` e `peekAfterDocumentValue`.\n- **`peekValue(peekStack)`:** trata o valor em si. Os delimitadores `[`, `{`, aspas, `,`, `;` e `]` ficam nele, e `peekLiteralValue` cuida de palavra-chave, n\u00famero e literal sem aspas.\n\nCada helper retorna `PEEKED_NONE` quando o fluxo deve continuar. Os efeitos em `stack`, `pos` e `peeked`, a ordem das chamadas e as mensagens de erro continuam os mesmos de antes. O `@SuppressWarnings(\"fallthrough\")` foi movido para os m\u00e9todos que usam o fall-through."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 127,
+  "deletions": 92,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 32
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 8
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 58,
+  "max_ccn": 39,
+  "sum_ccn": 418,
+  "avg_ccn": 7.21,
+  "n_ccn_gt10": 15,
+  "nloc": 1265
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekStructure",
+   "ccn": 10,
+   "nloc": 27,
+   "params": 1,
+   "start": 603,
+   "end": 629
+  },
+  {
+   "name": "JsonReader::peekAfterArrayElement",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 633,
+   "end": 646
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 8,
+   "nloc": 35,
+   "params": 1,
+   "start": 649,
+   "end": 683
+  },
+  {
+   "name": "JsonReader::peekAfterObjectMember",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 687,
+   "end": 700
+  },
+  {
+   "name": "JsonReader::peekNameValueSeparator",
+   "ccn": 6,
+   "nloc": 16,
+   "params": 0,
+   "start": 703,
+   "end": 718
+  },
+  {
+   "name": "JsonReader::peekAfterDocumentValue",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 0,
+   "start": 721,
+   "end": 730
+  },
+  {
+   "name": "JsonReader::peekValue",
+   "ccn": 11,
+   "nloc": 36,
+   "params": 1,
+   "start": 734,
+   "end": 771
+  },
+  {
+   "name": "JsonReader::peekLiteralValue",
+   "ccn": 4,
+   "nloc": 16,
+   "params": 0,
+   "start": 773,
+   "end": 791
+  }
+ ],
+ "valid": true
+}

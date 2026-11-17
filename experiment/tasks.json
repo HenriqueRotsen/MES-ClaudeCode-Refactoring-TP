@@ -1,0 +1,55 @@
+{
+  "models": ["claude-sonnet-5-5", "claude-haiku-5-5"],
+  "budget_usd_total": 5.0,
+  "budget_already_spent_usd_pilots": 1.0,
+  "conditions": ["A_sem_claude_md", "B_com_claude_md"],
+  "repetitions": 3,
+  "seed": 20261116,
+  "remove_files_before_run": ["AGENTS.md", "CLAUDE.md", ".claude"],
+  "tasks": [
+    {
+      "id": "F1_text",
+      "band": "1-10",
+      "system": "Apache Commons Text",
+      "repo": "commons-text",
+      "commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+      "file": "src/main/java/org/apache/commons/text/AlphabetConverter.java",
+      "class": "AlphabetConverter",
+      "method": "createConverter",
+      "test_cmd": "mvn -B clean test"
+    },
+    {
+      "id": "F2_cli",
+      "band": "11-20",
+      "system": "Apache Commons CLI",
+      "repo": "commons-cli",
+      "commit": "3a53a351a66bc5634bea646008f884148864bdac",
+      "file": "src/main/java/org/apache/commons/cli/PosixParser.java",
+      "class": "PosixParser",
+      "method": "flatten",
+      "test_cmd": "mvn -B clean test"
+    },
+    {
+      "id": "F3_gson",
+      "band": "21-50",
+      "system": "Google Gson",
+      "repo": "gson",
+      "commit": "e67037d17f94415179066c8301fee4a610d9515e",
+      "file": "gson/src/main/java/com/google/gson/stream/JsonReader.java",
+      "class": "JsonReader",
+      "method": "doPeek",
+      "test_cmd": "mvn -B -pl gson clean test"
+    },
+    {
+      "id": "F4_jsoup",
+      "band": "51+",
+      "system": "jsoup",
+      "repo": "jsoup",
+      "commit": "d90d57521d931db7bf7ee464a4c0a1a9293db088",
+      "file": "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java",
+      "class": "HtmlTreeBuilderState",
+      "method": "inBodyStartTag",
+      "test_cmd": "mvn -B clean test"
+    }
+  ]
+}

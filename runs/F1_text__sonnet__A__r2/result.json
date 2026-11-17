@@ -1,0 +1,116 @@
+{
+ "run_id": "F1_text__sonnet__A__r2",
+ "task": "F1_text",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 2,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 102,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 101299,
+  "duration_api_ms": 19525,
+  "total_cost_usd": 0.08507,
+  "session_id": "ca1eea8c-d672-4c8c-8a4a-b311aaaa6a64",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 2802,
+   "cache_creation_input_tokens": 12043,
+   "cache_read_input_tokens": 88580
+  },
+  "final_message": "Refatorei `createConverter` em `AlphabetConverter.java`. O comportamento externo \u00e9 o mesmo, e `mvn -B clean test` passou com BUILD SUCCESS (2043 testes, 0 falhas, 3 ignorados). N\u00e3o toquei em nada sob `src/test`.\n\nO m\u00e9todo agora s\u00f3 coordena, e tr\u00eas m\u00e9todos auxiliares est\u00e1ticos privados fazem o resto:\n- **`buildDoNotEncodeMap`:** valida a lista \"do not encode\" e monta o mapa. Lan\u00e7a as mesmas `IllegalArgumentException`, com as mesmas mensagens.\n- **`fillSingleCharEncoding`:** faz o mapeamento de um caractere para um caractere, usado quando o alfabeto de codifica\u00e7\u00e3o \u00e9 pelo menos t\u00e3o grande quanto o original.\n- **`computeEncodedLetterLength`:** calcula o tamanho da codifica\u00e7\u00e3o, incluindo a divis\u00e3o inicial que reserva a posi\u00e7\u00e3o mais \u00e0 esquerda.\n\nNa sa\u00edda do Maven apareceu um aviso \"JAXP00010001\" (limite de expans\u00f5es de entidade do parser XML do JDK). Ele aparece em um dos testes e n\u00e3o afetou o resultado. N\u00e3o investiguei de onde vem."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 54,
+  "deletions": 56,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 38
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 32
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 17,
+  "max_ccn": 8,
+  "sum_ccn": 50,
+  "avg_ccn": 2.94,
+  "n_ccn_gt10": 0,
+  "nloc": 248
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 19,
+   "params": 3,
+   "start": 164,
+   "end": 182
+  },
+  {
+   "name": "AlphabetConverter::fillSingleCharEncoding",
+   "ccn": 4,
+   "nloc": 20,
+   "params": 6,
+   "start": 184,
+   "end": 203
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 3,
+   "start": 205,
+   "end": 217
+  }
+ ],
+ "valid": true
+}

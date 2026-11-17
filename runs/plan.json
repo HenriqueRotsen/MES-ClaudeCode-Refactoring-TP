@@ -1,0 +1,338 @@
+[
+ {
+  "run_id": "F1_text__sonnet__B__r1",
+  "task": "F1_text",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F4_jsoup__sonnet__A__r1",
+  "task": "F4_jsoup",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F2_cli__haiku__B__r1",
+  "task": "F2_cli",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F1_text__haiku__A__r1",
+  "task": "F1_text",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F2_cli__sonnet__A__r1",
+  "task": "F2_cli",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F4_jsoup__sonnet__B__r1",
+  "task": "F4_jsoup",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F3_gson__sonnet__B__r1",
+  "task": "F3_gson",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F4_jsoup__haiku__A__r1",
+  "task": "F4_jsoup",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F1_text__sonnet__A__r1",
+  "task": "F1_text",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F3_gson__haiku__B__r1",
+  "task": "F3_gson",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F3_gson__sonnet__A__r1",
+  "task": "F3_gson",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F2_cli__sonnet__B__r1",
+  "task": "F2_cli",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F4_jsoup__haiku__B__r1",
+  "task": "F4_jsoup",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F3_gson__haiku__A__r1",
+  "task": "F3_gson",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F1_text__haiku__B__r1",
+  "task": "F1_text",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F2_cli__haiku__A__r1",
+  "task": "F2_cli",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 1
+ },
+ {
+  "run_id": "F1_text__sonnet__B__r2",
+  "task": "F1_text",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F1_text__haiku__A__r2",
+  "task": "F1_text",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F3_gson__haiku__B__r2",
+  "task": "F3_gson",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F2_cli__haiku__B__r2",
+  "task": "F2_cli",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F3_gson__haiku__A__r2",
+  "task": "F3_gson",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F4_jsoup__haiku__B__r2",
+  "task": "F4_jsoup",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F3_gson__sonnet__B__r2",
+  "task": "F3_gson",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F4_jsoup__sonnet__A__r2",
+  "task": "F4_jsoup",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F2_cli__haiku__A__r2",
+  "task": "F2_cli",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F1_text__haiku__B__r2",
+  "task": "F1_text",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F1_text__sonnet__A__r2",
+  "task": "F1_text",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F2_cli__sonnet__A__r2",
+  "task": "F2_cli",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F4_jsoup__haiku__A__r2",
+  "task": "F4_jsoup",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F2_cli__sonnet__B__r2",
+  "task": "F2_cli",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F3_gson__sonnet__A__r2",
+  "task": "F3_gson",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F4_jsoup__sonnet__B__r2",
+  "task": "F4_jsoup",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 2
+ },
+ {
+  "run_id": "F3_gson__haiku__A__r3",
+  "task": "F3_gson",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F3_gson__haiku__B__r3",
+  "task": "F3_gson",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F3_gson__sonnet__A__r3",
+  "task": "F3_gson",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F2_cli__sonnet__A__r3",
+  "task": "F2_cli",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F4_jsoup__haiku__A__r3",
+  "task": "F4_jsoup",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F2_cli__sonnet__B__r3",
+  "task": "F2_cli",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F1_text__sonnet__B__r3",
+  "task": "F1_text",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F1_text__haiku__A__r3",
+  "task": "F1_text",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F4_jsoup__haiku__B__r3",
+  "task": "F4_jsoup",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F2_cli__haiku__A__r3",
+  "task": "F2_cli",
+  "model": "claude-haiku-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F1_text__haiku__B__r3",
+  "task": "F1_text",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F4_jsoup__sonnet__A__r3",
+  "task": "F4_jsoup",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F1_text__sonnet__A__r3",
+  "task": "F1_text",
+  "model": "claude-sonnet-5-5",
+  "condition": "A_sem_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F3_gson__sonnet__B__r3",
+  "task": "F3_gson",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F4_jsoup__sonnet__B__r3",
+  "task": "F4_jsoup",
+  "model": "claude-sonnet-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ },
+ {
+  "run_id": "F2_cli__haiku__B__r3",
+  "task": "F2_cli",
+  "model": "claude-haiku-5-5",
+  "condition": "B_com_claude_md",
+  "rep": 3
+ }
+]

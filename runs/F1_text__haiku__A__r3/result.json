@@ -1,0 +1,123 @@
+{
+ "run_id": "F1_text__haiku__A__r3",
+ "task": "F1_text",
+ "model": "claude-haiku-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 3,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 61,
+ "agent": {
+  "tool_calls": {
+   "Bash": 5
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 6,
+  "duration_ms": 60070,
+  "duration_api_ms": 28016,
+  "total_cost_usd": 0.008235850000000001,
+  "session_id": "28973594-6302-427d-90df-fc3ebf7b0d5e",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 12,
+   "output_tokens": 6951,
+   "cache_creation_input_tokens": 17471,
+   "cache_read_input_tokens": 126495
+  },
+  "final_message": "Refatorei `createConverter` em `src/main/java/org/apache/commons/text/AlphabetConverter.java`, e `mvn -B clean test` termina com BUILD SUCCESS: 2043 testes, 0 falhas, 0 erros, 3 ignorados (os 20 de `AlphabetConverterTest` passam).\n\nO m\u00e9todo p\u00fablico ficou com a valida\u00e7\u00e3o inicial, a constru\u00e7\u00e3o dos conjuntos e o despacho para um de dois caminhos. A l\u00f3gica foi separada em helpers privados:\n\n- **`buildDoNotEncodeMap`**: valida a lista \"do not encode\" contra os alfabetos original e de codifica\u00e7\u00e3o e monta o mapa de strings.\n- **`createSingleLetterConverter`**: o ramo em que cada letra vira uma \u00fanica letra codificada.\n- **`createMultiLetterConverter`**: valida que h\u00e1 pelo menos duas letras dispon\u00edveis e monta o conversor de comprimento fixo.\n- **`computeEncodedLetterLength`**: o c\u00e1lculo do comprimento da letra codificada, sem altera\u00e7\u00e3o de l\u00f3gica.\n\nMantive a mesma ordem de valida\u00e7\u00f5es, as mesmas mensagens de exce\u00e7\u00e3o e o mesmo resultado. A \u00fanica diferen\u00e7a \u00e9 que o c\u00e1lculo de `availableEncodingLetters` foi extra\u00eddo para uma vari\u00e1vel local, usada tanto na checagem quanto na mensagem de erro. O valor \u00e9 o mesmo.\n\nN\u00e3o criei, modifiquei nem removi nenhum arquivo de teste. O \u00fanico arquivo alterado \u00e9 o `AlphabetConverter.java`. N\u00e3o fiz commit."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 102,
+  "deletions": 44,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 40
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 18,
+  "max_ccn": 8,
+  "sum_ccn": 51,
+  "avg_ccn": 2.83,
+  "n_ccn_gt10": 0,
+  "nloc": 259
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 21,
+   "params": 3,
+   "start": 151,
+   "end": 173
+  },
+  {
+   "name": "AlphabetConverter::createSingleLetterConverter",
+   "ccn": 4,
+   "nloc": 25,
+   "params": 4,
+   "start": 184,
+   "end": 214
+  },
+  {
+   "name": "AlphabetConverter::createMultiLetterConverter",
+   "ccn": 2,
+   "nloc": 23,
+   "params": 4,
+   "start": 226,
+   "end": 252
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 3,
+   "start": 262,
+   "end": 277
+  }
+ ],
+ "valid": true
+}

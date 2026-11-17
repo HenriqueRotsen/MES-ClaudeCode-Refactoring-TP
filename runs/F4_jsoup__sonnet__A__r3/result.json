@@ -1,0 +1,220 @@
+{
+ "run_id": "F4_jsoup__sonnet__A__r3",
+ "task": "F4_jsoup",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 3,
+ "prompt_sha256": "551b0b4838df078d0dd84928180f8006cf32ee222d1dc417a557802294d824d1",
+ "base_commit": "d90d57521d931db7bf7ee464a4c0a1a9293db088",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 54,
+ "agent": {
+  "tool_calls": {
+   "Bash": 2,
+   "Read": 1
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 4,
+  "duration_ms": 53351,
+  "duration_api_ms": 37872,
+  "total_cost_usd": 0.1582802,
+  "session_id": "b90d3cdd-8cd1-4506-b036-9cfcdf7e14d3",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 8,
+   "output_tokens": 6871,
+   "cache_creation_input_tokens": 20614,
+   "cache_read_input_tokens": 70982
+  },
+  "final_message": "Refatorei `inBodyStartTag` em `HtmlTreeBuilderState.java`, e `mvn -B clean test` passou sem erros nem falhas. N\u00e3o toquei em nada sob `src/test`.\n\nO m\u00e9todo virou um despachante com um `switch` simples. Cada caso agora faz uma de duas coisas: executa uma ou duas linhas diretamente ou chama um m\u00e9todo auxiliar. Todos os casos retornam o resultado direto, ent\u00e3o n\u00e3o sobraram os `break` e as vari\u00e1veis compartilhadas (`stack`, `el`).\n\n- **M\u00e9todos auxiliares novos:** `inBodyStartA`, `inBodyStartLi`, `inBodyStartHtml`, `inBodyStartBody`, `inBodyStartFrameset`, `inBodyStartForm`, `inBodyStartButton`, `inBodyStartNobr`, `inBodyStartInput`, `inBodyStartHr`, `inBodyStartSelect`, `inBodyStartDdDt`, `inBodyStartOption`, `inBodyStartOptgroup` e `inBodyStartOther`. O \u00faltimo concentra a l\u00f3gica do antigo `default`.\n- **Verifica\u00e7\u00e3o repetida:** extra\u00ed `closePIfInButtonScope(tb)` para a checagem \"se `p` est\u00e1 no escopo de bot\u00e3o, feche-o\". Ela aparecia em v\u00e1rios casos.\n- **Comportamento:** os valores de retorno e a ordem das chamadas ao `tb` ficaram iguais aos do c\u00f3digo original."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ],
+  "insertions": 275,
+  "deletions": 238,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2648,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "baseline_tests": 2648,
+  "seconds": 18
+ },
+ "method_before": {
+  "ccn": 123,
+  "nloc": 339
+ },
+ "method_after": {
+  "ccn": 66,
+  "nloc": 151
+ },
+ "file_before": {
+  "n_funcs": 41,
+  "max_ccn": 123,
+  "sum_ccn": 502,
+  "avg_ccn": 12.24,
+  "n_ccn_gt10": 17,
+  "nloc": 1553
+ },
+ "file_after": {
+  "n_funcs": 57,
+  "max_ccn": 66,
+  "sum_ccn": 510,
+  "avg_ccn": 8.95,
+  "n_ccn_gt10": 17,
+  "nloc": 1579
+ },
+ "new_funcs": [
+  {
+   "name": "HtmlTreeBuilderState::closePIfInButtonScope",
+   "ccn": 2,
+   "nloc": 4,
+   "params": 1,
+   "start": 448,
+   "end": 451
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartA",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 453,
+   "end": 469
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartLi",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 471,
+   "end": 486
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartHtml",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 2,
+   "start": 488,
+   "end": 498
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartBody",
+   "ccn": 5,
+   "nloc": 10,
+   "params": 2,
+   "start": 500,
+   "end": 510
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartFrameset",
+   "ccn": 6,
+   "nloc": 16,
+   "params": 2,
+   "start": 512,
+   "end": 528
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartForm",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 530,
+   "end": 540
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartButton",
+   "ccn": 2,
+   "nloc": 12,
+   "params": 2,
+   "start": 542,
+   "end": 554
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartNobr",
+   "ccn": 2,
+   "nloc": 11,
+   "params": 2,
+   "start": 556,
+   "end": 566
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartInput",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 2,
+   "start": 568,
+   "end": 582
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartHr",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 584,
+   "end": 594
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartSelect",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 596,
+   "end": 610
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartDdDt",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 612,
+   "end": 629
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartOption",
+   "ccn": 4,
+   "nloc": 12,
+   "params": 2,
+   "start": 631,
+   "end": 642
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartOptgroup",
+   "ccn": 5,
+   "nloc": 12,
+   "params": 2,
+   "start": 644,
+   "end": 655
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartOther",
+   "ccn": 7,
+   "nloc": 26,
+   "params": 3,
+   "start": 657,
+   "end": 682
+  }
+ ],
+ "valid": true
+}

@@ -1,0 +1,310 @@
+{
+ "run_id": "F4_jsoup__haiku__A__r1",
+ "task": "F4_jsoup",
+ "model": "claude-haiku-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 1,
+ "prompt_sha256": "551b0b4838df078d0dd84928180f8006cf32ee222d1dc417a557802294d824d1",
+ "base_commit": "d90d57521d931db7bf7ee464a4c0a1a9293db088",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 108,
+ "agent": {
+  "tool_calls": {
+   "Bash": 8,
+   "Read": 1,
+   "Write": 1,
+   "Edit": 1
+  },
+  "mvn_calls": 4,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 12,
+  "duration_ms": 107362,
+  "duration_api_ms": 71004,
+  "total_cost_usd": 0.020375900000000002,
+  "session_id": "61186ab9-ea70-40d2-9a8f-45cbdc585db2",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 22,
+   "output_tokens": 19522,
+   "cache_creation_input_tokens": 35083,
+   "cache_read_input_tokens": 359610
+  },
+  "final_message": "Refatorei `inBodyStartTag` em `src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java`. `mvn -B clean test` passa: 2256 testes, 0 falhas, 0 erros, o mesmo total da linha de base medida antes da mudan\u00e7a. Nenhum arquivo sob `src/test` foi alterado, e nada foi commitado.\n\n**O que mudou**\n- O m\u00e9todo agora \u00e9 um despachante `switch` que delega cada grupo de tags a um helper privado (`inBodyStartA`, `inBodyStartLi`, `inBodyStartTable`, `inBodyStartSelect`, `inBodyStartDdDt`, `inBodyStartDefault` etc.).\n- Os casos de texto (`iframe`, `noembed`, `noscript`), `span`, `plaintext` e `math`/`svg` ficaram como poucas linhas no pr\u00f3prio despachante ou compartilham um helper (`inBodyStartForeign`).\n- Extra\u00ed `closePIfInButtonScope(tb)`, que substitui o trecho `if (tb.inButtonScope(\"p\")) tb.processEndTag(\"p\")` repetido em v\u00e1rios casos.\n\n**Comportamento preservado**\n- A ordem das verifica\u00e7\u00f5es em cada ramo \u00e9 a mesma, e os valores de retorno foram conservados linha a linha. Os pontos sens\u00edveis s\u00e3o `button` (chama `tb.process` e ainda retorna `true`), `image` (retorna o resultado de `tb.process`) e `default` (retorna `tb.process(t, InHead)` quando aplic\u00e1vel).\n- O `form` continua usando `tb.closeElement(\"p\")`, diferente dos demais casos, como no original.\n\n**Limita\u00e7\u00f5es**\n- N\u00e3o medi a complexidade ciclom\u00e1tica com ferramenta. O despachante ainda tem um `case` por tag, porque um `switch` por nome \u00e9 inerente a esse m\u00e9todo. A complexidade foi redistribu\u00edda: cada helper fica pequeno e focado, mas a soma do despachante n\u00e3o desapareceu.\n- Na primeira tentativa de compila\u00e7\u00e3o, `closePIfInButtonScope` estava como `static`, o que n\u00e3o \u00e9 permitido dentro dos constantes enum com corpo an\u00f4nimo. Removi o modificador e o build passou."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ],
+  "insertions": 362,
+  "deletions": 277,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2648,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "baseline_tests": 2648,
+  "seconds": 17
+ },
+ "method_before": {
+  "ccn": 123,
+  "nloc": 339
+ },
+ "method_after": {
+  "ccn": 57,
+  "nloc": 105
+ },
+ "file_before": {
+  "n_funcs": 41,
+  "max_ccn": 123,
+  "sum_ccn": 502,
+  "avg_ccn": 12.24,
+  "n_ccn_gt10": 17,
+  "nloc": 1553
+ },
+ "file_after": {
+  "n_funcs": 68,
+  "max_ccn": 57,
+  "sum_ccn": 522,
+  "avg_ccn": 7.68,
+  "n_ccn_gt10": 17,
+  "nloc": 1616
+ },
+ "new_funcs": [
+  {
+   "name": "HtmlTreeBuilderState::closePIfInButtonScope",
+   "ccn": 2,
+   "nloc": 5,
+   "params": 1,
+   "start": 402,
+   "end": 406
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartA",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 408,
+   "end": 424
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartLi",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 426,
+   "end": 441
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartHtml",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 2,
+   "start": 443,
+   "end": 453
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartBody",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 455,
+   "end": 466
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartFrameset",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 468,
+   "end": 486
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartForm",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 488,
+   "end": 498
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartButton",
+   "ccn": 2,
+   "nloc": 12,
+   "params": 2,
+   "start": 500,
+   "end": 512
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartNobr",
+   "ccn": 2,
+   "nloc": 11,
+   "params": 2,
+   "start": 514,
+   "end": 524
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartTable",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 2,
+   "start": 526,
+   "end": 534
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartInput",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 2,
+   "start": 536,
+   "end": 550
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartHr",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 552,
+   "end": 562
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartImage",
+   "ccn": 2,
+   "nloc": 6,
+   "params": 2,
+   "start": 564,
+   "end": 569
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartTextarea",
+   "ccn": 1,
+   "nloc": 6,
+   "params": 2,
+   "start": 571,
+   "end": 576
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartXmp",
+   "ccn": 1,
+   "nloc": 7,
+   "params": 2,
+   "start": 578,
+   "end": 584
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartSelect",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 586,
+   "end": 600
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartForeign",
+   "ccn": 1,
+   "nloc": 5,
+   "params": 3,
+   "start": 602,
+   "end": 606
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartHeading",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 2,
+   "start": 608,
+   "end": 616
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartPre",
+   "ccn": 1,
+   "nloc": 7,
+   "params": 2,
+   "start": 618,
+   "end": 624
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartDdDt",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 626,
+   "end": 643
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartOption",
+   "ccn": 4,
+   "nloc": 12,
+   "params": 2,
+   "start": 645,
+   "end": 656
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartOptgroup",
+   "ccn": 5,
+   "nloc": 12,
+   "params": 2,
+   "start": 658,
+   "end": 669
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartRubyBase",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 2,
+   "start": 671,
+   "end": 679
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartRubyText",
+   "ccn": 4,
+   "nloc": 9,
+   "params": 2,
+   "start": 681,
+   "end": 689
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartEmpty",
+   "ccn": 1,
+   "nloc": 6,
+   "params": 2,
+   "start": 691,
+   "end": 696
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartFormatter",
+   "ccn": 1,
+   "nloc": 6,
+   "params": 2,
+   "start": 698,
+   "end": 703
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartDefault",
+   "ccn": 7,
+   "nloc": 26,
+   "params": 4,
+   "start": 705,
+   "end": 730
+  }
+ ],
+ "valid": true
+}

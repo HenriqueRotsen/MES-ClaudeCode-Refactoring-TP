@@ -1,0 +1,308 @@
+{
+ "run_id": "F4_jsoup__sonnet__B__r3",
+ "task": "F4_jsoup",
+ "model": "claude-sonnet-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 3,
+ "prompt_sha256": "551b0b4838df078d0dd84928180f8006cf32ee222d1dc417a557802294d824d1",
+ "base_commit": "d90d57521d931db7bf7ee464a4c0a1a9293db088",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 100,
+ "agent": {
+  "tool_calls": {
+   "Bash": 5,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 7,
+  "duration_ms": 99026,
+  "duration_api_ms": 65116,
+  "total_cost_usd": 0.2523421,
+  "session_id": "36b38a55-3483-4ff9-a83a-6d5271a7624d",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 14,
+   "output_tokens": 11002,
+   "cache_creation_input_tokens": 31019,
+   "cache_read_input_tokens": 182181
+  },
+  "final_message": "Tests passed (no failures output) and only `inBodyStartTag`-related methods were touched; the remaining >10 methods are pre-existing and out of scope.\n\n**Resumo**\n- `inBodyStartTag`: CCN **123 \u2192 9** (`HtmlTreeBuilderState.java`).\n- Extra\u00eddos: o `switch` virou uma cadeia de despacho com `inBodyStartTagControls` (10), `inBodyStartTagContent` (10), `inBodyStartTagOptionsAndRuby` (\u226410), `inBodyStartTagOther` (\u226410) e `handleOtherStartTag` (7). Cada caso virou um m\u00e9todo `handleXxxStart` (CCN 2\u20137): Anchor, ListItem, Html, Body, Frameset, Form, Plaintext, Button, Nobr, Table, Input, Hr, Image, Xmp, Select, Heading, PreListing, DefinitionItem, Option, Optgroup, RubyBase, RubyText. Todos t\u00eam \u22643 par\u00e2metros.\n- Dois arrays novos (`InBodyStartEmptyFormatters`, `InBodyStartFormatters`) ficaram como campos `private static` fora de `Constants`, porque `ensureArraysAreSorted` conta os arrays de `Constants` (esperava 35). Os cabe\u00e7alhos `h1`\u2013`h6` agora s\u00e3o tratados com `Constants.Headings`.\n- Testes: `mvn -B -q clean test` rodou sem falhas ou erros, e `git diff --stat` mostra s\u00f3 `HtmlTreeBuilderState.java` (nada em `src/test`).\n- Custo de desempenho: tags que caem no `default` percorrem a cadeia (alguns `switch` de string a mais, sem aloca\u00e7\u00e3o). Mantive assim para ficar com CCN \u2264 10."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ],
+  "insertions": 370,
+  "deletions": 277,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2648,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "baseline_tests": 2648,
+  "seconds": 16
+ },
+ "method_before": {
+  "ccn": 123,
+  "nloc": 339
+ },
+ "method_after": {
+  "ccn": 9,
+  "nloc": 30
+ },
+ "file_before": {
+  "n_funcs": 41,
+  "max_ccn": 123,
+  "sum_ccn": 502,
+  "avg_ccn": 12.24,
+  "n_ccn_gt10": 17,
+  "nloc": 1553
+ },
+ "file_after": {
+  "n_funcs": 68,
+  "max_ccn": 44,
+  "sum_ccn": 508,
+  "avg_ccn": 7.47,
+  "n_ccn_gt10": 16,
+  "nloc": 1625
+ },
+ "new_funcs": [
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartTagControls",
+   "ccn": 10,
+   "nloc": 35,
+   "params": 3,
+   "start": 322,
+   "end": 356
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartTagContent",
+   "ccn": 10,
+   "nloc": 32,
+   "params": 3,
+   "start": 358,
+   "end": 389
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartTagOptionsAndRuby",
+   "ccn": 7,
+   "nloc": 21,
+   "params": 3,
+   "start": 391,
+   "end": 411
+  },
+  {
+   "name": "HtmlTreeBuilderState::inBodyStartTagOther",
+   "ccn": 5,
+   "nloc": 21,
+   "params": 3,
+   "start": 413,
+   "end": 433
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleOtherStartTag",
+   "ccn": 7,
+   "nloc": 24,
+   "params": 3,
+   "start": 435,
+   "end": 458
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleAnchorStart",
+   "ccn": 3,
+   "nloc": 14,
+   "params": 2,
+   "start": 460,
+   "end": 475
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleListItemStart",
+   "ccn": 6,
+   "nloc": 17,
+   "params": 2,
+   "start": 477,
+   "end": 493
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleHtmlStart",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 2,
+   "start": 495,
+   "end": 505
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleBodyStart",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 507,
+   "end": 518
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleFramesetStart",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 520,
+   "end": 538
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleFormStart",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 540,
+   "end": 550
+  },
+  {
+   "name": "HtmlTreeBuilderState::handlePlaintextStart",
+   "ccn": 2,
+   "nloc": 7,
+   "params": 2,
+   "start": 552,
+   "end": 558
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleButtonStart",
+   "ccn": 2,
+   "nloc": 11,
+   "params": 2,
+   "start": 560,
+   "end": 571
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleNobrStart",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 2,
+   "start": 573,
+   "end": 582
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleTableStart",
+   "ccn": 3,
+   "nloc": 8,
+   "params": 2,
+   "start": 584,
+   "end": 591
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleInputStart",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 2,
+   "start": 593,
+   "end": 607
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleHrStart",
+   "ccn": 5,
+   "nloc": 12,
+   "params": 2,
+   "start": 609,
+   "end": 620
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleImageStart",
+   "ccn": 2,
+   "nloc": 6,
+   "params": 2,
+   "start": 622,
+   "end": 627
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleXmpStart",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 2,
+   "start": 629,
+   "end": 636
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleSelectStart",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 638,
+   "end": 652
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleHeadingStart",
+   "ccn": 4,
+   "nloc": 10,
+   "params": 2,
+   "start": 654,
+   "end": 663
+  },
+  {
+   "name": "HtmlTreeBuilderState::handlePreListingStart",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 2,
+   "start": 665,
+   "end": 672
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleDefinitionItemStart",
+   "ccn": 7,
+   "nloc": 19,
+   "params": 2,
+   "start": 674,
+   "end": 692
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleOptionStart",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 694,
+   "end": 704
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleOptgroupStart",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 706,
+   "end": 716
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleRubyBaseStart",
+   "ccn": 3,
+   "nloc": 8,
+   "params": 2,
+   "start": 718,
+   "end": 725
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleRubyTextStart",
+   "ccn": 4,
+   "nloc": 8,
+   "params": 2,
+   "start": 727,
+   "end": 734
+  }
+ ],
+ "valid": true
+}

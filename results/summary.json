@@ -1,0 +1,3042 @@
+{
+ "by_cell": {
+  "F1_text|haiku-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 8,
+    "sd": 0.0,
+    "min": 8,
+    "max": 8
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 4,
+    "sd": 0.0,
+    "min": 4,
+    "max": 4
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 4,
+    "sd": 0.0,
+    "min": 4,
+    "max": 4
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 107.33,
+    "sd": 4.73,
+    "min": 102,
+    "max": 111
+   },
+   "del": {
+    "mean": 43.67,
+    "sd": 0.58,
+    "min": 43,
+    "max": 44
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.01,
+    "sd": 0.0,
+    "min": 0.008235850000000001,
+    "max": 0.00904787
+   },
+   "turns": {
+    "mean": 6.33,
+    "sd": 0.58,
+    "min": 6,
+    "max": 7
+   },
+   "minutes": {
+    "mean": 1.1,
+    "sd": 0.17,
+    "min": 1.0,
+    "max": 1.3
+   },
+   "mvn_calls": {
+    "mean": 1.67,
+    "sd": 0.58,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F1_text|haiku-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 8,
+    "sd": 0.0,
+    "min": 8,
+    "max": 8
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 6.33,
+    "sd": 0.58,
+    "min": 6,
+    "max": 7
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 3.67,
+    "sd": 0.58,
+    "min": 3,
+    "max": 4
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 125,
+    "sd": 18.36,
+    "min": 104,
+    "max": 138
+   },
+   "del": {
+    "mean": 52,
+    "sd": 7.21,
+    "min": 44,
+    "max": 58
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.01,
+    "sd": 0.0,
+    "min": 0.0111476,
+    "max": 0.01449044
+   },
+   "turns": {
+    "mean": 8.67,
+    "sd": 2.89,
+    "min": 7,
+    "max": 12
+   },
+   "minutes": {
+    "mean": 1.7,
+    "sd": 0.46,
+    "min": 1.2,
+    "max": 2.1
+   },
+   "mvn_calls": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   }
+  },
+  "F1_text|sonnet-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2.67,
+    "sd": 0.58,
+    "min": 2,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 73.33,
+    "sd": 5.77,
+    "min": 70.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 25.67,
+    "sd": 10.97,
+    "min": 13,
+    "max": 32
+   },
+   "file_max_cc_after": {
+    "mean": 8,
+    "sd": 0.0,
+    "min": 8,
+    "max": 8
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 4,
+    "sd": 0.0,
+    "min": 4,
+    "max": 4
+   },
+   "new_methods_params_gt4": {
+    "mean": 0.67,
+    "sd": 0.58,
+    "min": 0,
+    "max": 1
+   },
+   "ins": {
+    "mean": 52.33,
+    "sd": 5.69,
+    "min": 46,
+    "max": 57
+   },
+   "del": {
+    "mean": 50,
+    "sd": 14.0,
+    "min": 34,
+    "max": 60
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.09,
+    "sd": 0.0,
+    "min": 0.08507,
+    "max": 0.0887544
+   },
+   "turns": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "minutes": {
+    "mean": 1.7,
+    "sd": 0.0,
+    "min": 1.7,
+    "max": 1.7
+   },
+   "mvn_calls": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   }
+  },
+  "F1_text|sonnet-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2.67,
+    "sd": 0.58,
+    "min": 2,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 73.33,
+    "sd": 5.77,
+    "min": 70.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 25.67,
+    "sd": 11.02,
+    "min": 13,
+    "max": 33
+   },
+   "file_max_cc_after": {
+    "mean": 8,
+    "sd": 0.0,
+    "min": 8,
+    "max": 8
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 4,
+    "sd": 0.0,
+    "min": 4,
+    "max": 4
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 75.67,
+    "sd": 9.29,
+    "min": 65,
+    "max": 82
+   },
+   "del": {
+    "mean": 40,
+    "sd": 11.27,
+    "min": 27,
+    "max": 47
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.11,
+    "sd": 0.01,
+    "min": 0.1020606,
+    "max": 0.1269464
+   },
+   "turns": {
+    "mean": 5.33,
+    "sd": 0.58,
+    "min": 5,
+    "max": 6
+   },
+   "minutes": {
+    "mean": 1.7,
+    "sd": 0.1,
+    "min": 1.6,
+    "max": 1.8
+   },
+   "mvn_calls": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   }
+  },
+  "F2_cli|haiku-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3.33,
+    "sd": 0.58,
+    "min": 3,
+    "max": 4
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 73.67,
+    "sd": 5.51,
+    "min": 70,
+    "max": 80
+   },
+   "del": {
+    "mean": 38,
+    "sd": 0.0,
+    "min": 38,
+    "max": 38
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.01,
+    "sd": 0.0,
+    "min": 0.006973269999999999,
+    "max": 0.007794620000000002
+   },
+   "turns": {
+    "mean": 5.33,
+    "sd": 0.58,
+    "min": 5,
+    "max": 6
+   },
+   "minutes": {
+    "mean": 0.5,
+    "sd": 0.0,
+    "min": 0.5,
+    "max": 0.5
+   },
+   "mvn_calls": {
+    "mean": 1.67,
+    "sd": 0.58,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F2_cli|haiku-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3.67,
+    "sd": 0.58,
+    "min": 3,
+    "max": 4
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 79.67,
+    "sd": 6.11,
+    "min": 73,
+    "max": 85
+   },
+   "del": {
+    "mean": 37,
+    "sd": 0.0,
+    "min": 37,
+    "max": 37
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.01,
+    "sd": 0.0,
+    "min": 0.00862224,
+    "max": 0.009783730000000001
+   },
+   "turns": {
+    "mean": 6.33,
+    "sd": 0.58,
+    "min": 6,
+    "max": 7
+   },
+   "minutes": {
+    "mean": 0.77,
+    "sd": 0.15,
+    "min": 0.6,
+    "max": 0.9
+   },
+   "mvn_calls": {
+    "mean": 2.33,
+    "sd": 0.58,
+    "min": 2,
+    "max": 3
+   }
+  },
+  "F2_cli|sonnet-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 63.33,
+    "sd": 6.11,
+    "min": 58,
+    "max": 70
+   },
+   "del": {
+    "mean": 37.67,
+    "sd": 0.58,
+    "min": 37,
+    "max": 38
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.08,
+    "sd": 0.0,
+    "min": 0.08072839999999999,
+    "max": 0.08848639999999999
+   },
+   "turns": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "minutes": {
+    "mean": 0.63,
+    "sd": 0.06,
+    "min": 0.6,
+    "max": 0.7
+   },
+   "mvn_calls": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   }
+  },
+  "F2_cli|sonnet-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 70.33,
+    "sd": 0.58,
+    "min": 70,
+    "max": 71
+   },
+   "del": {
+    "mean": 37,
+    "sd": 0.0,
+    "min": 37,
+    "max": 37
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.13,
+    "sd": 0.0,
+    "min": 0.12536020000000003,
+    "max": 0.1306617
+   },
+   "turns": {
+    "mean": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6
+   },
+   "minutes": {
+    "mean": 0.73,
+    "sd": 0.12,
+    "min": 0.6,
+    "max": 0.8
+   },
+   "mvn_calls": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   }
+  },
+  "F3_gson|haiku-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 8.67,
+    "sd": 5.77,
+    "min": 2,
+    "max": 12
+   },
+   "cc_reduction_pct": {
+    "mean": 78.83,
+    "sd": 14.09,
+    "min": 70.7,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 31,
+    "sd": 19.92,
+    "min": 8,
+    "max": 43
+   },
+   "file_max_cc_after": {
+    "mean": 39,
+    "sd": 0.0,
+    "min": 39,
+    "max": 39
+   },
+   "file_funcs_gt10_after": {
+    "mean": 15.67,
+    "sd": 0.58,
+    "min": 15,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 8,
+    "sd": 0.0,
+    "min": 8,
+    "max": 8
+   },
+   "new_methods_cc_gt10": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "new_methods_max_cc": {
+    "mean": 12,
+    "sd": 1.73,
+    "min": 11,
+    "max": 14
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 141,
+    "sd": 5.0,
+    "min": 136,
+    "max": 146
+   },
+   "del": {
+    "mean": 85.33,
+    "sd": 5.77,
+    "min": 82,
+    "max": 92
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.01,
+    "sd": 0.0,
+    "min": 0.011852910000000001,
+    "max": 0.012259559999999997
+   },
+   "turns": {
+    "mean": 8,
+    "sd": 2.0,
+    "min": 6,
+    "max": 10
+   },
+   "minutes": {
+    "mean": 1.13,
+    "sd": 0.06,
+    "min": 1.1,
+    "max": 1.2
+   },
+   "mvn_calls": {
+    "mean": 1.67,
+    "sd": 0.58,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F3_gson|haiku-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2.33,
+    "sd": 0.58,
+    "min": 2,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 94.3,
+    "sd": 1.39,
+    "min": 92.7,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 9.67,
+    "sd": 2.08,
+    "min": 8,
+    "max": 12
+   },
+   "file_max_cc_after": {
+    "mean": 39,
+    "sd": 0.0,
+    "min": 39,
+    "max": 39
+   },
+   "file_funcs_gt10_after": {
+    "mean": 14,
+    "sd": 0.0,
+    "min": 14,
+    "max": 14
+   },
+   "new_methods": {
+    "mean": 10.33,
+    "sd": 0.58,
+    "min": 10,
+    "max": 11
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 10,
+    "sd": 0.0,
+    "min": 10,
+    "max": 10
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 150.33,
+    "sd": 5.77,
+    "min": 147,
+    "max": 157
+   },
+   "del": {
+    "mean": 106.33,
+    "sd": 7.51,
+    "min": 102,
+    "max": 115
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.02,
+    "sd": 0.0,
+    "min": 0.01490897,
+    "max": 0.019733630000000002
+   },
+   "turns": {
+    "mean": 8.33,
+    "sd": 2.08,
+    "min": 6,
+    "max": 10
+   },
+   "minutes": {
+    "mean": 1.5,
+    "sd": 0.35,
+    "min": 1.3,
+    "max": 1.9
+   },
+   "mvn_calls": {
+    "mean": 1.33,
+    "sd": 0.58,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F3_gson|sonnet-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 9,
+    "sd": 6.08,
+    "min": 2,
+    "max": 13
+   },
+   "cc_reduction_pct": {
+    "mean": 78.03,
+    "sd": 14.83,
+    "min": 68.3,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 29.67,
+    "sd": 18.82,
+    "min": 8,
+    "max": 42
+   },
+   "file_max_cc_after": {
+    "mean": 39,
+    "sd": 0.0,
+    "min": 39,
+    "max": 39
+   },
+   "file_funcs_gt10_after": {
+    "mean": 15.67,
+    "sd": 0.58,
+    "min": 15,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 6.67,
+    "sd": 1.15,
+    "min": 6,
+    "max": 8
+   },
+   "new_methods_cc_gt10": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "new_methods_max_cc": {
+    "mean": 12,
+    "sd": 1.73,
+    "min": 11,
+    "max": 14
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 123.33,
+    "sd": 3.21,
+    "min": 121,
+    "max": 127
+   },
+   "del": {
+    "mean": 89.33,
+    "sd": 2.31,
+    "min": 88,
+    "max": 92
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.1,
+    "sd": 0.01,
+    "min": 0.0936874,
+    "max": 0.10471580000000001
+   },
+   "turns": {
+    "mean": 4.33,
+    "sd": 0.58,
+    "min": 4,
+    "max": 5
+   },
+   "minutes": {
+    "mean": 0.93,
+    "sd": 0.15,
+    "min": 0.8,
+    "max": 1.1
+   },
+   "mvn_calls": {
+    "mean": 1.33,
+    "sd": 0.58,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F3_gson|sonnet-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 8.33,
+    "sd": 2.89,
+    "min": 5,
+    "max": 10
+   },
+   "cc_reduction_pct": {
+    "mean": 79.67,
+    "sd": 7.04,
+    "min": 75.6,
+    "max": 87.8
+   },
+   "nloc_after": {
+    "mean": 27.33,
+    "sd": 10.69,
+    "min": 15,
+    "max": 34
+   },
+   "file_max_cc_after": {
+    "mean": 39,
+    "sd": 0.0,
+    "min": 39,
+    "max": 39
+   },
+   "file_funcs_gt10_after": {
+    "mean": 14,
+    "sd": 0.0,
+    "min": 14,
+    "max": 14
+   },
+   "new_methods": {
+    "mean": 9,
+    "sd": 0.0,
+    "min": 9,
+    "max": 9
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 8.33,
+    "sd": 0.58,
+    "min": 8,
+    "max": 9
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 152.67,
+    "sd": 3.79,
+    "min": 150,
+    "max": 157
+   },
+   "del": {
+    "mean": 104.33,
+    "sd": 1.15,
+    "min": 103,
+    "max": 105
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.15,
+    "sd": 0.01,
+    "min": 0.1391923,
+    "max": 0.16694870000000003
+   },
+   "turns": {
+    "mean": 5.33,
+    "sd": 0.58,
+    "min": 5,
+    "max": 6
+   },
+   "minutes": {
+    "mean": 1.73,
+    "sd": 0.4,
+    "min": 1.5,
+    "max": 2.2
+   },
+   "mvn_calls": {
+    "mean": 2.33,
+    "sd": 0.58,
+    "min": 2,
+    "max": 3
+   }
+  },
+  "F4_jsoup|haiku-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 57.33,
+    "sd": 0.58,
+    "min": 57,
+    "max": 58
+   },
+   "cc_reduction_pct": {
+    "mean": 53.4,
+    "sd": 0.52,
+    "min": 52.8,
+    "max": 53.7
+   },
+   "nloc_after": {
+    "mean": 103,
+    "sd": 29.05,
+    "min": 73,
+    "max": 131
+   },
+   "file_max_cc_after": {
+    "mean": 57.33,
+    "sd": 0.58,
+    "min": 57,
+    "max": 58
+   },
+   "file_funcs_gt10_after": {
+    "mean": 18.33,
+    "sd": 2.31,
+    "min": 17,
+    "max": 21
+   },
+   "new_methods": {
+    "mean": 20.33,
+    "sd": 9.07,
+    "min": 10,
+    "max": 27
+   },
+   "new_methods_cc_gt10": {
+    "mean": 1.33,
+    "sd": 2.31,
+    "min": 0,
+    "max": 4
+   },
+   "new_methods_max_cc": {
+    "mean": 12.33,
+    "sd": 8.39,
+    "min": 7,
+    "max": 22
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 341.33,
+    "sd": 17.93,
+    "min": 330,
+    "max": 362
+   },
+   "del": {
+    "mean": 254.67,
+    "sd": 19.35,
+    "min": 243,
+    "max": 277
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.02,
+    "sd": 0.0,
+    "min": 0.01679429,
+    "max": 0.020375900000000002
+   },
+   "turns": {
+    "mean": 9,
+    "sd": 2.65,
+    "min": 7,
+    "max": 12
+   },
+   "minutes": {
+    "mean": 1.73,
+    "sd": 0.4,
+    "min": 1.3,
+    "max": 2.1
+   },
+   "mvn_calls": {
+    "mean": 3.33,
+    "sd": 1.15,
+    "min": 2,
+    "max": 4
+   }
+  },
+  "F4_jsoup|haiku-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 1.33,
+    "sd": 0.58,
+    "min": 1,
+    "max": 2
+   },
+   "cc_reduction_pct": {
+    "mean": 98.93,
+    "sd": 0.46,
+    "min": 98.4,
+    "max": 99.2
+   },
+   "nloc_after": {
+    "mean": 4,
+    "sd": 1.0,
+    "min": 3,
+    "max": 5
+   },
+   "file_max_cc_after": {
+    "mean": 44,
+    "sd": 0.0,
+    "min": 44,
+    "max": 44
+   },
+   "file_funcs_gt10_after": {
+    "mean": 16,
+    "sd": 0.0,
+    "min": 16,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 47.67,
+    "sd": 17.95,
+    "min": 34,
+    "max": 68
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 8,
+    "sd": 1.0,
+    "min": 7,
+    "max": 9
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 480.33,
+    "sd": 89.91,
+    "min": 408,
+    "max": 581
+   },
+   "del": {
+    "mean": 342.67,
+    "sd": 11.93,
+    "min": 333,
+    "max": 356
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.04,
+    "sd": 0.0,
+    "min": 0.040105260000000004,
+    "max": 0.04288842999999999
+   },
+   "turns": {
+    "mean": 16.67,
+    "sd": 6.03,
+    "min": 11,
+    "max": 23
+   },
+   "minutes": {
+    "mean": 3.07,
+    "sd": 0.32,
+    "min": 2.7,
+    "max": 3.3
+   },
+   "mvn_calls": {
+    "mean": 2.67,
+    "sd": 0.58,
+    "min": 2,
+    "max": 3
+   }
+  },
+  "F4_jsoup|sonnet-5-5|A": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 63.33,
+    "sd": 3.79,
+    "min": 59,
+    "max": 66
+   },
+   "cc_reduction_pct": {
+    "mean": 48.5,
+    "sd": 3.06,
+    "min": 46.3,
+    "max": 52.0
+   },
+   "nloc_after": {
+    "mean": 143.67,
+    "sd": 18.15,
+    "min": 123,
+    "max": 157
+   },
+   "file_max_cc_after": {
+    "mean": 63.33,
+    "sd": 3.79,
+    "min": 59,
+    "max": 66
+   },
+   "file_funcs_gt10_after": {
+    "mean": 17,
+    "sd": 0.0,
+    "min": 17,
+    "max": 17
+   },
+   "new_methods": {
+    "mean": 18,
+    "sd": 2.65,
+    "min": 16,
+    "max": 21
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 7.33,
+    "sd": 0.58,
+    "min": 7,
+    "max": 8
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 289.33,
+    "sd": 39.5,
+    "min": 259,
+    "max": 334
+   },
+   "del": {
+    "mean": 237,
+    "sd": 23.52,
+    "min": 213,
+    "max": 260
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.15,
+    "sd": 0.0,
+    "min": 0.1496119,
+    "max": 0.1582802
+   },
+   "turns": {
+    "mean": 4,
+    "sd": 0.0,
+    "min": 4,
+    "max": 4
+   },
+   "minutes": {
+    "mean": 0.9,
+    "sd": 0.0,
+    "min": 0.9,
+    "max": 0.9
+   },
+   "mvn_calls": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   }
+  },
+  "F4_jsoup|sonnet-5-5|B": {
+   "n": 3,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 9.67,
+    "sd": 0.58,
+    "min": 9,
+    "max": 10
+   },
+   "cc_reduction_pct": {
+    "mean": 92.17,
+    "sd": 0.46,
+    "min": 91.9,
+    "max": 92.7
+   },
+   "nloc_after": {
+    "mean": 30.67,
+    "sd": 2.08,
+    "min": 29,
+    "max": 33
+   },
+   "file_max_cc_after": {
+    "mean": 44,
+    "sd": 0.0,
+    "min": 44,
+    "max": 44
+   },
+   "file_funcs_gt10_after": {
+    "mean": 16,
+    "sd": 0.0,
+    "min": 16,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 29.67,
+    "sd": 2.52,
+    "min": 27,
+    "max": 32
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 10,
+    "sd": 0.0,
+    "min": 10,
+    "max": 10
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 389,
+    "sd": 19.52,
+    "min": 370,
+    "max": 409
+   },
+   "del": {
+    "mean": 268.33,
+    "sd": 16.77,
+    "min": 249,
+    "max": 279
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.25,
+    "sd": 0.0,
+    "min": 0.25134490000000004,
+    "max": 0.2568618
+   },
+   "turns": {
+    "mean": 6,
+    "sd": 1.0,
+    "min": 5,
+    "max": 7
+   },
+   "minutes": {
+    "mean": 1.8,
+    "sd": 0.17,
+    "min": 1.7,
+    "max": 2.0
+   },
+   "mvn_calls": {
+    "mean": 2.33,
+    "sd": 0.58,
+    "min": 2,
+    "max": 3
+   }
+  }
+ },
+ "by_condition": {
+  "A": {
+   "n": 24,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 18.62,
+    "sd": 24.93,
+    "min": 2,
+    "max": 66
+   },
+   "cc_reduction_pct": {
+    "mean": 71.51,
+    "sd": 13.9,
+    "min": 46.3,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 46.5,
+    "sd": 48.88,
+    "min": 8,
+    "max": 157
+   },
+   "file_max_cc_after": {
+    "mean": 28.33,
+    "sd": 23.2,
+    "min": 6,
+    "max": 66
+   },
+   "file_funcs_gt10_after": {
+    "mean": 8.33,
+    "sd": 8.58,
+    "min": 0,
+    "max": 21
+   },
+   "new_methods": {
+    "mean": 8.29,
+    "sd": 7.24,
+    "min": 3,
+    "max": 27
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0.42,
+    "sd": 0.88,
+    "min": 0,
+    "max": 4
+   },
+   "new_methods_max_cc": {
+    "mean": 7.71,
+    "sd": 4.45,
+    "min": 4,
+    "max": 22
+   },
+   "new_methods_params_gt4": {
+    "mean": 0.08,
+    "sd": 0.28,
+    "min": 0,
+    "max": 1
+   },
+   "ins": {
+    "mean": 148.96,
+    "sd": 103.96,
+    "min": 46,
+    "max": 362
+   },
+   "del": {
+    "mean": 104.46,
+    "sd": 86.25,
+    "min": 34,
+    "max": 277
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.06,
+    "sd": 0.05,
+    "min": 0.006973269999999999,
+    "max": 0.1582802
+   },
+   "turns": {
+    "mean": 5.88,
+    "sd": 1.98,
+    "min": 4,
+    "max": 12
+   },
+   "minutes": {
+    "mean": 1.08,
+    "sd": 0.45,
+    "min": 0.5,
+    "max": 2.1
+   },
+   "mvn_calls": {
+    "mean": 1.83,
+    "sd": 0.82,
+    "min": 1,
+    "max": 4
+   }
+  },
+  "B": {
+   "n": 24,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 4.04,
+    "sd": 3.13,
+    "min": 1,
+    "max": 10
+   },
+   "cc_reduction_pct": {
+    "mean": 84.8,
+    "sd": 9.05,
+    "min": 70.0,
+    "max": 99.2
+   },
+   "nloc_after": {
+    "mean": 17.04,
+    "sd": 10.23,
+    "min": 3,
+    "max": 34
+   },
+   "file_max_cc_after": {
+    "mean": 24.25,
+    "sd": 17.73,
+    "min": 6,
+    "max": 44
+   },
+   "file_funcs_gt10_after": {
+    "mean": 7.5,
+    "sd": 7.7,
+    "min": 0,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 14.08,
+    "sd": 16.33,
+    "min": 3,
+    "max": 68
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 6.75,
+    "sd": 2.54,
+    "min": 3,
+    "max": 10
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 190.38,
+    "sd": 151.79,
+    "min": 65,
+    "max": 581
+   },
+   "del": {
+    "mean": 123.46,
+    "sd": 112.58,
+    "min": 27,
+    "max": 356
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.09,
+    "sd": 0.08,
+    "min": 0.00862224,
+    "max": 0.2568618
+   },
+   "turns": {
+    "mean": 7.83,
+    "sd": 4.19,
+    "min": 5,
+    "max": 23
+   },
+   "minutes": {
+    "mean": 1.62,
+    "sd": 0.73,
+    "min": 0.6,
+    "max": 3.3
+   },
+   "mvn_calls": {
+    "mean": 2.12,
+    "sd": 0.54,
+    "min": 1,
+    "max": 3
+   }
+  }
+ },
+ "by_model_condition": {
+  "haiku-5-5|A": {
+   "n": 12,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 17.75,
+    "sd": 24.14,
+    "min": 2,
+    "max": 58
+   },
+   "cc_reduction_pct": {
+    "mean": 73.06,
+    "sd": 13.3,
+    "min": 52.8,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 40,
+    "sd": 41.57,
+    "min": 8,
+    "max": 131
+   },
+   "file_max_cc_after": {
+    "mean": 27.58,
+    "sd": 22.55,
+    "min": 6,
+    "max": 58
+   },
+   "file_funcs_gt10_after": {
+    "mean": 8.5,
+    "sd": 8.99,
+    "min": 0,
+    "max": 21
+   },
+   "new_methods": {
+    "mean": 8.92,
+    "sd": 8.12,
+    "min": 3,
+    "max": 27
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0.58,
+    "sd": 1.16,
+    "min": 0,
+    "max": 4
+   },
+   "new_methods_max_cc": {
+    "mean": 8.33,
+    "sd": 5.43,
+    "min": 4,
+    "max": 22
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 165.83,
+    "sd": 109.05,
+    "min": 70,
+    "max": 362
+   },
+   "del": {
+    "mean": 105.42,
+    "sd": 92.41,
+    "min": 38,
+    "max": 277
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.01,
+    "sd": 0.0,
+    "min": 0.006973269999999999,
+    "max": 0.020375900000000002
+   },
+   "turns": {
+    "mean": 7.17,
+    "sd": 2.08,
+    "min": 5,
+    "max": 12
+   },
+   "minutes": {
+    "mean": 1.12,
+    "sd": 0.49,
+    "min": 0.5,
+    "max": 2.1
+   },
+   "mvn_calls": {
+    "mean": 2.08,
+    "sd": 1.0,
+    "min": 1,
+    "max": 4
+   }
+  },
+  "haiku-5-5|B": {
+   "n": 12,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2.17,
+    "sd": 0.72,
+    "min": 1,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 88.31,
+    "sd": 8.87,
+    "min": 80.0,
+    "max": 99.2
+   },
+   "nloc_after": {
+    "mean": 9.92,
+    "sd": 3.96,
+    "min": 3,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 24.25,
+    "sd": 18.13,
+    "min": 6,
+    "max": 44
+   },
+   "file_funcs_gt10_after": {
+    "mean": 7.5,
+    "sd": 7.87,
+    "min": 0,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 17,
+    "sd": 20.17,
+    "min": 3,
+    "max": 68
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 6.67,
+    "sd": 2.64,
+    "min": 3,
+    "max": 10
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 208.83,
+    "sd": 170.43,
+    "min": 73,
+    "max": 581
+   },
+   "del": {
+    "mean": 134.5,
+    "sd": 128.57,
+    "min": 37,
+    "max": 356
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.02,
+    "sd": 0.01,
+    "min": 0.00862224,
+    "max": 0.04288842999999999
+   },
+   "turns": {
+    "mean": 10,
+    "sd": 5.1,
+    "min": 6,
+    "max": 23
+   },
+   "minutes": {
+    "mean": 1.76,
+    "sd": 0.91,
+    "min": 0.6,
+    "max": 3.3
+   },
+   "mvn_calls": {
+    "mean": 2.08,
+    "sd": 0.67,
+    "min": 1,
+    "max": 3
+   }
+  },
+  "sonnet-5-5|A": {
+   "n": 12,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 19.5,
+    "sd": 26.74,
+    "min": 2,
+    "max": 66
+   },
+   "cc_reduction_pct": {
+    "mean": 69.97,
+    "sd": 14.89,
+    "min": 46.3,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 53,
+    "sd": 56.36,
+    "min": 8,
+    "max": 157
+   },
+   "file_max_cc_after": {
+    "mean": 29.08,
+    "sd": 24.82,
+    "min": 6,
+    "max": 66
+   },
+   "file_funcs_gt10_after": {
+    "mean": 8.17,
+    "sd": 8.55,
+    "min": 0,
+    "max": 17
+   },
+   "new_methods": {
+    "mean": 7.67,
+    "sd": 6.54,
+    "min": 3,
+    "max": 21
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0.25,
+    "sd": 0.45,
+    "min": 0,
+    "max": 1
+   },
+   "new_methods_max_cc": {
+    "mean": 7.08,
+    "sd": 3.32,
+    "min": 4,
+    "max": 14
+   },
+   "new_methods_params_gt4": {
+    "mean": 0.17,
+    "sd": 0.39,
+    "min": 0,
+    "max": 1
+   },
+   "ins": {
+    "mean": 132.08,
+    "sd": 100.43,
+    "min": 46,
+    "max": 334
+   },
+   "del": {
+    "mean": 103.5,
+    "sd": 83.76,
+    "min": 34,
+    "max": 260
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.11,
+    "sd": 0.03,
+    "min": 0.08072839999999999,
+    "max": 0.1582802
+   },
+   "turns": {
+    "mean": 4.58,
+    "sd": 0.51,
+    "min": 4,
+    "max": 5
+   },
+   "minutes": {
+    "mean": 1.04,
+    "sd": 0.42,
+    "min": 0.6,
+    "max": 1.7
+   },
+   "mvn_calls": {
+    "mean": 1.58,
+    "sd": 0.51,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "sonnet-5-5|B": {
+   "n": 12,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 5.92,
+    "sd": 3.5,
+    "min": 2,
+    "max": 10
+   },
+   "cc_reduction_pct": {
+    "mean": 81.29,
+    "sd": 8.11,
+    "min": 70.0,
+    "max": 92.7
+   },
+   "nloc_after": {
+    "mean": 24.17,
+    "sd": 9.62,
+    "min": 13,
+    "max": 34
+   },
+   "file_max_cc_after": {
+    "mean": 24.25,
+    "sd": 18.13,
+    "min": 6,
+    "max": 44
+   },
+   "file_funcs_gt10_after": {
+    "mean": 7.5,
+    "sd": 7.87,
+    "min": 0,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 11.17,
+    "sd": 11.5,
+    "min": 3,
+    "max": 32
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 6.83,
+    "sd": 2.55,
+    "min": 4,
+    "max": 10
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 171.92,
+    "sd": 135.58,
+    "min": 65,
+    "max": 409
+   },
+   "del": {
+    "mean": 112.42,
+    "sd": 98.51,
+    "min": 27,
+    "max": 279
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.16,
+    "sd": 0.06,
+    "min": 0.1020606,
+    "max": 0.2568618
+   },
+   "turns": {
+    "mean": 5.67,
+    "sd": 0.65,
+    "min": 5,
+    "max": 7
+   },
+   "minutes": {
+    "mean": 1.49,
+    "sd": 0.5,
+    "min": 0.6,
+    "max": 2.2
+   },
+   "mvn_calls": {
+    "mean": 2.17,
+    "sd": 0.39,
+    "min": 2,
+    "max": 3
+   }
+  }
+ },
+ "by_task_condition": {
+  "F1_text|A": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2.33,
+    "sd": 0.52,
+    "min": 2,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 76.67,
+    "sd": 5.16,
+    "min": 70.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 19.33,
+    "sd": 9.81,
+    "min": 13,
+    "max": 32
+   },
+   "file_max_cc_after": {
+    "mean": 8,
+    "sd": 0.0,
+    "min": 8,
+    "max": 8
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3.5,
+    "sd": 0.55,
+    "min": 3,
+    "max": 4
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 4,
+    "sd": 0.0,
+    "min": 4,
+    "max": 4
+   },
+   "new_methods_params_gt4": {
+    "mean": 0.33,
+    "sd": 0.52,
+    "min": 0,
+    "max": 1
+   },
+   "ins": {
+    "mean": 79.83,
+    "sd": 30.49,
+    "min": 46,
+    "max": 111
+   },
+   "del": {
+    "mean": 46.83,
+    "sd": 9.52,
+    "min": 34,
+    "max": 60
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.05,
+    "sd": 0.04,
+    "min": 0.008235850000000001,
+    "max": 0.0887544
+   },
+   "turns": {
+    "mean": 5.67,
+    "sd": 0.82,
+    "min": 5,
+    "max": 7
+   },
+   "minutes": {
+    "mean": 1.4,
+    "sd": 0.35,
+    "min": 1.0,
+    "max": 1.7
+   },
+   "mvn_calls": {
+    "mean": 1.83,
+    "sd": 0.41,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F1_text|B": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 2.33,
+    "sd": 0.52,
+    "min": 2,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 76.67,
+    "sd": 5.16,
+    "min": 70.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 19.33,
+    "sd": 9.83,
+    "min": 13,
+    "max": 33
+   },
+   "file_max_cc_after": {
+    "mean": 8,
+    "sd": 0.0,
+    "min": 8,
+    "max": 8
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 4.67,
+    "sd": 1.86,
+    "min": 3,
+    "max": 7
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 3.83,
+    "sd": 0.41,
+    "min": 3,
+    "max": 4
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 100.33,
+    "sd": 29.99,
+    "min": 65,
+    "max": 138
+   },
+   "del": {
+    "mean": 46,
+    "sd": 10.71,
+    "min": 27,
+    "max": 58
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.06,
+    "sd": 0.06,
+    "min": 0.0111476,
+    "max": 0.1269464
+   },
+   "turns": {
+    "mean": 7,
+    "sd": 2.61,
+    "min": 5,
+    "max": 12
+   },
+   "minutes": {
+    "mean": 1.7,
+    "sd": 0.3,
+    "min": 1.2,
+    "max": 2.1
+   },
+   "mvn_calls": {
+    "mean": 2,
+    "sd": 0.0,
+    "min": 2,
+    "max": 2
+   }
+  },
+  "F2_cli|A": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3.17,
+    "sd": 0.41,
+    "min": 3,
+    "max": 4
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 68.5,
+    "sd": 7.69,
+    "min": 58,
+    "max": 80
+   },
+   "del": {
+    "mean": 37.83,
+    "sd": 0.41,
+    "min": 37,
+    "max": 38
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.05,
+    "sd": 0.04,
+    "min": 0.006973269999999999,
+    "max": 0.08848639999999999
+   },
+   "turns": {
+    "mean": 5.17,
+    "sd": 0.41,
+    "min": 5,
+    "max": 6
+   },
+   "minutes": {
+    "mean": 0.57,
+    "sd": 0.08,
+    "min": 0.5,
+    "max": 0.7
+   },
+   "mvn_calls": {
+    "mean": 1.83,
+    "sd": 0.41,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F2_cli|B": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 3,
+    "sd": 0.0,
+    "min": 3,
+    "max": 3
+   },
+   "cc_reduction_pct": {
+    "mean": 80.0,
+    "sd": 0.0,
+    "min": 80.0,
+    "max": 80.0
+   },
+   "nloc_after": {
+    "mean": 13,
+    "sd": 0.0,
+    "min": 13,
+    "max": 13
+   },
+   "file_max_cc_after": {
+    "mean": 6,
+    "sd": 0.0,
+    "min": 6,
+    "max": 6
+   },
+   "file_funcs_gt10_after": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods": {
+    "mean": 3.33,
+    "sd": 0.52,
+    "min": 3,
+    "max": 4
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 5,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 75,
+    "sd": 6.42,
+    "min": 70,
+    "max": 85
+   },
+   "del": {
+    "mean": 37,
+    "sd": 0.0,
+    "min": 37,
+    "max": 37
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.07,
+    "sd": 0.06,
+    "min": 0.00862224,
+    "max": 0.1306617
+   },
+   "turns": {
+    "mean": 6.17,
+    "sd": 0.41,
+    "min": 6,
+    "max": 7
+   },
+   "minutes": {
+    "mean": 0.75,
+    "sd": 0.12,
+    "min": 0.6,
+    "max": 0.9
+   },
+   "mvn_calls": {
+    "mean": 2.17,
+    "sd": 0.41,
+    "min": 2,
+    "max": 3
+   }
+  },
+  "F3_gson|A": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 8.83,
+    "sd": 5.31,
+    "min": 2,
+    "max": 13
+   },
+   "cc_reduction_pct": {
+    "mean": 78.43,
+    "sd": 12.94,
+    "min": 68.3,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 30.33,
+    "sd": 17.35,
+    "min": 8,
+    "max": 43
+   },
+   "file_max_cc_after": {
+    "mean": 39,
+    "sd": 0.0,
+    "min": 39,
+    "max": 39
+   },
+   "file_funcs_gt10_after": {
+    "mean": 15.67,
+    "sd": 0.52,
+    "min": 15,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 7.33,
+    "sd": 1.03,
+    "min": 6,
+    "max": 8
+   },
+   "new_methods_cc_gt10": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "new_methods_max_cc": {
+    "mean": 12,
+    "sd": 1.55,
+    "min": 11,
+    "max": 14
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 132.17,
+    "sd": 10.38,
+    "min": 121,
+    "max": 146
+   },
+   "del": {
+    "mean": 87.33,
+    "sd": 4.5,
+    "min": 82,
+    "max": 92
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.05,
+    "sd": 0.05,
+    "min": 0.011852910000000001,
+    "max": 0.10471580000000001
+   },
+   "turns": {
+    "mean": 6.17,
+    "sd": 2.4,
+    "min": 4,
+    "max": 10
+   },
+   "minutes": {
+    "mean": 1.03,
+    "sd": 0.15,
+    "min": 0.8,
+    "max": 1.2
+   },
+   "mvn_calls": {
+    "mean": 1.5,
+    "sd": 0.55,
+    "min": 1,
+    "max": 2
+   }
+  },
+  "F3_gson|B": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 5.33,
+    "sd": 3.78,
+    "min": 2,
+    "max": 10
+   },
+   "cc_reduction_pct": {
+    "mean": 86.98,
+    "sd": 9.21,
+    "min": 75.6,
+    "max": 95.1
+   },
+   "nloc_after": {
+    "mean": 18.5,
+    "sd": 11.88,
+    "min": 8,
+    "max": 34
+   },
+   "file_max_cc_after": {
+    "mean": 39,
+    "sd": 0.0,
+    "min": 39,
+    "max": 39
+   },
+   "file_funcs_gt10_after": {
+    "mean": 14,
+    "sd": 0.0,
+    "min": 14,
+    "max": 14
+   },
+   "new_methods": {
+    "mean": 9.67,
+    "sd": 0.82,
+    "min": 9,
+    "max": 11
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 9.17,
+    "sd": 0.98,
+    "min": 8,
+    "max": 10
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 151.5,
+    "sd": 4.55,
+    "min": 147,
+    "max": 157
+   },
+   "del": {
+    "mean": 105.33,
+    "sd": 4.93,
+    "min": 102,
+    "max": 115
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.08,
+    "sd": 0.08,
+    "min": 0.01490897,
+    "max": 0.16694870000000003
+   },
+   "turns": {
+    "mean": 6.83,
+    "sd": 2.14,
+    "min": 5,
+    "max": 10
+   },
+   "minutes": {
+    "mean": 1.62,
+    "sd": 0.36,
+    "min": 1.3,
+    "max": 2.2
+   },
+   "mvn_calls": {
+    "mean": 1.83,
+    "sd": 0.75,
+    "min": 1,
+    "max": 3
+   }
+  },
+  "F4_jsoup|A": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 60.33,
+    "sd": 4.08,
+    "min": 57,
+    "max": 66
+   },
+   "cc_reduction_pct": {
+    "mean": 50.95,
+    "sd": 3.33,
+    "min": 46.3,
+    "max": 53.7
+   },
+   "nloc_after": {
+    "mean": 123.33,
+    "sd": 31.07,
+    "min": 73,
+    "max": 157
+   },
+   "file_max_cc_after": {
+    "mean": 60.33,
+    "sd": 4.08,
+    "min": 57,
+    "max": 66
+   },
+   "file_funcs_gt10_after": {
+    "mean": 17.67,
+    "sd": 1.63,
+    "min": 17,
+    "max": 21
+   },
+   "new_methods": {
+    "mean": 19.17,
+    "sd": 6.11,
+    "min": 10,
+    "max": 27
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0.67,
+    "sd": 1.63,
+    "min": 0,
+    "max": 4
+   },
+   "new_methods_max_cc": {
+    "mean": 9.83,
+    "sd": 5.98,
+    "min": 7,
+    "max": 22
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 315.33,
+    "sd": 39.55,
+    "min": 259,
+    "max": 362
+   },
+   "del": {
+    "mean": 245.83,
+    "sd": 21.55,
+    "min": 213,
+    "max": 277
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.09,
+    "sd": 0.07,
+    "min": 0.01679429,
+    "max": 0.1582802
+   },
+   "turns": {
+    "mean": 6.5,
+    "sd": 3.21,
+    "min": 4,
+    "max": 12
+   },
+   "minutes": {
+    "mean": 1.32,
+    "sd": 0.52,
+    "min": 0.9,
+    "max": 2.1
+   },
+   "mvn_calls": {
+    "mean": 2.17,
+    "sd": 1.47,
+    "min": 1,
+    "max": 4
+   }
+  },
+  "F4_jsoup|B": {
+   "n": 6,
+   "valid_rate": 1.0,
+   "test_violations": 0,
+   "cc_after": {
+    "mean": 5.5,
+    "sd": 4.59,
+    "min": 1,
+    "max": 10
+   },
+   "cc_reduction_pct": {
+    "mean": 95.55,
+    "sd": 3.73,
+    "min": 91.9,
+    "max": 99.2
+   },
+   "nloc_after": {
+    "mean": 17.33,
+    "sd": 14.68,
+    "min": 3,
+    "max": 33
+   },
+   "file_max_cc_after": {
+    "mean": 44,
+    "sd": 0.0,
+    "min": 44,
+    "max": 44
+   },
+   "file_funcs_gt10_after": {
+    "mean": 16,
+    "sd": 0.0,
+    "min": 16,
+    "max": 16
+   },
+   "new_methods": {
+    "mean": 38.67,
+    "sd": 15.12,
+    "min": 27,
+    "max": 68
+   },
+   "new_methods_cc_gt10": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "new_methods_max_cc": {
+    "mean": 9,
+    "sd": 1.26,
+    "min": 7,
+    "max": 10
+   },
+   "new_methods_params_gt4": {
+    "mean": 0,
+    "sd": 0.0,
+    "min": 0,
+    "max": 0
+   },
+   "ins": {
+    "mean": 434.67,
+    "sd": 76.74,
+    "min": 370,
+    "max": 581
+   },
+   "del": {
+    "mean": 305.5,
+    "sd": 42.74,
+    "min": 249,
+    "max": 356
+   },
+   "main_files_changed": {
+    "mean": 1,
+    "sd": 0.0,
+    "min": 1,
+    "max": 1
+   },
+   "cost_usd": {
+    "mean": 0.15,
+    "sd": 0.12,
+    "min": 0.040105260000000004,
+    "max": 0.2568618
+   },
+   "turns": {
+    "mean": 11.33,
+    "sd": 7.0,
+    "min": 5,
+    "max": 23
+   },
+   "minutes": {
+    "mean": 2.43,
+    "sd": 0.73,
+    "min": 1.7,
+    "max": 3.3
+   },
+   "mvn_calls": {
+    "mean": 2.5,
+    "sd": 0.55,
+    "min": 2,
+    "max": 3
+   }
+  }
+ },
+ "total_cost_usd": 3.59,
+ "n_runs": 48
+}

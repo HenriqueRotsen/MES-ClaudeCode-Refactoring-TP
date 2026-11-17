@@ -1,0 +1,7 @@
+transcript.jsonl
+deck/
+.secrets/
+__pycache__/
+.venv/
+repos/
+tools/

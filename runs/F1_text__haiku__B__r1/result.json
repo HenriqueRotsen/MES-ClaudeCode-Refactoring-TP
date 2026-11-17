@@ -1,0 +1,149 @@
+{
+ "run_id": "F1_text__haiku__B__r1",
+ "task": "F1_text",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 1,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 72,
+ "agent": {
+  "tool_calls": {
+   "Bash": 4,
+   "Read": 1,
+   "Edit": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 7,
+  "duration_ms": 71086,
+  "duration_api_ms": 37546,
+  "total_cost_usd": 0.01122711,
+  "session_id": "72634c95-6fec-4b37-a74f-42c2ae958e6e",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 10180,
+   "cache_creation_input_tokens": 25006,
+   "cache_read_input_tokens": 113491
+  },
+  "final_message": "`createConverter` is now a 15-line dispatcher with CCN 2, down from 94 lines and CCN 10. The full suite passes with `mvn -B clean test`: 2043 tests, 0 failures, 0 errors, 3 skipped, BUILD SUCCESS. I did not touch `src/test`, and the 3 skips are in existing tests.\n\n**Change:** `src/main/java/org/apache/commons/text/AlphabetConverter.java` only (`git diff --stat`: 1 file, 138 insertions, 54 deletions).\n\n**CCN before/after for the target method:** 10 \u2192 2 (`lizard -l java`). Lizard's 94-line length is now 15 lines.\n\n**Extracted methods (private static, CCN from lizard):**\n- `buildDoNotEncodeMap`, 3 params, CCN 2: validates the do-not-encode list and builds its string map.\n- `requireInOriginalAlphabet`, 2 params, CCN 2: throws if a code point is missing from the original alphabet.\n- `requireInEncodingAlphabet`, 2 params, CCN 2: throws if a code point is missing from the encoding alphabet.\n- `createSingleLetterConverter`, 4 params, CCN 3: the one-encoding-letter-per-original-letter branch.\n- `nextEncodableCodePoint`, 2 params, CCN 2: advances the encoding iterator past do-not-encode code points.\n- `createMultiLetterConverter`, 4 params, CCN 1: the multi-letter branch.\n- `computeEncodedLetterLength`, 3 params, CCN 4: the length calculation and the \"at least two encoding characters\" check.\n\n**Behaviour preserved:** the same exceptions with the same messages, thrown in the same order (do-not-encode checks first, then the single/multi branch choice, then the minimum-size check only on the multi-letter path). The encoding iterator is consumed in the same sequence. No new streams, lambdas, or per-call collections were added to the encoding loops.\n\n**Note:** the 4-parameter helpers sit at the limit the CLAUDE.md sets, not over it. I did not change any public signatures."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 138,
+  "deletions": 54,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 40
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 21,
+  "max_ccn": 8,
+  "sum_ccn": 54,
+  "avg_ccn": 2.57,
+  "n_ccn_gt10": 0,
+  "nloc": 265
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 2,
+   "nloc": 11,
+   "params": 3,
+   "start": 151,
+   "end": 161
+  },
+  {
+   "name": "AlphabetConverter::requireInOriginalAlphabet",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 2,
+   "start": 170,
+   "end": 177
+  },
+  {
+   "name": "AlphabetConverter::requireInEncodingAlphabet",
+   "ccn": 2,
+   "nloc": 7,
+   "params": 2,
+   "start": 186,
+   "end": 192
+  },
+  {
+   "name": "AlphabetConverter::createSingleLetterConverter",
+   "ccn": 3,
+   "nloc": 20,
+   "params": 4,
+   "start": 203,
+   "end": 226
+  },
+  {
+   "name": "AlphabetConverter::nextEncodableCodePoint",
+   "ccn": 2,
+   "nloc": 7,
+   "params": 2,
+   "start": 235,
+   "end": 241
+  },
+  {
+   "name": "AlphabetConverter::createMultiLetterConverter",
+   "ccn": 1,
+   "nloc": 13,
+   "params": 4,
+   "start": 253,
+   "end": 268
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 3,
+   "nloc": 18,
+   "params": 3,
+   "start": 279,
+   "end": 303
+  }
+ ],
+ "valid": true
+}

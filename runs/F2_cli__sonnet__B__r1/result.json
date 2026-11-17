@@ -1,0 +1,117 @@
+{
+ "run_id": "F2_cli__sonnet__B__r1",
+ "task": "F2_cli",
+ "model": "claude-sonnet-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 1,
+ "prompt_sha256": "050cd2dd077b49dbd169d9edfd9a935da0d0bc50177226410fccda54664f7de8",
+ "base_commit": "3a53a351a66bc5634bea646008f884148864bdac",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 46,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1,
+   "bash": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 6,
+  "duration_ms": 45772,
+  "duration_api_ms": 28086,
+  "total_cost_usd": 0.1253811,
+  "session_id": "c0401702-91fc-41f1-a75a-4a1f0716e11e",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 12,
+   "output_tokens": 4494,
+   "cache_creation_input_tokens": 16961,
+   "cache_read_input_tokens": 125731
+  },
+  "final_message": "Refatorei o `flatten` e os 1002 testes de `mvn -B clean test` passam (0 falhas, 61 ignorados). N\u00e3o conferi se esses 61 j\u00e1 vinham ignorados antes da mudan\u00e7a.\n\n**CCN do `flatten`:** caiu de 15 para 3.\n\n**M\u00e9todos extra\u00eddos** (todos `private`, com 2 par\u00e2metros cada):\n\n| M\u00e9todo | CCN | O que faz |\n|---|---|---|\n| `flattenToken` | 5 | Escolhe o tratamento do token: `-` ou `--` sozinhos, op\u00e7\u00e3o longa, op\u00e7\u00e3o curta ou argumento comum. |\n| `handleLongOptionToken` | 5 | Trata `--foo` e `--foo=bar`, incluindo o caso amb\u00edguo. |\n| `handleShortOptionToken` | 5 | Trata op\u00e7\u00e3o curta, op\u00e7\u00e3o longa abreviada com um h\u00edfen e agrupamento (`burstToken`). |\n\nNenhum m\u00e9todo alterado ou criado passa de CCN 5.\n\nA API p\u00fablica, as assinaturas e as exce\u00e7\u00f5es n\u00e3o mudaram. A ordem dos efeitos colaterais tamb\u00e9m foi mantida: `addRemaining(iter)` continua rodando a cada volta do la\u00e7o, inclusive para tokens `null`. N\u00e3o foram criadas aloca\u00e7\u00f5es nem cole\u00e7\u00f5es novas no la\u00e7o. Em `handleShortOptionToken`, usei guard clauses no lugar do `if/else` aninhado, e `getMatchingOptions(token)` agora \u00e9 chamado uma vez em vez de duas.\n\nO `git diff --stat` mostra s\u00f3 `PosixParser.java`, ent\u00e3o nada em `src/test` foi tocado."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ],
+  "insertions": 70,
+  "deletions": 37,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 1002,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 61,
+  "baseline_tests": 1002,
+  "seconds": 10
+ },
+ "method_before": {
+  "ccn": 15,
+  "nloc": 46
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 7,
+  "max_ccn": 15,
+  "sum_ccn": 33,
+  "avg_ccn": 4.71,
+  "n_ccn_gt10": 1,
+  "nloc": 92
+ },
+ "file_after": {
+  "n_funcs": 10,
+  "max_ccn": 6,
+  "sum_ccn": 36,
+  "avg_ccn": 3.6,
+  "n_ccn_gt10": 0,
+  "nloc": 102
+ },
+ "new_funcs": [
+  {
+   "name": "PosixParser::flattenToken",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 161,
+   "end": 172
+  },
+  {
+   "name": "PosixParser::handleLongOptionToken",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 181,
+   "end": 196
+  },
+  {
+   "name": "PosixParser::handleShortOptionToken",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 205,
+   "end": 221
+  }
+ ],
+ "valid": true
+}

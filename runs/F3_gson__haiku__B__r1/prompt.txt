@@ -1,0 +1,6 @@
+Refatore o método `doPeek` da classe `JsonReader`, no arquivo `gson/src/main/java/com/google/gson/stream/JsonReader.java`, para tratar o code smell Long Method / alta complexidade ciclomática, sem alterar o comportamento externo do código.
+
+Restrições:
+- Não crie, modifique ou remova nenhum arquivo de teste (nada sob src/test).
+- Ao terminar, toda a suíte de testes deve passar com o comando: mvn -B -pl gson clean test
+- Trabalhe de forma autônoma até concluir; não faça perguntas.

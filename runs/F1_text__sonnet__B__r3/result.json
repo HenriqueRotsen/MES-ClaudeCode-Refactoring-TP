@@ -1,0 +1,116 @@
+{
+ "run_id": "F1_text__sonnet__B__r3",
+ "task": "F1_text",
+ "model": "claude-sonnet-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 3,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 109,
+ "agent": {
+  "tool_calls": {
+   "Bash": 4,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 6,
+  "duration_ms": 108031,
+  "duration_api_ms": 31912,
+  "total_cost_usd": 0.1269464,
+  "session_id": "f2d3d553-ab77-454f-9876-d87555c3ccce",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 12,
+   "output_tokens": 5040,
+   "cache_creation_input_tokens": 16105,
+   "cache_read_input_tokens": 121024
+  },
+  "final_message": "Refatorei `createConverter` e `mvn -B clean test` passou: 2043 testes, 0 falhas, 0 erros, 3 ignorados (`Skipped: 3`, n\u00e3o s\u00e3o `@Disabled` meus). Quanto a `src/test`, o `git diff --stat` mostra s\u00f3 `AlphabetConverter.java`.\n\n**CCN do m\u00e9todo-alvo:** caiu de 10 para 3. O m\u00e9todo j\u00e1 estava no limite de 10, mas misturava tr\u00eas responsabilidades.\n\n**M\u00e9todos extra\u00eddos, todos `private` e com no m\u00e1ximo 3 par\u00e2metros:**\n\n| M\u00e9todo | CCN | Responsabilidade |\n|---|---|---|\n| `buildDoNotEncodeMap` | 4 | Valida os code points de \"n\u00e3o codificar\" contra os dois alfabetos e monta o mapa deles. |\n| `fillSingleLetterEncoding` | 4 | Preenche os mapeamentos de uma letra quando o alfabeto de codifica\u00e7\u00e3o comporta o original. |\n| `computeEncodedLetterLength` | 2 | Calcula o comprimento da letra codificada no caso de v\u00e1rias letras. |\n\n**Pontos a observar:**\n- **Par\u00e2metros:** fiz `fillSingleLetterEncoding` um m\u00e9todo de inst\u00e2ncia que escreve nos campos do `AlphabetConverter`, no mesmo estilo de `addSingleEncoding`. Assim ele tem 3 par\u00e2metros e n\u00e3o 6.\n- **Comportamento:** a API p\u00fablica, as exce\u00e7\u00f5es, as mensagens e a ordem das valida\u00e7\u00f5es ficaram iguais.\n- **`doNotEncodeMap`:** na etapa de preenchimento, `doNotEncodeMap.containsKey` virou `doNotEncodeCopy.contains`. As chaves dos dois s\u00e3o as mesmas, ent\u00e3o o resultado n\u00e3o muda.\n- **Desempenho:** n\u00e3o introduzi streams, lambdas nem cole\u00e7\u00f5es novas."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 80,
+  "deletions": 47,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 42
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 33
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 17,
+  "max_ccn": 8,
+  "sum_ccn": 50,
+  "avg_ccn": 2.94,
+  "n_ccn_gt10": 0,
+  "nloc": 248
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 19,
+   "params": 3,
+   "start": 175,
+   "end": 195
+  },
+  {
+   "name": "AlphabetConverter::fillSingleLetterEncoding",
+   "ccn": 4,
+   "nloc": 19,
+   "params": 3,
+   "start": 204,
+   "end": 227
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 3,
+   "start": 237,
+   "end": 252
+  }
+ ],
+ "valid": true
+}

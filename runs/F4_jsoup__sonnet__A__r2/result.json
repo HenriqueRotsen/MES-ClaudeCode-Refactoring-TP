@@ -1,0 +1,260 @@
+{
+ "run_id": "F4_jsoup__sonnet__A__r2",
+ "task": "F4_jsoup",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 2,
+ "prompt_sha256": "551b0b4838df078d0dd84928180f8006cf32ee222d1dc417a557802294d824d1",
+ "base_commit": "d90d57521d931db7bf7ee464a4c0a1a9293db088",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 54,
+ "agent": {
+  "tool_calls": {
+   "Bash": 2,
+   "Read": 1
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 4,
+  "duration_ms": 53769,
+  "duration_api_ms": 37477,
+  "total_cost_usd": 0.15601500000000001,
+  "session_id": "26f3a0be-f3b7-4109-bd72-8f67bb503ff5",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 8,
+   "output_tokens": 7130,
+   "cache_creation_input_tokens": 19434,
+   "cache_read_input_tokens": 69630
+  },
+  "final_message": "Refatorei `inBodyStartTag` em `HtmlTreeBuilderState.java`, e `mvn -B clean test` terminou sem falhas. Rodei com `-q`, ent\u00e3o n\u00e3o vi a contagem de testes, s\u00f3 a aus\u00eancia de erros. N\u00e3o toquei em nada sob `src/test`.\n\nO m\u00e9todo tinha um `switch` com cerca de 350 linhas, e a l\u00f3gica de cada tag ficava dentro dele. Agora ele s\u00f3 despacha para m\u00e9todos privados pequenos, um por tag ou grupo de tags: `startA`, `startLi`, `startHtml`, `startBody`, `startFrameset`, `startForm`, `startSelect`, `startDdDt`, `startOption` e outros no mesmo padr\u00e3o. O `default` foi para `startOther`.\n\nCasos simples, como `span`, `image`, `textarea`, os formatadores e as tags vazias, continuam inline no `switch`, porque cada um tem poucas linhas.\n\nCada m\u00e9todo devolve o mesmo valor que o `switch` antigo devolvia por aquele ramo. Isso inclui o `break` do `select` e os `return false` de \"ignorar\". A ordem das chamadas ao `tb` tamb\u00e9m n\u00e3o mudou. Al\u00e9m disso, as vari\u00e1veis compartilhadas `stack` e `el` viraram locais de cada m\u00e9todo.\n\nN\u00e3o rodei nenhuma ferramenta de complexidade ciclom\u00e1tica, ent\u00e3o n\u00e3o medi a redu\u00e7\u00e3o."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ],
+  "insertions": 334,
+  "deletions": 260,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2648,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "baseline_tests": 2648,
+  "seconds": 16
+ },
+ "method_before": {
+  "ccn": 123,
+  "nloc": 339
+ },
+ "method_after": {
+  "ccn": 59,
+  "nloc": 123
+ },
+ "file_before": {
+  "n_funcs": 41,
+  "max_ccn": 123,
+  "sum_ccn": 502,
+  "avg_ccn": 12.24,
+  "n_ccn_gt10": 17,
+  "nloc": 1553
+ },
+ "file_after": {
+  "n_funcs": 62,
+  "max_ccn": 59,
+  "sum_ccn": 523,
+  "avg_ccn": 8.44,
+  "n_ccn_gt10": 17,
+  "nloc": 1611
+ },
+ "new_funcs": [
+  {
+   "name": "HtmlTreeBuilderState::startA",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 420,
+   "end": 436
+  },
+  {
+   "name": "HtmlTreeBuilderState::startLi",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 438,
+   "end": 455
+  },
+  {
+   "name": "HtmlTreeBuilderState::startHtml",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 2,
+   "start": 457,
+   "end": 467
+  },
+  {
+   "name": "HtmlTreeBuilderState::startBody",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 469,
+   "end": 480
+  },
+  {
+   "name": "HtmlTreeBuilderState::startFrameset",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 482,
+   "end": 500
+  },
+  {
+   "name": "HtmlTreeBuilderState::startForm",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 502,
+   "end": 512
+  },
+  {
+   "name": "HtmlTreeBuilderState::startPlaintext",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 2,
+   "start": 514,
+   "end": 521
+  },
+  {
+   "name": "HtmlTreeBuilderState::startButton",
+   "ccn": 2,
+   "nloc": 12,
+   "params": 2,
+   "start": 523,
+   "end": 535
+  },
+  {
+   "name": "HtmlTreeBuilderState::startNobr",
+   "ccn": 2,
+   "nloc": 11,
+   "params": 2,
+   "start": 537,
+   "end": 547
+  },
+  {
+   "name": "HtmlTreeBuilderState::startTable",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 2,
+   "start": 549,
+   "end": 557
+  },
+  {
+   "name": "HtmlTreeBuilderState::startInput",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 2,
+   "start": 559,
+   "end": 573
+  },
+  {
+   "name": "HtmlTreeBuilderState::startHr",
+   "ccn": 5,
+   "nloc": 13,
+   "params": 2,
+   "start": 575,
+   "end": 587
+  },
+  {
+   "name": "HtmlTreeBuilderState::startSelect",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 589,
+   "end": 603
+  },
+  {
+   "name": "HtmlTreeBuilderState::startHeading",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 605,
+   "end": 615
+  },
+  {
+   "name": "HtmlTreeBuilderState::startPreListing",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 2,
+   "start": 617,
+   "end": 625
+  },
+  {
+   "name": "HtmlTreeBuilderState::startDdDt",
+   "ccn": 7,
+   "nloc": 20,
+   "params": 2,
+   "start": 627,
+   "end": 646
+  },
+  {
+   "name": "HtmlTreeBuilderState::startOption",
+   "ccn": 4,
+   "nloc": 12,
+   "params": 2,
+   "start": 648,
+   "end": 659
+  },
+  {
+   "name": "HtmlTreeBuilderState::startOptgroup",
+   "ccn": 5,
+   "nloc": 12,
+   "params": 2,
+   "start": 661,
+   "end": 672
+  },
+  {
+   "name": "HtmlTreeBuilderState::startRbRtc",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 2,
+   "start": 674,
+   "end": 682
+  },
+  {
+   "name": "HtmlTreeBuilderState::startRpRt",
+   "ccn": 4,
+   "nloc": 9,
+   "params": 2,
+   "start": 684,
+   "end": 692
+  },
+  {
+   "name": "HtmlTreeBuilderState::startOther",
+   "ccn": 8,
+   "nloc": 26,
+   "params": 4,
+   "start": 694,
+   "end": 719
+  }
+ ],
+ "valid": true
+}

@@ -1,0 +1,366 @@
+{
+ "run_id": "F4_jsoup__haiku__B__r3",
+ "task": "F4_jsoup",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 3,
+ "prompt_sha256": "551b0b4838df078d0dd84928180f8006cf32ee222d1dc417a557802294d824d1",
+ "base_commit": "d90d57521d931db7bf7ee464a4c0a1a9293db088",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 161,
+ "agent": {
+  "tool_calls": {
+   "Bash": 11,
+   "Read": 1,
+   "Monitor": 9,
+   "Write": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 23,
+  "duration_ms": 159882,
+  "duration_api_ms": 153931,
+  "total_cost_usd": 0.04288842999999999,
+  "session_id": "f0c0a391-6484-49ec-9022-8a5ad8b4f041",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 46,
+   "output_tokens": 36438,
+   "cache_creation_input_tokens": 63766,
+   "cache_read_input_tokens": 1191163
+  },
+  "final_message": "Refatorei `inBodyStartTag` em `src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java`. `mvn -B clean test` passa: 2648 testes, 0 falhas, BUILD SUCCESS. A su\u00edte tamb\u00e9m passava antes da mudan\u00e7a, com o mesmo n\u00famero de testes.\n\n**CCN do m\u00e9todo-alvo:** 123 \u2192 2.\n\n**Causa estrutural:** o m\u00e9todo era um `switch` com cerca de 56 `case`s, e cada `case` soma ao CCN. S\u00f3 uma tabela de despacho consegue ficar abaixo de 10 sem perder clareza. Por isso o `switch` virou um mapa `nome da tag \u2192 handler`.\n\n**O que mudou:**\n- `inBodyStartTag` virou um lookup no mapa e, se n\u00e3o achar, chama `handleUnknownStartTag`. O mapa `startTagActions` \u00e9 constru\u00eddo uma vez por inst\u00e2ncia do `InBody`, com method refs e lambdas que n\u00e3o capturam nada, ent\u00e3o n\u00e3o h\u00e1 aloca\u00e7\u00e3o por chamada.\n- Cada tag virou um handler pequeno, com nome do dom\u00ednio, por exemplo `handleAnchorStart`, `handleFramesetStart`, `handleDdDtStart`, `handleHeadingStart`. Handlers que compartilham comportamento s\u00e3o registrados juntos: `h1`\u2013`h6`, `pre`/`listing`, `dd`/`dt`, os formatadores de fonte e as tags vazias.\n- Tr\u00eas auxiliares: `pushFormattingElement` (nome do dom\u00ednio, usado por `a`, `nobr` e formatadores), `handleGenericElementStart` (usado por `span` e pelo ramo final do default) e `handleForeignElementStart` (usado por `math` e `svg`).\n- Adicionei a interface `StartTagAction` no enum externo e os imports `java.util.Map`/`java.util.HashMap`.\n- Ordem de checagens, retornos e efeitos colaterais foram preservados linha a linha, incluindo `return tb.process(...)` em `image` e `button`, e a ordem das verifica\u00e7\u00f5es do default.\n\n**CCN dos m\u00e9todos criados (todos \u2264 10):** maior \u00e9 `handleUnknownStartTag` com 8. Depois v\u00eam `handleDdDtStart` com 7 e `handleFramesetStart` com 6. Os demais t\u00eam 5 ou menos, e `buildStartTagActions` tem 1.\n\n**Verifica\u00e7\u00e3o:**\n- `git diff --stat` mostra s\u00f3 `HtmlTreeBuilderState.java`; nada em `src/test`.\n- N\u00e3o usei `-DskipTests` nem alterei configura\u00e7\u00e3o de build.\n\n**Fora do escopo:** o arquivo ainda tem outros m\u00e9todos acima de CCN 10, como `inBodyEndTag` (44) e `process` de alguns estados. N\u00e3o os toquei, porque a tarefa era s\u00f3 `inBodyStartTag`.\n\nN\u00e3o fiz commit, porque voc\u00ea n\u00e3o pediu."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ],
+  "insertions": 408,
+  "deletions": 339,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2648,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "baseline_tests": 2648,
+  "seconds": 18
+ },
+ "method_before": {
+  "ccn": 123,
+  "nloc": 339
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 5
+ },
+ "file_before": {
+  "n_funcs": 41,
+  "max_ccn": 123,
+  "sum_ccn": 502,
+  "avg_ccn": 12.24,
+  "n_ccn_gt10": 17,
+  "nloc": 1553
+ },
+ "file_after": {
+  "n_funcs": 75,
+  "max_ccn": 44,
+  "sum_ccn": 482,
+  "avg_ccn": 6.43,
+  "n_ccn_gt10": 16,
+  "nloc": 1591
+ },
+ "new_funcs": [
+  {
+   "name": "HtmlTreeBuilderState::buildStartTagActions",
+   "ccn": 1,
+   "nloc": 35,
+   "params": 0,
+   "start": 299,
+   "end": 333
+  },
+  {
+   "name": "HtmlTreeBuilderState::register",
+   "ccn": 2,
+   "nloc": 5,
+   "params": 3,
+   "start": 335,
+   "end": 339
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleAnchorStart",
+   "ccn": 3,
+   "nloc": 14,
+   "params": 2,
+   "start": 341,
+   "end": 356
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleGenericElementStart",
+   "ccn": 1,
+   "nloc": 5,
+   "params": 2,
+   "start": 358,
+   "end": 362
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleListItemStart",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 364,
+   "end": 381
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleHtmlStart",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 2,
+   "start": 383,
+   "end": 393
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleBodyStart",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 395,
+   "end": 406
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleFramesetStart",
+   "ccn": 6,
+   "nloc": 18,
+   "params": 2,
+   "start": 408,
+   "end": 426
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleFormStart",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 428,
+   "end": 438
+  },
+  {
+   "name": "HtmlTreeBuilderState::handlePlaintextStart",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 2,
+   "start": 440,
+   "end": 447
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleButtonStart",
+   "ccn": 2,
+   "nloc": 12,
+   "params": 2,
+   "start": 449,
+   "end": 461
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleNobrStart",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 2,
+   "start": 463,
+   "end": 472
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleTableStart",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 2,
+   "start": 474,
+   "end": 482
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleInputStart",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 2,
+   "start": 484,
+   "end": 498
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleHrStart",
+   "ccn": 5,
+   "nloc": 13,
+   "params": 2,
+   "start": 500,
+   "end": 512
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleImageStart",
+   "ccn": 2,
+   "nloc": 6,
+   "params": 2,
+   "start": 514,
+   "end": 519
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleTextareaStart",
+   "ccn": 1,
+   "nloc": 6,
+   "params": 2,
+   "start": 521,
+   "end": 526
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleXmpStart",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 2,
+   "start": 528,
+   "end": 536
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleIframeStart",
+   "ccn": 1,
+   "nloc": 5,
+   "params": 2,
+   "start": 538,
+   "end": 542
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleNoembedStart",
+   "ccn": 1,
+   "nloc": 4,
+   "params": 2,
+   "start": 544,
+   "end": 547
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleNoscriptStart",
+   "ccn": 1,
+   "nloc": 5,
+   "params": 2,
+   "start": 549,
+   "end": 553
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleSelectStart",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 2,
+   "start": 555,
+   "end": 569
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleForeignElementStart",
+   "ccn": 1,
+   "nloc": 5,
+   "params": 3,
+   "start": 571,
+   "end": 575
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleHeadingStart",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 577,
+   "end": 587
+  },
+  {
+   "name": "HtmlTreeBuilderState::handlePreListingStart",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 2,
+   "start": 589,
+   "end": 597
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleDdDtStart",
+   "ccn": 7,
+   "nloc": 20,
+   "params": 2,
+   "start": 599,
+   "end": 618
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleOptionStart",
+   "ccn": 4,
+   "nloc": 12,
+   "params": 2,
+   "start": 620,
+   "end": 631
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleOptgroupStart",
+   "ccn": 5,
+   "nloc": 12,
+   "params": 2,
+   "start": 633,
+   "end": 644
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleRubyBaseStart",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 2,
+   "start": 646,
+   "end": 654
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleRubyTextStart",
+   "ccn": 4,
+   "nloc": 9,
+   "params": 2,
+   "start": 656,
+   "end": 664
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleEmptyFormatterStart",
+   "ccn": 1,
+   "nloc": 6,
+   "params": 2,
+   "start": 666,
+   "end": 671
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleFormattingStart",
+   "ccn": 1,
+   "nloc": 5,
+   "params": 2,
+   "start": 673,
+   "end": 677
+  },
+  {
+   "name": "HtmlTreeBuilderState::pushFormattingElement",
+   "ccn": 1,
+   "nloc": 4,
+   "params": 2,
+   "start": 679,
+   "end": 682
+  },
+  {
+   "name": "HtmlTreeBuilderState::handleUnknownStartTag",
+   "ccn": 8,
+   "nloc": 26,
+   "params": 2,
+   "start": 684,
+   "end": 709
+  }
+ ],
+ "valid": true
+}

@@ -1,0 +1,140 @@
+{
+ "run_id": "F3_gson__sonnet__A__r3",
+ "task": "F3_gson",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 3,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 64,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 63916,
+  "duration_api_ms": 26495,
+  "total_cost_usd": 0.10471580000000001,
+  "session_id": "01459b4d-5bd4-4e95-abf1-d34aacb04830",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 4189,
+   "cache_creation_input_tokens": 13467,
+   "cache_read_input_tokens": 89378
+  },
+  "final_message": "Refatorei o `doPeek` em `JsonReader.java`, e `mvn -B -pl gson clean test` passou: 4707 testes, 0 falhas, 23 ignorados. S\u00f3 esse arquivo mudou e n\u00e3o mexi em nenhum teste.\n\nO `doPeek` agora s\u00f3 despacha pelo topo da pilha e delega a m\u00e9todos privados menores:\n- **`peekAfterArrayElement`:** trata o `]` ou o separador depois de um elemento de array.\n- **`peekObjectName`:** trata o nome de uma propriedade de objeto.\n- **`consumeNameSeparator`:** consome o `:` (ou `=` / `=>` no modo lenient).\n- **`peekAfterDocumentValue`:** trata o fim do documento.\n- **`peekStructuralValue`:** trata aspas, `[`, `{` e os separadores `,` e `;`.\n- **`peekLiteralValue`:** trata palavra-chave, n\u00famero e literal sem aspas.\n\nOs m\u00e9todos auxiliares devolvem `PEEKED_NONE` quando a an\u00e1lise deve continuar. A l\u00f3gica interna e as mensagens de erro s\u00e3o as mesmas de antes.\n\nO `@SuppressWarnings(\"fallthrough\")` saiu do `doPeek` e foi para `peekObjectName` e `peekStructuralValue`, que s\u00e3o os m\u00e9todos que ainda t\u00eam fall-through. Sem isso, o `-Werror` do build quebrava a compila\u00e7\u00e3o."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 122,
+  "deletions": 88,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 32
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 13,
+  "nloc": 42
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 56,
+  "max_ccn": 39,
+  "sum_ccn": 417,
+  "avg_ccn": 7.45,
+  "n_ccn_gt10": 16,
+  "nloc": 1267
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekAfterArrayElement",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 0,
+   "start": 635,
+   "end": 650
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 10,
+   "nloc": 43,
+   "params": 1,
+   "start": 653,
+   "end": 696
+  },
+  {
+   "name": "JsonReader::consumeNameSeparator",
+   "ccn": 6,
+   "nloc": 16,
+   "params": 0,
+   "start": 698,
+   "end": 714
+  },
+  {
+   "name": "JsonReader::peekAfterDocumentValue",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 0,
+   "start": 717,
+   "end": 726
+  },
+  {
+   "name": "JsonReader::peekStructuralValue",
+   "ccn": 11,
+   "nloc": 36,
+   "params": 1,
+   "start": 733,
+   "end": 770
+  },
+  {
+   "name": "JsonReader::peekLiteralValue",
+   "ccn": 4,
+   "nloc": 16,
+   "params": 0,
+   "start": 772,
+   "end": 790
+  }
+ ],
+ "valid": true
+}

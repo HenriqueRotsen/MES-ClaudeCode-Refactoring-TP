@@ -1,0 +1,117 @@
+{
+ "run_id": "F2_cli__haiku__A__r2",
+ "task": "F2_cli",
+ "model": "claude-haiku-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 2,
+ "prompt_sha256": "050cd2dd077b49dbd169d9edfd9a935da0d0bc50177226410fccda54664f7de8",
+ "base_commit": "3a53a351a66bc5634bea646008f884148864bdac",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 29,
+ "agent": {
+  "tool_calls": {
+   "Read": 1,
+   "Edit": 1,
+   "Bash": 2
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 28039,
+  "duration_api_ms": 19077,
+  "total_cost_usd": 0.006973269999999999,
+  "session_id": "b645a6aa-7ab0-4d74-9d85-796c92700a40",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 4687,
+   "cache_creation_input_tokens": 17869,
+   "cache_read_input_tokens": 105497
+  },
+  "final_message": "Refatorei o `flatten` de `PosixParser` para reduzir a complexidade, sem alterar o comportamento. `mvn -B clean test` termina com **BUILD SUCCESS**: 1002 testes, 0 falhas, 0 erros e 61 ignorados.\n\n**O que mudou** (apenas `src/main/java/org/apache/commons/cli/PosixParser.java`):\n\n- `flatten` ficou s\u00f3 com o la\u00e7o principal: pega o token, chama `flattenToken` se n\u00e3o for nulo e depois `addRemaining(iter)`, como antes.\n- `flattenToken` (novo, privado) faz o despacho pelo formato do token: h\u00edfen isolado, long option, short option ou token n\u00e3o-op\u00e7\u00e3o.\n- `flattenLongOptionToken` (novo, privado) trata `--foo` e `--foo=bar`.\n- `flattenShortOptionToken` (novo, privado) trata tokens com um h\u00edfen: op\u00e7\u00e3o conhecida, prefixo \u00fanico de long option ou o caso que requer `burstToken`. Os `else` aninhados viraram retornos antecipados.\n\n**Decis\u00f5es que tomei:**\n\n- Mantive a ordem exata das checagens e o `addRemaining` chamado a cada itera\u00e7\u00e3o, inclusive para tokens nulos, para n\u00e3o mudar efeitos colaterais.\n- Os novos m\u00e9todos s\u00e3o privados, ent\u00e3o a API p\u00fablica e protegida da classe n\u00e3o muda.\n- Nenhum arquivo em `src/test` foi tocado. `git status` mostra s\u00f3 o arquivo de produ\u00e7\u00e3o modificado."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ],
+  "insertions": 70,
+  "deletions": 38,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 1002,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 61,
+  "baseline_tests": 1002,
+  "seconds": 13
+ },
+ "method_before": {
+  "ccn": 15,
+  "nloc": 46
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 7,
+  "max_ccn": 15,
+  "sum_ccn": 33,
+  "avg_ccn": 4.71,
+  "n_ccn_gt10": 1,
+  "nloc": 92
+ },
+ "file_after": {
+  "n_funcs": 10,
+  "max_ccn": 6,
+  "sum_ccn": 36,
+  "avg_ccn": 3.6,
+  "n_ccn_gt10": 0,
+  "nloc": 102
+ },
+ "new_funcs": [
+  {
+   "name": "PosixParser::flattenToken",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 159,
+   "end": 170
+  },
+  {
+   "name": "PosixParser::flattenLongOptionToken",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 179,
+   "end": 194
+  },
+  {
+   "name": "PosixParser::flattenShortOptionToken",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 204,
+   "end": 220
+  }
+ ],
+ "valid": true
+}

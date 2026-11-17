@@ -1,0 +1,116 @@
+{
+ "run_id": "F1_text__sonnet__A__r1",
+ "task": "F1_text",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 1,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 105,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 104143,
+  "duration_api_ms": 20589,
+  "total_cost_usd": 0.0887544,
+  "session_id": "6591ecbd-0d61-44fa-9324-c80f21b3fa67",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 3082,
+   "cache_creation_input_tokens": 12260,
+   "cache_read_input_tokens": 88744
+  },
+  "final_message": "Refatorei o `createConverter` e `mvn -B clean test` passa: 2043 testes, 0 falhas, 3 ignorados, `BUILD SUCCESS`. S\u00f3 `AlphabetConverter.java` foi alterado, e nada sob `src/test`.\n\nO m\u00e9todo agora s\u00f3 copia os arrays para conjuntos e delega a tr\u00eas m\u00e9todos privados est\u00e1ticos:\n- **`buildDoNotEncodeMap`:** valida a lista `doNotEncode` contra os alfabetos original e de codifica\u00e7\u00e3o, com as mesmas mensagens de exce\u00e7\u00e3o, e monta o mapa.\n- **`createSingleLengthConverter`:** cobre o caso em que `encoding.size() >= original.size()`, com tamanho de codifica\u00e7\u00e3o 1.\n- **`createMultiLengthConverter`:** cobre os demais casos. Faz a verifica\u00e7\u00e3o de \"pelo menos dois caracteres de codifica\u00e7\u00e3o\", calcula o comprimento e chama `addSingleEncoding`.\n\nA l\u00f3gica interna n\u00e3o mudou. Os mapas `originalToEncoded` e `encodedToOriginal` passaram a ser criados dentro dos helpers, em vez de no m\u00e9todo principal.\n\nDurante os testes apareceu uma mensagem `[Fatal Error] JAXP00010001` sobre expans\u00f5es de entidade XML. Ela \u00e9 impressa por testes de XML que j\u00e1 existiam e n\u00e3o afeta o resultado da su\u00edte.\n\nN\u00e3o fiz commit."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 46,
+  "deletions": 34,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 42
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 17,
+  "max_ccn": 8,
+  "sum_ccn": 50,
+  "avg_ccn": 2.94,
+  "n_ccn_gt10": 0,
+  "nloc": 248
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 19,
+   "params": 3,
+   "start": 145,
+   "end": 163
+  },
+  {
+   "name": "AlphabetConverter::createSingleLengthConverter",
+   "ccn": 4,
+   "nloc": 23,
+   "params": 4,
+   "start": 168,
+   "end": 192
+  },
+  {
+   "name": "AlphabetConverter::createMultiLengthConverter",
+   "ccn": 3,
+   "nloc": 25,
+   "params": 4,
+   "start": 197,
+   "end": 231
+  }
+ ],
+ "valid": true
+}

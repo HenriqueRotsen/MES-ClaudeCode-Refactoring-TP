@@ -1,0 +1,125 @@
+{
+ "run_id": "F2_cli__haiku__B__r1",
+ "task": "F2_cli",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 1,
+ "prompt_sha256": "050cd2dd077b49dbd169d9edfd9a935da0d0bc50177226410fccda54664f7de8",
+ "base_commit": "3a53a351a66bc5634bea646008f884148864bdac",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 46,
+ "agent": {
+  "tool_calls": {
+   "Bash": 4,
+   "Read": 1,
+   "Edit": 1
+  },
+  "mvn_calls": 3,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 7,
+  "duration_ms": 45073,
+  "duration_api_ms": 31305,
+  "total_cost_usd": 0.009783730000000001,
+  "session_id": "3643e883-6c64-49a6-8cca-a365d229f5b1",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 14,
+   "output_tokens": 7515,
+   "cache_creation_input_tokens": 21957,
+   "cache_read_input_tokens": 163343
+  },
+  "final_message": "Refatorei `PosixParser.flatten`. Ele caiu de CCN 15 para 3, a su\u00edte `mvn -B clean test` passa (1002 testes, 0 falhas, 0 erros, 61 ignorados) e nenhum arquivo de teste foi alterado.\n\n**Mudan\u00e7a estrutural:** o corpo do la\u00e7o, que decidia entre h\u00edfen puro, op\u00e7\u00e3o longa, op\u00e7\u00e3o curta/abreviada/burst e argumento n\u00e3o-op\u00e7\u00e3o, foi separado em m\u00e9todos privados com responsabilidade \u00fanica:\n\n| M\u00e9todo | CCN |\n|---|---|\n| `flatten` (antes: 15) | 3 |\n| `flattenToken` (despacho por forma do token) | 4 |\n| `isBareHyphen` (\"-\" ou \"--\") | 2 |\n| `flattenLongOptionToken` (`--foo`, `--foo=bar`) | 5 |\n| `flattenShortOptionToken` (`-x`, abrevia\u00e7\u00e3o longa, burst) | 5 |\n\nTodos os m\u00e9todos alterados ou criados ficam em CCN \u2264 5, bem abaixo do limite de 10. Os m\u00e9todos extra\u00eddos t\u00eam no m\u00e1ximo 2 par\u00e2metros.\n\n**Decis\u00f5es que voc\u00ea pode querer revisar:**\n- Usei guard clauses no lugar de `else if`/`else` aninhados, e o `return` ap\u00f3s cada ramo de tratamento deixa expl\u00edcito que nada mais acontece depois.\n- Em `flattenShortOptionToken`, `options.getMatchingOptions(token)` passou a ser chamado uma vez em vez de duas. \u00c9 uma consulta sem efeito colateral (s\u00f3 l\u00ea `longOpts` e devolve uma lista nova), ent\u00e3o o comportamento observ\u00e1vel n\u00e3o muda.\n- Os tr\u00eas m\u00e9todos que podem lan\u00e7ar `AmbiguousOptionException` declaram `throws ParseException`, porque a exce\u00e7\u00e3o \u00e9 checada e tem que ser propagada at\u00e9 `flatten`.\n- A ordem dos efeitos colaterais (`tokens.add`, `currentOption`, `eatTheRest`) e as exce\u00e7\u00f5es lan\u00e7adas s\u00e3o as mesmas do original. O `addRemaining` continua no la\u00e7o de `flatten`, depois do tratamento de cada token.\n- N\u00e3o h\u00e1 novas aloca\u00e7\u00f5es nem streams no la\u00e7o de tokeniza\u00e7\u00e3o. O custo extra \u00e9 s\u00f3 a chamada de m\u00e9todo, que a JIT costuma inlinar.\n\nN\u00e3o toquei em nenhum outro arquivo. O `git status` mostra apenas `src/main/java/org/apache/commons/cli/PosixParser.java` modificado. N\u00e3o verifiquei se os 61 testes ignorados j\u00e1 estavam assim antes da mudan\u00e7a; n\u00e3o adicionei nenhum `@Disabled` nem nenhuma flag para pular testes."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ],
+  "insertions": 81,
+  "deletions": 37,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 1002,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 61,
+  "baseline_tests": 1002,
+  "seconds": 12
+ },
+ "method_before": {
+  "ccn": 15,
+  "nloc": 46
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 7,
+  "max_ccn": 15,
+  "sum_ccn": 33,
+  "avg_ccn": 4.71,
+  "n_ccn_gt10": 1,
+  "nloc": 92
+ },
+ "file_after": {
+  "n_funcs": 11,
+  "max_ccn": 6,
+  "sum_ccn": 37,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 106
+ },
+ "new_funcs": [
+  {
+   "name": "PosixParser::flattenToken",
+   "ccn": 4,
+   "nloc": 11,
+   "params": 2,
+   "start": 161,
+   "end": 171
+  },
+  {
+   "name": "PosixParser::isBareHyphen",
+   "ccn": 2,
+   "nloc": 3,
+   "params": 1,
+   "start": 179,
+   "end": 181
+  },
+  {
+   "name": "PosixParser::flattenLongOptionToken",
+   "ccn": 5,
+   "nloc": 17,
+   "params": 2,
+   "start": 190,
+   "end": 206
+  },
+  {
+   "name": "PosixParser::flattenShortOptionToken",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 216,
+   "end": 232
+  }
+ ],
+ "valid": true
+}

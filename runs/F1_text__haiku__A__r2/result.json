@@ -1,0 +1,124 @@
+{
+ "run_id": "F1_text__haiku__A__r2",
+ "task": "F1_text",
+ "model": "claude-haiku-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 2,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 63,
+ "agent": {
+  "tool_calls": {
+   "Bash": 5,
+   "Write": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 7,
+  "duration_ms": 62748,
+  "duration_api_ms": 30254,
+  "total_cost_usd": 0.00904787,
+  "session_id": "d58b7794-2cf4-488e-acb5-891a22b03e48",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 14,
+   "output_tokens": 7429,
+   "cache_creation_input_tokens": 18929,
+   "cache_read_input_tokens": 154617
+  },
+  "final_message": "O m\u00e9todo `createConverter` foi refatorado e a su\u00edte completa passa com `mvn -B clean test` (2043 testes, 0 falhas, 0 erros, 3 ignorados; `AlphabetConverterTest` com 20 testes, todos verdes).\n\nAlterei apenas `src/main/java/org/apache/commons/text/AlphabetConverter.java`. Nenhum arquivo de teste foi tocado.\n\nO m\u00e9todo agora \u00e9 um orquestrador de poucas linhas que delega para helpers privados:\n\n- **`buildDoNotEncodeMap`**: valida a lista \"do not encode\" contra os alfabetos original e de codifica\u00e7\u00e3o e monta o mapa, com as mesmas mensagens de `IllegalArgumentException`.\n- **`createSingleLetterConverter`**: ramo em que o alfabeto de codifica\u00e7\u00e3o tem pelo menos o tamanho do original (cada letra vira um \u00fanico caractere).\n- **`createMultiLetterConverter`**: ramo de m\u00faltiplos caracteres. Verifica o m\u00ednimo de dois caracteres utiliz\u00e1veis e cria o conversor com `addSingleEncoding`.\n- **`computeEncodedLetterLength`**: c\u00e1lculo do comprimento da letra codificada, extra\u00eddo do la\u00e7o original.\n\nPreservei a ordem das valida\u00e7\u00f5es, as exce\u00e7\u00f5es e o conte\u00fado dos mapas. N\u00e3o h\u00e1 mudan\u00e7a de comportamento externo. A \u00fanica diferen\u00e7a de forma \u00e9 que o ramo de caractere \u00fanico passou a construir o conversor com `1` como comprimento direto, o que \u00e9 equivalente ao valor que o c\u00f3digo original atribu\u00eda."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 111,
+  "deletions": 44,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 41
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 18,
+  "max_ccn": 8,
+  "sum_ccn": 51,
+  "avg_ccn": 2.83,
+  "n_ccn_gt10": 0,
+  "nloc": 266
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 21,
+   "params": 3,
+   "start": 151,
+   "end": 173
+  },
+  {
+   "name": "AlphabetConverter::createSingleLetterConverter",
+   "ccn": 4,
+   "nloc": 25,
+   "params": 4,
+   "start": 185,
+   "end": 215
+  },
+  {
+   "name": "AlphabetConverter::createMultiLetterConverter",
+   "ccn": 2,
+   "nloc": 27,
+   "params": 4,
+   "start": 228,
+   "end": 258
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 12,
+   "params": 3,
+   "start": 268,
+   "end": 286
+  }
+ ],
+ "valid": true
+}

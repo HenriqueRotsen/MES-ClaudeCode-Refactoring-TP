@@ -1,0 +1,116 @@
+{
+ "run_id": "F1_text__sonnet__B__r2",
+ "task": "F1_text",
+ "model": "claude-sonnet-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 2,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 100,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 99025,
+  "duration_api_ms": 22614,
+  "total_cost_usd": 0.1020606,
+  "session_id": "efe6fce9-5c20-4e95-a161-417fd5d3a42b",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 3498,
+   "cache_creation_input_tokens": 14382,
+   "cache_read_input_tokens": 95326
+  },
+  "final_message": "Refatorei `createConverter` em `AlphabetConverter.java`, e `mvn -B clean test` passa: 2043 testes, 0 falhas, 3 ignorados, BUILD SUCCESS. N\u00e3o rodei a su\u00edte antes da mudan\u00e7a, ent\u00e3o n\u00e3o sei se os 3 ignorados j\u00e1 vinham assim. A sa\u00edda do build mostra um aviso de limite de entidades XML (JAXP), que n\u00e3o fez nenhum teste falhar.\n\n**CCN do m\u00e9todo-alvo:** era 10 e passou para 3.\n\n**M\u00e9todos privados extra\u00eddos** (CCN medido com `lizard`):\n- `buildDoNotEncodeMap` (CCN 4) valida os pontos de c\u00f3digo de \"n\u00e3o codificar\" contra os dois alfabetos e monta o mapa deles.\n- `createOneToOneConverter` (CCN 4) cobre o caso em que o alfabeto de codifica\u00e7\u00e3o \u00e9 pelo menos t\u00e3o grande quanto o original, com um caractere codificado por original.\n- `computeEncodedLetterLength` (CCN 2) calcula quantos caracteres codificados cada original precisa.\n\nNenhum m\u00e9todo tem mais de 4 par\u00e2metros. As mensagens e a ordem das exce\u00e7\u00f5es ficaram iguais, e a assinatura p\u00fablica n\u00e3o mudou.\n\n`git diff --stat` mostra s\u00f3 `AlphabetConverter.java` alterado (82 inser\u00e7\u00f5es, 46 remo\u00e7\u00f5es), sem nada em `src/test`."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 82,
+  "deletions": 46,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 45
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 31
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 17,
+  "max_ccn": 8,
+  "sum_ccn": 50,
+  "avg_ccn": 2.94,
+  "n_ccn_gt10": 0,
+  "nloc": 249
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 19,
+   "params": 3,
+   "start": 172,
+   "end": 192
+  },
+  {
+   "name": "AlphabetConverter::createOneToOneConverter",
+   "ccn": 4,
+   "nloc": 22,
+   "params": 4,
+   "start": 203,
+   "end": 230
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 3,
+   "start": 240,
+   "end": 255
+  }
+ ],
+ "valid": true
+}

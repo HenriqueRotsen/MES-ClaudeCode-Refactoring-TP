@@ -1,0 +1,140 @@
+{
+ "run_id": "F3_gson__sonnet__A__r1",
+ "task": "F3_gson",
+ "model": "claude-sonnet-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 1,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 54,
+ "agent": {
+  "tool_calls": {
+   "Bash": 2,
+   "Read": 1
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 4,
+  "duration_ms": 53144,
+  "duration_api_ms": 24231,
+  "total_cost_usd": 0.0943427,
+  "session_id": "8bc98be8-71b3-4db3-b93a-ae585c55ed3a",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 8,
+   "output_tokens": 3813,
+   "cache_creation_input_tokens": 12407,
+   "cache_read_input_tokens": 65687
+  },
+  "final_message": "Refatorei o `doPeek` em `JsonReader.java`, e `mvn -B -pl gson clean test` terminou sem falhas. Rodei o Maven com `-q`, ent\u00e3o o log n\u00e3o mostra a contagem de testes. S\u00f3 alterei esse arquivo, e nenhum teste foi tocado.\n\nO `doPeek` agora s\u00f3 despacha pelo estado do topo da pilha e delega a m\u00e9todos privados. Cada um cuida de um estado ou de uma parte da leitura:\n- **`peekAfterArrayElement`:** trata a v\u00edrgula, o `;` (no modo lenient) ou o `]` depois de um elemento do array.\n- **`peekAfterDocumentValue`:** trata o fim do documento (EOF) e conte\u00fado extra depois do valor.\n- **`peekObjectName`:** trata o nome ou o fim do objeto. Ele usa o novo `peekObjectSeparator` para a v\u00edrgula ou `}` entre membros.\n- **`consumeNameSeparator`:** consome o `:` (ou o `=`/`=>` no modo lenient) entre o nome e o valor.\n- **`peekValue`:** trata o in\u00edcio do valor, incluindo os casos de `null` impl\u00edcito, aspas, `[` e `{`. Depois chama `peekKeyword` e `peekNumber`, e por fim trata literal sem aspas.\n\nA ordem das opera\u00e7\u00f5es, os valores atribu\u00eddos a `peeked` e as mensagens de erro continuam os mesmos. Os `@SuppressWarnings(\"fallthrough\")` foram movidos para os m\u00e9todos que t\u00eam `switch` com fall-through."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 121,
+  "deletions": 88,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 33
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 12,
+  "nloc": 39
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 56,
+  "max_ccn": 39,
+  "sum_ccn": 417,
+  "avg_ccn": 7.45,
+  "n_ccn_gt10": 16,
+  "nloc": 1262
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekAfterArrayElement",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 633,
+   "end": 647
+  },
+  {
+   "name": "JsonReader::peekAfterDocumentValue",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 0,
+   "start": 650,
+   "end": 659
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 8,
+   "nloc": 32,
+   "params": 1,
+   "start": 662,
+   "end": 694
+  },
+  {
+   "name": "JsonReader::peekObjectSeparator",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 701,
+   "end": 714
+  },
+  {
+   "name": "JsonReader::consumeNameSeparator",
+   "ccn": 6,
+   "nloc": 15,
+   "params": 0,
+   "start": 717,
+   "end": 731
+  },
+  {
+   "name": "JsonReader::peekValue",
+   "ccn": 14,
+   "nloc": 49,
+   "params": 1,
+   "start": 735,
+   "end": 789
+  }
+ ],
+ "valid": true
+}

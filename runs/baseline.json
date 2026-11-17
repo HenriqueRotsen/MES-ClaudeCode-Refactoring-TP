@@ -1,0 +1,1002 @@
+{
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "tasks": {
+  "F1_text": {
+   "test_exit": 0,
+   "test_seconds": 62,
+   "surefire": {
+    "tests": 2043,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 3
+   },
+   "method": {
+    "ccn": 10,
+    "nloc": 70
+   },
+   "file": {
+    "n_funcs": 14,
+    "max_ccn": 10,
+    "sum_ccn": 47,
+    "avg_ccn": 3.36,
+    "n_ccn_gt10": 0,
+    "nloc": 238
+   },
+   "funcs": [
+    {
+     "name": "AlphabetConverter::codePointToString",
+     "ccn": 2,
+     "nloc": 6,
+     "params": 1,
+     "start": 89,
+     "end": 94
+    },
+    {
+     "name": "AlphabetConverter::convertCharsToIntegers",
+     "ccn": 2,
+     "nloc": 8,
+     "params": 1,
+     "start": 102,
+     "end": 109
+    },
+    {
+     "name": "AlphabetConverter::createConverter",
+     "ccn": 10,
+     "nloc": 70,
+     "params": 3,
+     "start": 126,
+     "end": 219
+    },
+    {
+     "name": "AlphabetConverter::createConverterFromChars",
+     "ccn": 1,
+     "nloc": 9,
+     "params": 3,
+     "start": 238,
+     "end": 246
+    },
+    {
+     "name": "AlphabetConverter::createConverterFromMap",
+     "ccn": 3,
+     "nloc": 12,
+     "params": 1,
+     "start": 255,
+     "end": 270
+    },
+    {
+     "name": "AlphabetConverter::AlphabetConverter",
+     "ccn": 1,
+     "nloc": 7,
+     "params": 3,
+     "start": 294,
+     "end": 301
+    },
+    {
+     "name": "AlphabetConverter::addSingleEncoding",
+     "ccn": 8,
+     "nloc": 38,
+     "params": 5,
+     "start": 312,
+     "end": 358
+    },
+    {
+     "name": "AlphabetConverter::decode",
+     "ccn": 6,
+     "nloc": 31,
+     "params": 1,
+     "start": 367,
+     "end": 402
+    },
+    {
+     "name": "AlphabetConverter::encode",
+     "ccn": 4,
+     "nloc": 22,
+     "params": 1,
+     "start": 411,
+     "end": 439
+    },
+    {
+     "name": "AlphabetConverter::equals",
+     "ccn": 6,
+     "nloc": 15,
+     "params": 1,
+     "start": 442,
+     "end": 456
+    },
+    {
+     "name": "AlphabetConverter::getEncodedCharLength",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 463,
+     "end": 465
+    },
+    {
+     "name": "AlphabetConverter::getOriginalToEncoded",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 472,
+     "end": 474
+    },
+    {
+     "name": "AlphabetConverter::hashCode",
+     "ccn": 1,
+     "nloc": 5,
+     "params": 0,
+     "start": 477,
+     "end": 481
+    },
+    {
+     "name": "AlphabetConverter::toString",
+     "ccn": 1,
+     "nloc": 9,
+     "params": 0,
+     "start": 484,
+     "end": 494
+    }
+   ]
+  },
+  "F2_cli": {
+   "test_exit": 0,
+   "test_seconds": 10,
+   "surefire": {
+    "tests": 1002,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 61
+   },
+   "method": {
+    "ccn": 15,
+    "nloc": 46
+   },
+   "file": {
+    "n_funcs": 7,
+    "max_ccn": 15,
+    "sum_ccn": 33,
+    "avg_ccn": 4.71,
+    "n_ccn_gt10": 1,
+    "nloc": 92
+   },
+   "funcs": [
+    {
+     "name": "PosixParser::PosixParser",
+     "ccn": 1,
+     "nloc": 2,
+     "params": 0,
+     "start": 51,
+     "end": 53
+    },
+    {
+     "name": "PosixParser::addRemaining",
+     "ccn": 2,
+     "nloc": 5,
+     "params": 1,
+     "start": 60,
+     "end": 64
+    },
+    {
+     "name": "PosixParser::burstToken",
+     "ccn": 6,
+     "nloc": 19,
+     "params": 2,
+     "start": 86,
+     "end": 104
+    },
+    {
+     "name": "PosixParser::flatten",
+     "ccn": 15,
+     "nloc": 46,
+     "params": 3,
+     "start": 137,
+     "end": 188
+    },
+    {
+     "name": "PosixParser::init",
+     "ccn": 1,
+     "nloc": 4,
+     "params": 0,
+     "start": 194,
+     "end": 197
+    },
+    {
+     "name": "PosixParser::processNonOptionToken",
+     "ccn": 4,
+     "nloc": 7,
+     "params": 2,
+     "start": 205,
+     "end": 211
+    },
+    {
+     "name": "PosixParser::processOptionToken",
+     "ccn": 4,
+     "nloc": 9,
+     "params": 2,
+     "start": 226,
+     "end": 234
+    }
+   ]
+  },
+  "F3_gson": {
+   "test_exit": 0,
+   "test_seconds": 42,
+   "surefire": {
+    "tests": 4707,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 21
+   },
+   "method": {
+    "ccn": 41,
+    "nloc": 156
+   },
+   "file": {
+    "n_funcs": 50,
+    "max_ccn": 41,
+    "sum_ccn": 408,
+    "avg_ccn": 8.16,
+    "n_ccn_gt10": 15,
+    "nloc": 1245
+   },
+   "funcs": [
+    {
+     "name": "JsonReader::JsonReader",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 1,
+     "start": 323,
+     "end": 325
+    },
+    {
+     "name": "JsonReader::setLenient",
+     "ccn": 2,
+     "nloc": 3,
+     "params": 1,
+     "start": 344,
+     "end": 346
+    },
+    {
+     "name": "JsonReader::isLenient",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 353,
+     "end": 355
+    },
+    {
+     "name": "JsonReader::setStrictness",
+     "ccn": 1,
+     "nloc": 4,
+     "params": 1,
+     "start": 411,
+     "end": 414
+    },
+    {
+     "name": "JsonReader::getStrictness",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 422,
+     "end": 424
+    },
+    {
+     "name": "JsonReader::setNestingLimit",
+     "ccn": 2,
+     "nloc": 6,
+     "params": 1,
+     "start": 444,
+     "end": 449
+    },
+    {
+     "name": "JsonReader::getNestingLimit",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 457,
+     "end": 459
+    },
+    {
+     "name": "JsonReader::beginArray",
+     "ccn": 3,
+     "nloc": 13,
+     "params": 0,
+     "start": 467,
+     "end": 479
+    },
+    {
+     "name": "JsonReader::endArray",
+     "ccn": 3,
+     "nloc": 13,
+     "params": 0,
+     "start": 487,
+     "end": 499
+    },
+    {
+     "name": "JsonReader::beginObject",
+     "ccn": 3,
+     "nloc": 12,
+     "params": 0,
+     "start": 507,
+     "end": 518
+    },
+    {
+     "name": "JsonReader::endObject",
+     "ccn": 3,
+     "nloc": 14,
+     "params": 0,
+     "start": 526,
+     "end": 539
+    },
+    {
+     "name": "JsonReader::hasNext",
+     "ccn": 4,
+     "nloc": 7,
+     "params": 0,
+     "start": 542,
+     "end": 548
+    },
+    {
+     "name": "JsonReader::peek",
+     "ccn": 19,
+     "nloc": 37,
+     "params": 0,
+     "start": 551,
+     "end": 588
+    },
+    {
+     "name": "JsonReader::doPeek",
+     "ccn": 41,
+     "nloc": 156,
+     "params": 0,
+     "start": 591,
+     "end": 756
+    },
+    {
+     "name": "JsonReader::peekKeyword",
+     "ccn": 16,
+     "nloc": 46,
+     "params": 0,
+     "start": 758,
+     "end": 813
+    },
+    {
+     "name": "JsonReader::peekNumber",
+     "ccn": 39,
+     "nloc": 96,
+     "params": 0,
+     "start": 815,
+     "end": 925
+    },
+    {
+     "name": "JsonReader::isLiteral",
+     "ccn": 17,
+     "nloc": 24,
+     "params": 1,
+     "start": 928,
+     "end": 951
+    },
+    {
+     "name": "JsonReader::nextName",
+     "ccn": 5,
+     "nloc": 23,
+     "params": 0,
+     "start": 958,
+     "end": 980
+    },
+    {
+     "name": "JsonReader::recordPromotedName",
+     "ccn": 2,
+     "nloc": 6,
+     "params": 1,
+     "start": 983,
+     "end": 988
+    },
+    {
+     "name": "JsonReader::nextString",
+     "ccn": 8,
+     "nloc": 35,
+     "params": 0,
+     "start": 996,
+     "end": 1030
+    },
+    {
+     "name": "JsonReader::nextBoolean",
+     "ccn": 4,
+     "nloc": 18,
+     "params": 0,
+     "start": 1037,
+     "end": 1054
+    },
+    {
+     "name": "JsonReader::nextNull",
+     "ccn": 3,
+     "nloc": 12,
+     "params": 0,
+     "start": 1061,
+     "end": 1072
+    },
+    {
+     "name": "JsonReader::nextDouble",
+     "ccn": 13,
+     "nloc": 46,
+     "params": 0,
+     "start": 1084,
+     "end": 1131
+    },
+    {
+     "name": "JsonReader::nextLong",
+     "ccn": 12,
+     "nloc": 56,
+     "params": 0,
+     "start": 1142,
+     "end": 1200
+    },
+    {
+     "name": "JsonReader::nextQuotedValue",
+     "ccn": 12,
+     "nloc": 49,
+     "params": 1,
+     "start": 1209,
+     "end": 1263
+    },
+    {
+     "name": "JsonReader::validateString",
+     "ccn": 7,
+     "nloc": 17,
+     "params": 1,
+     "start": 1267,
+     "end": 1283
+    },
+    {
+     "name": "JsonReader::nextUnquotedValue",
+     "ccn": 24,
+     "nloc": 50,
+     "params": 0,
+     "start": 1287,
+     "end": 1343
+    },
+    {
+     "name": "JsonReader::skipQuotedValue",
+     "ccn": 6,
+     "nloc": 24,
+     "params": 1,
+     "start": 1345,
+     "end": 1370
+    },
+    {
+     "name": "JsonReader::skipUnquotedValue",
+     "ccn": 19,
+     "nloc": 30,
+     "params": 0,
+     "start": 1373,
+     "end": 1403
+    },
+    {
+     "name": "JsonReader::nextInt",
+     "ccn": 13,
+     "nloc": 57,
+     "params": 0,
+     "start": 1414,
+     "end": 1474
+    },
+    {
+     "name": "JsonReader::close",
+     "ccn": 1,
+     "nloc": 6,
+     "params": 0,
+     "start": 1483,
+     "end": 1488
+    },
+    {
+     "name": "JsonReader::skipValue",
+     "ccn": 19,
+     "nloc": 66,
+     "params": 0,
+     "start": 1506,
+     "end": 1582
+    },
+    {
+     "name": "JsonReader::push",
+     "ccn": 3,
+     "nloc": 13,
+     "params": 1,
+     "start": 1584,
+     "end": 1598
+    },
+    {
+     "name": "JsonReader::fillBuffer",
+     "ccn": 8,
+     "nloc": 25,
+     "params": 1,
+     "start": 1604,
+     "end": 1632
+    },
+    {
+     "name": "JsonReader::nextNonWhitespace",
+     "ccn": 16,
+     "nloc": 68,
+     "params": 1,
+     "start": 1639,
+     "end": 1726
+    },
+    {
+     "name": "JsonReader::checkLenient",
+     "ccn": 2,
+     "nloc": 6,
+     "params": 0,
+     "start": 1728,
+     "end": 1733
+    },
+    {
+     "name": "JsonReader::skipToEndOfLine",
+     "ccn": 5,
+     "nloc": 12,
+     "params": 0,
+     "start": 1739,
+     "end": 1750
+    },
+    {
+     "name": "JsonReader::skipTo",
+     "ccn": 6,
+     "nloc": 18,
+     "params": 1,
+     "start": 1755,
+     "end": 1772
+    },
+    {
+     "name": "JsonReader::toString",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 1775,
+     "end": 1777
+    },
+    {
+     "name": "JsonReader::locationString",
+     "ccn": 1,
+     "nloc": 5,
+     "params": 0,
+     "start": 1779,
+     "end": 1783
+    },
+    {
+     "name": "JsonReader::getPath",
+     "ccn": 14,
+     "nloc": 31,
+     "params": 1,
+     "start": 1785,
+     "end": 1816
+    },
+    {
+     "name": "JsonReader::getPath",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 1832,
+     "end": 1834
+    },
+    {
+     "name": "JsonReader::getPreviousPath",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 1850,
+     "end": 1852
+    },
+    {
+     "name": "JsonReader::getCharacterOffset",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 0,
+     "start": 1861,
+     "end": 1863
+    },
+    {
+     "name": "JsonReader::readEscapeCharacter",
+     "ccn": 25,
+     "nloc": 54,
+     "params": 0,
+     "start": 1873,
+     "end": 1937
+    },
+    {
+     "name": "JsonReader::syntaxError",
+     "ccn": 1,
+     "nloc": 4,
+     "params": 1,
+     "start": 1943,
+     "end": 1946
+    },
+    {
+     "name": "JsonReader::unexpectedTokenError",
+     "ccn": 2,
+     "nloc": 13,
+     "params": 1,
+     "start": 1948,
+     "end": 1960
+    },
+    {
+     "name": "JsonReader::consumeNonExecutePrefix",
+     "ccn": 8,
+     "nloc": 17,
+     "params": 0,
+     "start": 1963,
+     "end": 1984
+    },
+    {
+     "name": "JsonReader::validateAscii",
+     "ccn": 2,
+     "nloc": 5,
+     "params": 1,
+     "start": 1986,
+     "end": 1990
+    },
+    {
+     "name": "(anonymous)::promoteNameToValue",
+     "ccn": 6,
+     "nloc": 24,
+     "params": 1,
+     "start": 1996,
+     "end": 2020
+    }
+   ]
+  },
+  "F4_jsoup": {
+   "test_exit": 0,
+   "test_seconds": 33,
+   "surefire": {
+    "tests": 2648,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+   },
+   "method": {
+    "ccn": 123,
+    "nloc": 339
+   },
+   "file": {
+    "n_funcs": 41,
+    "max_ccn": 123,
+    "sum_ccn": 502,
+    "avg_ccn": 12.24,
+    "n_ccn_gt10": 17,
+    "nloc": 1553
+   },
+   "funcs": [
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 8,
+     "nloc": 22,
+     "params": 2,
+     "start": 29,
+     "end": 53
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 9,
+     "nloc": 21,
+     "params": 2,
+     "start": 56,
+     "end": 76
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 1,
+     "nloc": 5,
+     "params": 2,
+     "start": 78,
+     "end": 82
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 11,
+     "nloc": 26,
+     "params": 2,
+     "start": 85,
+     "end": 110
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 22,
+     "nloc": 75,
+     "params": 2,
+     "start": 113,
+     "end": 189
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 1,
+     "nloc": 4,
+     "params": 2,
+     "start": 191,
+     "end": 194
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 13,
+     "nloc": 47,
+     "params": 2,
+     "start": 197,
+     "end": 243
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 1,
+     "nloc": 5,
+     "params": 2,
+     "start": 245,
+     "end": 249
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 12,
+     "nloc": 35,
+     "params": 2,
+     "start": 252,
+     "end": 287
+    },
+    {
+     "name": "HtmlTreeBuilderState::inBodyStartTag",
+     "ccn": 123,
+     "nloc": 339,
+     "params": 2,
+     "start": 289,
+     "end": 645
+    },
+    {
+     "name": "HtmlTreeBuilderState::inBodyEndTag",
+     "ccn": 44,
+     "nloc": 139,
+     "params": 2,
+     "start": 648,
+     "end": 792
+    },
+    {
+     "name": "HtmlTreeBuilderState::anyOtherEndTag",
+     "ccn": 6,
+     "nloc": 25,
+     "params": 2,
+     "start": 794,
+     "end": 821
+    },
+    {
+     "name": "HtmlTreeBuilderState::inBodyEndTagAdoption",
+     "ccn": 20,
+     "nloc": 80,
+     "params": 2,
+     "start": 824,
+     "end": 946
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 5,
+     "nloc": 16,
+     "params": 2,
+     "start": 950,
+     "end": 967
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 29,
+     "nloc": 92,
+     "params": 2,
+     "start": 970,
+     "end": 1063
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 1,
+     "nloc": 5,
+     "params": 2,
+     "start": 1065,
+     "end": 1069
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 6,
+     "nloc": 24,
+     "params": 2,
+     "start": 1072,
+     "end": 1097
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 13,
+     "nloc": 34,
+     "params": 2,
+     "start": 1100,
+     "end": 1134
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 14,
+     "nloc": 57,
+     "params": 2,
+     "start": 1137,
+     "end": 1193
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 2,
+     "nloc": 10,
+     "params": 2,
+     "start": 1195,
+     "end": 1204
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 10,
+     "nloc": 44,
+     "params": 2,
+     "start": 1207,
+     "end": 1251
+    },
+    {
+     "name": "HtmlTreeBuilderState::exitTableBody",
+     "ccn": 4,
+     "nloc": 9,
+     "params": 2,
+     "start": 1253,
+     "end": 1262
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 2,
+     "start": 1264,
+     "end": 1266
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 14,
+     "nloc": 64,
+     "params": 2,
+     "start": 1269,
+     "end": 1335
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 2,
+     "start": 1337,
+     "end": 1339
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 12,
+     "nloc": 42,
+     "params": 2,
+     "start": 1342,
+     "end": 1384
+    },
+    {
+     "name": "HtmlTreeBuilderState::anythingElse",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 2,
+     "start": 1386,
+     "end": 1388
+    },
+    {
+     "name": "HtmlTreeBuilderState::closeCell",
+     "ccn": 2,
+     "nloc": 6,
+     "params": 1,
+     "start": 1390,
+     "end": 1395
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 16,
+     "nloc": 66,
+     "params": 2,
+     "start": 1398,
+     "end": 1464
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 13,
+     "nloc": 33,
+     "params": 2,
+     "start": 1467,
+     "end": 1501
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 16,
+     "nloc": 46,
+     "params": 2,
+     "start": 1504,
+     "end": 1549
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 11,
+     "nloc": 21,
+     "params": 2,
+     "start": 1552,
+     "end": 1573
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 7,
+     "nloc": 16,
+     "params": 2,
+     "start": 1576,
+     "end": 1593
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 9,
+     "nloc": 14,
+     "params": 2,
+     "start": 1596,
+     "end": 1610
+    },
+    {
+     "name": "HtmlTreeBuilderState::process",
+     "ccn": 26,
+     "nloc": 68,
+     "params": 2,
+     "start": 1614,
+     "end": 1695
+    },
+    {
+     "name": "HtmlTreeBuilderState::processAsHtml",
+     "ccn": 1,
+     "nloc": 3,
+     "params": 2,
+     "start": 1698,
+     "end": 1700
+    },
+    {
+     "name": "HtmlTreeBuilderState::breakoutToHtml",
+     "ccn": 5,
+     "nloc": 11,
+     "params": 2,
+     "start": 1703,
+     "end": 1714
+    },
+    {
+     "name": "HtmlTreeBuilderState::mergeAttributes",
+     "ccn": 5,
+     "nloc": 13,
+     "params": 2,
+     "start": 1717,
+     "end": 1729
+    },
+    {
+     "name": "HtmlTreeBuilderState::isWhitespace",
+     "ccn": 2,
+     "nloc": 7,
+     "params": 1,
+     "start": 1735,
+     "end": 1741
+    },
+    {
+     "name": "HtmlTreeBuilderState::processFramesetCharacters",
+     "ccn": 3,
+     "nloc": 13,
+     "params": 3,
+     "start": 1744,
+     "end": 1757
+    },
+    {
+     "name": "HtmlTreeBuilderState::HandleTextState",
+     "ccn": 2,
+     "nloc": 7,
+     "params": 3,
+     "start": 1760,
+     "end": 1766
+    }
+   ]
+  }
+ }
+}

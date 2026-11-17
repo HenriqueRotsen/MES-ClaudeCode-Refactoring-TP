@@ -1,0 +1,116 @@
+{
+ "run_id": "F2_cli__sonnet__B__r2",
+ "task": "F2_cli",
+ "model": "claude-sonnet-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 2,
+ "prompt_sha256": "050cd2dd077b49dbd169d9edfd9a935da0d0bc50177226410fccda54664f7de8",
+ "base_commit": "3a53a351a66bc5634bea646008f884148864bdac",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 47,
+ "agent": {
+  "tool_calls": {
+   "Bash": 4,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 6,
+  "duration_ms": 46801,
+  "duration_api_ms": 29501,
+  "total_cost_usd": 0.1306617,
+  "session_id": "bb941757-2cc1-46e8-8b68-ff189f574fc2",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 12,
+   "output_tokens": 4620,
+   "cache_creation_input_tokens": 17978,
+   "cache_read_input_tokens": 125257
+  },
+  "final_message": "Refatorei `PosixParser.flatten`: a complexidade ciclom\u00e1tica (CCN) caiu de 15 para 3. `mvn -B clean test` passou com BUILD SUCCESS, 1002 testes, 0 falhas, 0 erros e 61 ignorados (skipped). N\u00e3o rodei a su\u00edte antes da mudan\u00e7a, ent\u00e3o n\u00e3o sei se esses 61 j\u00e1 eram ignorados. N\u00e3o mexi em nenhum arquivo de teste: o `git diff --stat` mostra s\u00f3 `PosixParser.java`.\n\n`flatten` agora s\u00f3 inicializa o estado e percorre os tokens, chamando `processToken` e depois `addRemaining`. A l\u00f3gica que estava dentro dele foi para tr\u00eas m\u00e9todos privados novos:\n\n| M\u00e9todo | CCN | Responsabilidade |\n|---|---|---|\n| `processToken` | 5 | Escolhe o tratamento conforme o prefixo do token (`-`, `--`, `--x`, `-x` ou argumento comum). |\n| `processLongOptionToken` | 5 | Trata `--foo` e `--foo=bar`. |\n| `processHyphenatedToken` | 5 | Trata `-x`, abrevia\u00e7\u00e3o de op\u00e7\u00e3o longa ou grupo de op\u00e7\u00f5es (burst). |\n\n- **Comportamento:** a ordem das opera\u00e7\u00f5es e a `AmbiguousOptionException` ficaram iguais. As guard clauses s\u00f3 substituem os `else` aninhados.\n- **Desempenho:** n\u00e3o introduzi streams, lambdas, aloca\u00e7\u00f5es nem cole\u00e7\u00f5es novas.\n- **API:** as assinaturas p\u00fablicas e protegidas n\u00e3o mudaram.\n- **Complexidade:** nenhum m\u00e9todo alterado ou criado passa de CCN 5."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ],
+  "insertions": 71,
+  "deletions": 37,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 1002,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 61,
+  "baseline_tests": 1002,
+  "seconds": 9
+ },
+ "method_before": {
+  "ccn": 15,
+  "nloc": 46
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 7,
+  "max_ccn": 15,
+  "sum_ccn": 33,
+  "avg_ccn": 4.71,
+  "n_ccn_gt10": 1,
+  "nloc": 92
+ },
+ "file_after": {
+  "n_funcs": 10,
+  "max_ccn": 6,
+  "sum_ccn": 36,
+  "avg_ccn": 3.6,
+  "n_ccn_gt10": 0,
+  "nloc": 103
+ },
+ "new_funcs": [
+  {
+   "name": "PosixParser::processToken",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 161,
+   "end": 172
+  },
+  {
+   "name": "PosixParser::processLongOptionToken",
+   "ccn": 5,
+   "nloc": 17,
+   "params": 2,
+   "start": 181,
+   "end": 197
+  },
+  {
+   "name": "PosixParser::processHyphenatedToken",
+   "ccn": 5,
+   "nloc": 16,
+   "params": 2,
+   "start": 206,
+   "end": 222
+  }
+ ],
+ "valid": true
+}

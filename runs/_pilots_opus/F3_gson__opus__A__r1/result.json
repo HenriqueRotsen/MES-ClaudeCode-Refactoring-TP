@@ -1,0 +1,156 @@
+{
+ "run_id": "F3_gson__opus__A__r1",
+ "task": "F3_gson",
+ "model": "claude-opus-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 1,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 68,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 67644,
+  "duration_api_ms": 44207,
+  "total_cost_usd": 0.217308,
+  "session_id": "d5e14b9f-a39b-4d66-86fb-6820bbf2ebd9",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 4470,
+   "cache_creation_input_tokens": 13750,
+   "cache_read_input_tokens": 89340
+  },
+  "final_message": "I refactored `doPeek` in `JsonReader.java`, and the full suite passes with `mvn -B -pl gson clean test`: 4707 tests with no failures or errors, plus 23 skips that are already in the suite. The build also ran the project's formatting and static checks without complaint.\n\nThe method used to be about 165 lines with nested switches. It now just reads the current scope, handles the punctuation that scope expects, and if no token came out of that, reads a value:\n\n```java\nint doPeek() throws IOException {\n  int peekStack = stack[stackSize - 1];\n  int result = peekInScope(peekStack);\n  if (result != PEEKED_NONE) {\n    return result;\n  }\n  return peekValue(peekStack);\n}\n```\n\nI extracted these private methods, each doing one job:\n\n| Method | What it does |\n|---|---|\n| `peekInScope` | Picks the right step for the current scope and updates the scope stack. It returns `PEEKED_NONE` when a value comes next. |\n| `peekAfterArrayElement` | Looks for `,` (or `;` in lenient mode) or `]` after an array element. |\n| `peekObjectName` | Looks for the separator between object members, then a quoted or unquoted name, or `}`. |\n| `consumeNameSeparator` | Consumes `:` (or `=` / `=>` in lenient mode) between a name and its value. |\n| `peekAfterTopLevelValue` | Checks for end of document, or for more top-level values in lenient mode. |\n| `peekValue` | Reads the first character of a value: `[`, `{`, quotes, `]`, `,` or `;`. |\n| `peekEmptyArrayValue` | Handles an empty value in an array, which counts as `null` in lenient mode. |\n| `peekLiteralValue` | Tries a keyword, then a number, then an unquoted string. |\n\n**Why behaviour is unchanged:**\n- The order of every `nextNonWhitespace`, `checkLenient` and `pos--` call is the same as before, so input is consumed exactly as it was.\n- Every place that finds a token still sets the `peeked` field before returning it.\n- All error messages and exception types are the same.\n- The `@SuppressWarnings(\"fallthrough\")` annotation is now only on the methods that still rely on fall-through between switch cases.\n\nI didn't touch any test files."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 137,
+  "deletions": 101,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 23
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 8
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 58,
+  "max_ccn": 39,
+  "sum_ccn": 417,
+  "avg_ccn": 7.19,
+  "n_ccn_gt10": 14,
+  "nloc": 1262
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekInScope",
+   "ccn": 10,
+   "nloc": 28,
+   "params": 1,
+   "start": 606,
+   "end": 633
+  },
+  {
+   "name": "JsonReader::peekAfterArrayElement",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 637,
+   "end": 650
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 10,
+   "nloc": 43,
+   "params": 1,
+   "start": 654,
+   "end": 697
+  },
+  {
+   "name": "JsonReader::consumeNameSeparator",
+   "ccn": 6,
+   "nloc": 15,
+   "params": 0,
+   "start": 700,
+   "end": 714
+  },
+  {
+   "name": "JsonReader::peekAfterTopLevelValue",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 0,
+   "start": 717,
+   "end": 726
+  },
+  {
+   "name": "JsonReader::peekValue",
+   "ccn": 9,
+   "nloc": 29,
+   "params": 1,
+   "start": 730,
+   "end": 759
+  },
+  {
+   "name": "JsonReader::peekEmptyArrayValue",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 1,
+   "start": 762,
+   "end": 771
+  },
+  {
+   "name": "JsonReader::peekLiteralValue",
+   "ccn": 4,
+   "nloc": 16,
+   "params": 0,
+   "start": 774,
+   "end": 792
+  }
+ ],
+ "valid": true
+}

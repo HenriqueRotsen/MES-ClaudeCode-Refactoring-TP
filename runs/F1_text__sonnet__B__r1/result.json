@@ -1,0 +1,116 @@
+{
+ "run_id": "F1_text__sonnet__B__r1",
+ "task": "F1_text",
+ "model": "claude-sonnet-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 1,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 94,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 5,
+  "duration_ms": 93448,
+  "duration_api_ms": 24869,
+  "total_cost_usd": 0.1053733,
+  "session_id": "cfc37e70-0f10-4f90-b7e4-fa2f2bb85567",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 10,
+   "output_tokens": 3833,
+   "cache_creation_input_tokens": 14374,
+   "cache_read_input_tokens": 95273
+  },
+  "final_message": "Refatorei `createConverter` e `mvn -B clean test` passou: 2043 testes, 0 falhas, 3 ignorados e `BUILD SUCCESS`. Os 3 ignorados j\u00e1 vinham assim dos testes existentes e eu n\u00e3o alterei nada em `src/test`. A sa\u00edda do build trouxe um aviso do JAXP sobre o limite de expans\u00f5es de entidade, mas n\u00e3o afetou o resultado. S\u00f3 `AlphabetConverter.java` aparece no `git diff --stat`.\n\n**Complexidade (CCN)**\n- `createConverter` ficou com CCN 2 (antes 10).\n- Os tr\u00eas m\u00e9todos extra\u00eddos s\u00e3o `private static`, t\u00eam no m\u00e1ximo 4 par\u00e2metros e n\u00e3o passam de CCN 4.\n\n**M\u00e9todos extra\u00eddos**\n\n| M\u00e9todo | CCN | Responsabilidade |\n|---|---|---|\n| `buildDoNotEncodeMap` | n\u00e3o listado na medi\u00e7\u00e3o do lizard | valida os code points de \"n\u00e3o codificar\" contra os dois alfabetos e monta o mapa |\n| `createSingleCharConverter` | 4 | mapeamento 1:1 quando o alfabeto de codifica\u00e7\u00e3o \u00e9 pelo menos t\u00e3o grande quanto o original |\n| `createMultiCharConverter` | 3 | valida o m\u00ednimo de dois caracteres, calcula o comprimento codificado e chama `addSingleEncoding` |\n\nO lizard n\u00e3o listou `buildDoNotEncodeMap` na medi\u00e7\u00e3o, ent\u00e3o n\u00e3o tenho o CCN dele. O m\u00e9todo tem um `for` e dois `if`, o que d\u00e1 CCN 4 contando \u00e0 m\u00e3o.\n\n**Comportamento**\n- A API p\u00fablica e as assinaturas n\u00e3o mudaram.\n- A ordem das valida\u00e7\u00f5es e das exce\u00e7\u00f5es \u00e9 a mesma. As mensagens de erro s\u00e3o id\u00eanticas.\n- As mudan\u00e7as ficaram s\u00f3 dentro de `createConverter`. Os mapas de trabalho passaram a ser criados dentro de cada m\u00e9todo extra\u00eddo. No caminho multi-caractere, o construtor agora recebe `new LinkedHashMap<>()` direto, sem vari\u00e1veis locais intermedi\u00e1rias."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 65,
+  "deletions": 27,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 44
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 17,
+  "max_ccn": 8,
+  "sum_ccn": 50,
+  "avg_ccn": 2.94,
+  "n_ccn_gt10": 0,
+  "nloc": 249
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 19,
+   "params": 3,
+   "start": 151,
+   "end": 171
+  },
+  {
+   "name": "AlphabetConverter::createSingleCharConverter",
+   "ccn": 4,
+   "nloc": 22,
+   "params": 4,
+   "start": 182,
+   "end": 209
+  },
+  {
+   "name": "AlphabetConverter::createMultiCharConverter",
+   "ccn": 3,
+   "nloc": 27,
+   "params": 4,
+   "start": 221,
+   "end": 257
+  }
+ ],
+ "valid": true
+}

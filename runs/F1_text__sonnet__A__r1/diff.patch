@@ -1,0 +1,121 @@
+diff --git a/src/main/java/org/apache/commons/text/AlphabetConverter.java b/src/main/java/org/apache/commons/text/AlphabetConverter.java
+index a70cf5f..203d658 100644
+--- a/src/main/java/org/apache/commons/text/AlphabetConverter.java
++++ b/src/main/java/org/apache/commons/text/AlphabetConverter.java
+@@ -131,12 +131,20 @@ public final class AlphabetConverter {
+         final Set<Integer> encodingCopy = new LinkedHashSet<>(Arrays.asList(encoding));
+         final Set<Integer> doNotEncodeCopy = new LinkedHashSet<>(Arrays.asList(doNotEncode));
+ 
+-        final Map<Integer, String> originalToEncoded = new LinkedHashMap<>();
+-        final Map<String, String> encodedToOriginal = new LinkedHashMap<>();
+-        final Map<Integer, String> doNotEncodeMap = new HashMap<>();
++        final Map<Integer, String> doNotEncodeMap = buildDoNotEncodeMap(originalCopy, encodingCopy, doNotEncodeCopy);
+ 
+-        final int encodedLetterLength;
++        if (encodingCopy.size() >= originalCopy.size()) {
++            return createSingleLengthConverter(originalCopy, encodingCopy, doNotEncodeCopy, doNotEncodeMap);
++        }
++        return createMultiLengthConverter(originalCopy, encodingCopy, doNotEncodeCopy, doNotEncodeMap);
++    }
+ 
++    /**
++     * Validates the 'do not encode' set against the alphabets and builds its map.
++     */
++    private static Map<Integer, String> buildDoNotEncodeMap(final Set<Integer> originalCopy,
++            final Set<Integer> encodingCopy, final Set<Integer> doNotEncodeCopy) {
++        final Map<Integer, String> doNotEncodeMap = new HashMap<>();
+         for (final int i : doNotEncodeCopy) {
+             if (!originalCopy.contains(i)) {
+                 throw new IllegalArgumentException(
+@@ -144,44 +152,51 @@ public final class AlphabetConverter {
+                                 + "alphabet does not contain '"
+                                 + codePointToString(i) + "'");
+             }
+-
+             if (!encodingCopy.contains(i)) {
+                 throw new IllegalArgumentException(
+                         "Can not use 'do not encode' list because encoding alphabet does not contain '"
+                                 + codePointToString(i) + "'");
+             }
+-
+             doNotEncodeMap.put(i, codePointToString(i));
+         }
++        return doNotEncodeMap;
++    }
+ 
+-        if (encodingCopy.size() >= originalCopy.size()) {
+-            encodedLetterLength = 1;
+-
+-            final Iterator<Integer> it = encodingCopy.iterator();
+-
+-            for (final int originalLetter : originalCopy) {
+-                final String originalLetterAsString = codePointToString(originalLetter);
+-
+-                if (doNotEncodeMap.containsKey(originalLetter)) {
+-                    originalToEncoded.put(originalLetter, originalLetterAsString);
+-                    encodedToOriginal.put(originalLetterAsString, originalLetterAsString);
+-                } else {
+-                    Integer next = it.next();
+-
+-                    while (doNotEncodeCopy.contains(next)) {
+-                        next = it.next();
+-                    }
++    /**
++     * Creates a converter where every original letter maps to a single encoded letter.
++     */
++    private static AlphabetConverter createSingleLengthConverter(final Set<Integer> originalCopy,
++            final Set<Integer> encodingCopy, final Set<Integer> doNotEncodeCopy,
++            final Map<Integer, String> doNotEncodeMap) {
++        final Map<Integer, String> originalToEncoded = new LinkedHashMap<>();
++        final Map<String, String> encodedToOriginal = new LinkedHashMap<>();
++        final Iterator<Integer> it = encodingCopy.iterator();
+ 
+-                    final String encodedLetter = codePointToString(next);
++        for (final int originalLetter : originalCopy) {
++            final String originalLetterAsString = codePointToString(originalLetter);
+ 
+-                    originalToEncoded.put(originalLetter, encodedLetter);
+-                    encodedToOriginal.put(encodedLetter, originalLetterAsString);
++            if (doNotEncodeMap.containsKey(originalLetter)) {
++                originalToEncoded.put(originalLetter, originalLetterAsString);
++                encodedToOriginal.put(originalLetterAsString, originalLetterAsString);
++            } else {
++                Integer next = it.next();
++                while (doNotEncodeCopy.contains(next)) {
++                    next = it.next();
+                 }
++                final String encodedLetter = codePointToString(next);
++                originalToEncoded.put(originalLetter, encodedLetter);
++                encodedToOriginal.put(encodedLetter, originalLetterAsString);
+             }
+-
+-            return new AlphabetConverter(originalToEncoded, encodedToOriginal, encodedLetterLength);
+-
+         }
++        return new AlphabetConverter(originalToEncoded, encodedToOriginal, 1);
++    }
++
++    /**
++     * Creates a converter where encoded letters may span multiple characters.
++     */
++    private static AlphabetConverter createMultiLengthConverter(final Set<Integer> originalCopy,
++            final Set<Integer> encodingCopy, final Set<Integer> doNotEncodeCopy,
++            final Map<Integer, String> doNotEncodeMap) {
+         if (encodingCopy.size() - doNotEncodeCopy.size() < 2) {
+             throw new IllegalArgumentException(
+                     "Must have at least two encoding characters (excluding "
+@@ -202,12 +217,9 @@ public final class AlphabetConverter {
+             lettersSoFar++;
+         }
+ 
+-        encodedLetterLength = lettersSoFar + 1;
++        final int encodedLetterLength = lettersSoFar + 1;
+ 
+-        final AlphabetConverter ac =
+-                new AlphabetConverter(originalToEncoded,
+-                        encodedToOriginal,
+-                        encodedLetterLength);
++        final AlphabetConverter ac = new AlphabetConverter(new LinkedHashMap<>(), new LinkedHashMap<>(), encodedLetterLength);
+ 
+         ac.addSingleEncoding(encodedLetterLength,
+                 StringUtils.EMPTY,

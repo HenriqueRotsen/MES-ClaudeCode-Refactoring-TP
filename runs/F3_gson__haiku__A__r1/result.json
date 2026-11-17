@@ -1,0 +1,157 @@
+{
+ "run_id": "F3_gson__haiku__A__r1",
+ "task": "F3_gson",
+ "model": "claude-haiku-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 1,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 67,
+ "agent": {
+  "tool_calls": {
+   "Bash": 5,
+   "Read": 1,
+   "Write": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 8,
+  "duration_ms": 66280,
+  "duration_api_ms": 43998,
+  "total_cost_usd": 0.011852910000000001,
+  "session_id": "f8232e11-837e-4308-a20c-71260443986a",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 16,
+   "output_tokens": 11114,
+   "cache_creation_input_tokens": 22004,
+   "cache_read_input_tokens": 189351
+  },
+  "final_message": "Refatorei o `doPeek` em `gson/src/main/java/com/google/gson/stream/JsonReader.java` e a su\u00edte passa com `mvn -B -pl gson clean test`: 4707 testes, 0 falhas, 0 erros, `BUILD SUCCESS`.\n\n**O que mudou**\n\n- `doPeek()` agora \u00e9 um despachante curto: decide pelo escopo atual da pilha e delega.\n- A l\u00f3gica de cada escopo foi extra\u00edda para helpers privados:\n  - `peekArrayElementSeparator()` trata a v\u00edrgula antes de elemento de array n\u00e3o vazio.\n  - `peekObjectName(int)` coordena o nome de membro de objeto.\n  - `peekObjectSeparator()` trata a v\u00edrgula antes de membro de objeto n\u00e3o vazio.\n  - `peekQuotedOrUnquotedName(int)` l\u00ea o in\u00edcio do nome do membro.\n  - `peekNameSeparator()` consome o `:` (ou `=`/`=>` no modo lenient).\n  - `peekDocumentEnd()` trata o fim ap\u00f3s um valor de topo.\n  - `peekValue(int)` identifica o tipo do valor e delega para `peekLiteral()`.\n  - `peekLiteral()` encadeia `peekKeyword`, `peekNumber` e a string sem aspas.\n- Os helpers devolvem `PEEKED_NONE` onde o c\u00f3digo original fazia `break` e seguia para o parse do valor. Assim o fluxo de controle \u00e9 o mesmo.\n- A muta\u00e7\u00e3o da pilha (`DANGLING_NAME`, `NONEMPTY_OBJECT`, etc.) continua acontecendo na mesma ordem em rela\u00e7\u00e3o \u00e0 leitura de caracteres.\n\n**Escolhas que fiz**\n\n- A assinatura p\u00fablica de `doPeek` e o comportamento externo ficaram iguais.\n- N\u00e3o toquei em nenhum arquivo de teste.\n- Mantive `@SuppressWarnings(\"fallthrough\")` nos helpers que ainda t\u00eam fall-through intencional.\n\nNenhum outro arquivo do reposit\u00f3rio foi modificado. Os arquivos tempor\u00e1rios ficaram em `/tmp/gson_dopeek_refactor/`, fora do reposit\u00f3rio."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 146,
+  "deletions": 82,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 23
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 12,
+  "nloc": 43
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 58,
+  "max_ccn": 39,
+  "sum_ccn": 419,
+  "avg_ccn": 7.22,
+  "n_ccn_gt10": 16,
+  "nloc": 1274
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekArrayElementSeparator",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 643,
+   "end": 657
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 1,
+   "start": 663,
+   "end": 672
+  },
+  {
+   "name": "JsonReader::peekObjectSeparator",
+   "ccn": 4,
+   "nloc": 14,
+   "params": 0,
+   "start": 679,
+   "end": 692
+  },
+  {
+   "name": "JsonReader::peekQuotedOrUnquotedName",
+   "ccn": 6,
+   "nloc": 28,
+   "params": 1,
+   "start": 695,
+   "end": 722
+  },
+  {
+   "name": "JsonReader::peekNameSeparator",
+   "ccn": 6,
+   "nloc": 15,
+   "params": 0,
+   "start": 725,
+   "end": 740
+  },
+  {
+   "name": "JsonReader::peekDocumentEnd",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 0,
+   "start": 746,
+   "end": 755
+  },
+  {
+   "name": "JsonReader::peekValue",
+   "ccn": 11,
+   "nloc": 36,
+   "params": 1,
+   "start": 762,
+   "end": 799
+  },
+  {
+   "name": "JsonReader::peekLiteral",
+   "ccn": 4,
+   "nloc": 16,
+   "params": 0,
+   "start": 802,
+   "end": 820
+  }
+ ],
+ "valid": true
+}

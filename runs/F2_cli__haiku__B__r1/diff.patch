@@ -1,0 +1,135 @@
+diff --git a/src/main/java/org/apache/commons/cli/PosixParser.java b/src/main/java/org/apache/commons/cli/PosixParser.java
+index b4bf779..3aab913 100644
+--- a/src/main/java/org/apache/commons/cli/PosixParser.java
++++ b/src/main/java/org/apache/commons/cli/PosixParser.java
+@@ -144,49 +144,93 @@ public class PosixParser extends Parser {
+             // get the next command line token
+             final String token = iter.next();
+             if (token != null) {
+-                // single or double hyphen
+-                if (OptionFormatter.DEFAULT_OPT_PREFIX.equals(token) || OptionFormatter.DEFAULT_LONG_OPT_PREFIX.equals(token)) {
+-                    tokens.add(token);
+-                } else if (token.startsWith(OptionFormatter.DEFAULT_LONG_OPT_PREFIX)) {
+-                    // handle long option --foo or --foo=bar
+-                    final int pos = DefaultParser.indexOfEqual(token);
+-                    final String opt = pos == -1 ? token : token.substring(0, pos); // --foo
+-                    final List<String> matchingOpts = options.getMatchingOptions(opt);
+-                    if (matchingOpts.isEmpty()) {
+-                        processNonOptionToken(token, stopAtNonOption);
+-                    } else if (matchingOpts.size() > 1) {
+-                        throw new AmbiguousOptionException(opt, matchingOpts);
+-                    } else {
+-                        currentOption = options.getOption(matchingOpts.get(0));
+-                        tokens.add(OptionFormatter.DEFAULT_LONG_OPT_PREFIX + currentOption.getLongOpt());
+-                        if (pos != -1) {
+-                            tokens.add(token.substring(pos + 1));
+-                        }
+-                    }
+-                } else if (token.startsWith(OptionFormatter.DEFAULT_OPT_PREFIX)) {
+-                    if (token.length() == 2 || options.hasOption(token)) {
+-                        processOptionToken(token, stopAtNonOption);
+-                    } else if (!options.getMatchingOptions(token).isEmpty()) {
+-                        final List<String> matchingOpts = options.getMatchingOptions(token);
+-                        if (matchingOpts.size() > 1) {
+-                            throw new AmbiguousOptionException(token, matchingOpts);
+-                        }
+-                        final Option opt = options.getOption(matchingOpts.get(0));
+-                        processOptionToken(OptionFormatter.DEFAULT_OPT_PREFIX + opt.getLongOpt(), stopAtNonOption);
+-                    }
+-                    // requires bursting
+-                    else {
+-                        burstToken(token, stopAtNonOption);
+-                    }
+-                } else {
+-                    processNonOptionToken(token, stopAtNonOption);
+-                }
++                flattenToken(token, stopAtNonOption);
+             }
+             addRemaining(iter);
+         }
+         return tokens.toArray(Util.EMPTY_STRING_ARRAY);
+     }
+ 
++    /**
++     * Dispatches a single non-null command line token to the handler matching its shape: a bare hyphen, a long option,
++     * a short option (possibly partial or requiring bursting), or a plain non-option argument.
++     *
++     * @param token The current command line token, never {@code null}.
++     * @param stopAtNonOption Specifies whether flattening should halt at the first non option.
++     */
++    private void flattenToken(final String token, final boolean stopAtNonOption) throws ParseException {
++        if (isBareHyphen(token)) {
++            tokens.add(token);
++        } else if (token.startsWith(OptionFormatter.DEFAULT_LONG_OPT_PREFIX)) {
++            flattenLongOptionToken(token, stopAtNonOption);
++        } else if (token.startsWith(OptionFormatter.DEFAULT_OPT_PREFIX)) {
++            flattenShortOptionToken(token, stopAtNonOption);
++        } else {
++            processNonOptionToken(token, stopAtNonOption);
++        }
++    }
++
++    /**
++     * Tests whether {@code token} is a lone single or double hyphen.
++     *
++     * @param token The current command line token.
++     * @return {@code true} if the token is "-" or "--".
++     */
++    private boolean isBareHyphen(final String token) {
++        return OptionFormatter.DEFAULT_OPT_PREFIX.equals(token) || OptionFormatter.DEFAULT_LONG_OPT_PREFIX.equals(token);
++    }
++
++    /**
++     * Handles a long option token such as {@code --foo} or {@code --foo=bar}, resolving a possibly abbreviated name.
++     *
++     * @param token The current long option token.
++     * @param stopAtNonOption Specifies whether flattening should halt at the first non option.
++     * @throws AmbiguousOptionException if the abbreviated name matches more than one long option.
++     */
++    private void flattenLongOptionToken(final String token, final boolean stopAtNonOption) throws ParseException {
++        final int pos = DefaultParser.indexOfEqual(token);
++        final String opt = pos == -1 ? token : token.substring(0, pos); // --foo
++        final List<String> matchingOpts = options.getMatchingOptions(opt);
++        if (matchingOpts.isEmpty()) {
++            processNonOptionToken(token, stopAtNonOption);
++            return;
++        }
++        if (matchingOpts.size() > 1) {
++            throw new AmbiguousOptionException(opt, matchingOpts);
++        }
++        currentOption = options.getOption(matchingOpts.get(0));
++        tokens.add(OptionFormatter.DEFAULT_LONG_OPT_PREFIX + currentOption.getLongOpt());
++        if (pos != -1) {
++            tokens.add(token.substring(pos + 1));
++        }
++    }
++
++    /**
++     * Handles a single hyphen token: an exact short option, a partial long option name, or a cluster of short options
++     * that must be burst apart.
++     *
++     * @param token The current single hyphen token.
++     * @param stopAtNonOption Specifies whether flattening should halt at the first non option.
++     * @throws AmbiguousOptionException if the partial long option name matches more than one long option.
++     */
++    private void flattenShortOptionToken(final String token, final boolean stopAtNonOption) throws ParseException {
++        if (token.length() == 2 || options.hasOption(token)) {
++            processOptionToken(token, stopAtNonOption);
++            return;
++        }
++        final List<String> matchingOpts = options.getMatchingOptions(token);
++        if (matchingOpts.isEmpty()) {
++            // requires bursting
++            burstToken(token, stopAtNonOption);
++            return;
++        }
++        if (matchingOpts.size() > 1) {
++            throw new AmbiguousOptionException(token, matchingOpts);
++        }
++        final Option opt = options.getOption(matchingOpts.get(0));
++        processOptionToken(OptionFormatter.DEFAULT_OPT_PREFIX + opt.getLongOpt(), stopAtNonOption);
++    }
++
+     /**
+      * Resets the members to their original state i.e. remove all of {@code tokens} entries and set
+      * {@code eatTheRest} to false.

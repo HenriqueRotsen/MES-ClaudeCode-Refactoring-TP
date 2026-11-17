@@ -1,0 +1,181 @@
+{
+ "run_id": "F3_gson__haiku__B__r2",
+ "task": "F3_gson",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 2,
+ "prompt_sha256": "eb6f77e02a47bae227ee2e174d9fb08ceb9e087ca4637137b8de45201e96eb79",
+ "base_commit": "e67037d17f94415179066c8301fee4a610d9515e",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 81,
+ "agent": {
+  "tool_calls": {
+   "Bash": 6,
+   "Read": 1,
+   "Write": 1
+  },
+  "mvn_calls": 1,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 9,
+  "duration_ms": 80552,
+  "duration_api_ms": 58199,
+  "total_cost_usd": 0.015395889999999999,
+  "session_id": "02f161b3-4b02-4f2d-9b57-eb7d3ae770b0",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 14,
+   "output_tokens": 14980,
+   "cache_creation_input_tokens": 30121,
+   "cache_read_input_tokens": 188029
+  },
+  "final_message": "`doPeek` in `JsonReader.java` is refactored. Its cyclomatic complexity dropped from 41 to 2, and `mvn -B -pl gson clean test` passes (4707 tests in the main run plus 23 in the java-time run, 0 failures). The only changed file is `gson/src/main/java/com/google/gson/stream/JsonReader.java`; nothing under `src/test` was touched.\n\n**Before/after (lizard, CCN):**\n- `doPeek`: 41 \u2192 2\n\n**Structure:** `doPeek` now dispatches in two steps: `peekScopeDelimiter(peekStack)` consumes the scope's structural input, then `peekValue(peekStack)` peeks the value. Each step is split into single-purpose helpers:\n- `peekScopeDelimiter` (CCN 10, the highest): scope switch for array/object/name/document.\n- `peekArrayElementSeparator`, `peekObjectName`, `peekObjectMemberSeparator`, `peekObjectNameStart`, `peekUnquotedObjectName`, `peekNameValueSeparator`, `peekDocumentEnd`: scope-specific delimiter handling.\n- `peekValue` (CCN 9): dispatch on the first value character.\n- `peekImplicitNullElement`: the lenient `[,]` \u2192 `null` rule, with the \"Unexpected value\" error.\n- `peekLiteral`: keyword, number, then unquoted literal.\n\n**Behavior preservation:** Branch order, `peeked` assignments, stack updates, `checkLenient()` calls, `pos--` rewinds, and exception messages are unchanged. The `@SuppressWarnings(\"fallthrough\")` was dropped because the new code has no fallthrough.\n\n**Choices to be aware of:**\n- The helpers take at most one parameter (`peekStack`), so none violates the 4-parameter limit.\n- No allocations, streams, or lambdas were added on the hot path; the helpers are `private`, so the JIT can inline them.\n- I didn't add any tests, per the rule against touching `src/test`."
+ },
+ "diff": {
+  "files_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ],
+  "insertions": 147,
+  "deletions": 102,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "gson/src/main/java/com/google/gson/stream/JsonReader.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 4707,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 21,
+  "baseline_tests": 4707,
+  "seconds": 23
+ },
+ "method_before": {
+  "ccn": 41,
+  "nloc": 156
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 8
+ },
+ "file_before": {
+  "n_funcs": 50,
+  "max_ccn": 41,
+  "sum_ccn": 408,
+  "avg_ccn": 8.16,
+  "n_ccn_gt10": 15,
+  "nloc": 1245
+ },
+ "file_after": {
+  "n_funcs": 61,
+  "max_ccn": 39,
+  "sum_ccn": 421,
+  "avg_ccn": 6.9,
+  "n_ccn_gt10": 14,
+  "nloc": 1273
+ },
+ "new_funcs": [
+  {
+   "name": "JsonReader::peekScopeDelimiter",
+   "ccn": 10,
+   "nloc": 27,
+   "params": 1,
+   "start": 604,
+   "end": 630
+  },
+  {
+   "name": "JsonReader::peekArrayElementSeparator",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 0,
+   "start": 633,
+   "end": 647
+  },
+  {
+   "name": "JsonReader::peekObjectName",
+   "ccn": 3,
+   "nloc": 10,
+   "params": 1,
+   "start": 650,
+   "end": 659
+  },
+  {
+   "name": "JsonReader::peekObjectMemberSeparator",
+   "ccn": 4,
+   "nloc": 15,
+   "params": 0,
+   "start": 662,
+   "end": 676
+  },
+  {
+   "name": "JsonReader::peekObjectNameStart",
+   "ccn": 5,
+   "nloc": 20,
+   "params": 1,
+   "start": 679,
+   "end": 698
+  },
+  {
+   "name": "JsonReader::peekUnquotedObjectName",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 1,
+   "start": 700,
+   "end": 708
+  },
+  {
+   "name": "JsonReader::peekNameValueSeparator",
+   "ccn": 6,
+   "nloc": 15,
+   "params": 0,
+   "start": 711,
+   "end": 725
+  },
+  {
+   "name": "JsonReader::peekDocumentEnd",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 0,
+   "start": 728,
+   "end": 737
+  },
+  {
+   "name": "JsonReader::peekValue",
+   "ccn": 9,
+   "nloc": 30,
+   "params": 1,
+   "start": 740,
+   "end": 769
+  },
+  {
+   "name": "JsonReader::peekImplicitNullElement",
+   "ccn": 3,
+   "nloc": 9,
+   "params": 1,
+   "start": 772,
+   "end": 780
+  },
+  {
+   "name": "JsonReader::peekLiteral",
+   "ccn": 4,
+   "nloc": 16,
+   "params": 0,
+   "start": 783,
+   "end": 801
+  }
+ ],
+ "valid": true
+}

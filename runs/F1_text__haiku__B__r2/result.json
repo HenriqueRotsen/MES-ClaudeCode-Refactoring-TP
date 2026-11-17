@@ -1,0 +1,141 @@
+{
+ "run_id": "F1_text__haiku__B__r2",
+ "task": "F1_text",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 2,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 125,
+ "agent": {
+  "tool_calls": {
+   "Bash": 5,
+   "Read": 1,
+   "Edit": 5
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 12,
+  "duration_ms": 124300,
+  "duration_api_ms": 52789,
+  "total_cost_usd": 0.01449044,
+  "session_id": "271f884f-1293-4a6f-9a1f-f7da11cf446b",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 16,
+   "output_tokens": 13309,
+   "cache_creation_input_tokens": 28204,
+   "cache_read_input_tokens": 219354
+  },
+  "final_message": "`createConverter` in `AlphabetConverter.java` is refactored. Its cyclomatic complexity went from 10 to 2, and `mvn -B clean test` passes on the final code.\n\n**Metrics (lizard, `-l java`)**\n- `createConverter` CCN: **10 \u2192 2**\n- Extracted methods, all at CCN \u2264 4:\n  - `buildDoNotEncodeMap`: 2\n  - `checkDoNotEncodeCharacter`: 3\n  - `createOneToOneConverter`: 4\n  - `createMultiLetterConverter`: 1\n  - `checkUsableEncodingCount`: 2\n  - `computeEncodedLetterLength`: 2\n\n**Structure**\n- `createConverter` copies the three arrays into sets, validates and maps the \"do not encode\" list, then dispatches to one of two branches. The one-to-one branch runs when the encoding alphabet is at least as large as the original.\n- The validation runs before the branch decision, and the \"at least two encoding characters\" check stays only in the multi-letter branch, so exception order and messages are unchanged.\n- The multi-letter branch's length calculation moved to `computeEncodedLetterLength`, which keeps the original's division logic.\n- In the one-to-one loop, `doNotEncodeMap.containsKey` replaces `doNotEncodeCopy.contains`. The map has exactly the same keys as the set, so the behavior is the same.\n- Each helper takes at most 4 parameters and returns its result without side effects. The public signature, visibility, and exceptions are unchanged.\n- No streams, lambdas, or new collections were added to the hot loops. `addSingleEncoding` and the encode/decode paths were not touched.\n\n**Tests**\n- `mvn -B clean test`: BUILD SUCCESS. 2043 run, 0 failures, 0 errors, 3 skipped. `AlphabetConverterTest` ran 20 tests, all passing. The 3 skips were already in the suite; I did not add any `@Disabled`.\n- `git diff --stat` shows only `src/main/java/org/apache/commons/text/AlphabetConverter.java` (133 insertions, 58 deletions). Nothing under `src/test` changed.\n\nI did not commit anything."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 133,
+  "deletions": 58,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 45
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 20,
+  "max_ccn": 8,
+  "sum_ccn": 53,
+  "avg_ccn": 2.65,
+  "n_ccn_gt10": 0,
+  "nloc": 264
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 2,
+   "nloc": 10,
+   "params": 3,
+   "start": 151,
+   "end": 160
+  },
+  {
+   "name": "AlphabetConverter::checkDoNotEncodeCharacter",
+   "ccn": 3,
+   "nloc": 15,
+   "params": 3,
+   "start": 170,
+   "end": 184
+  },
+  {
+   "name": "AlphabetConverter::createOneToOneConverter",
+   "ccn": 4,
+   "nloc": 23,
+   "params": 3,
+   "start": 194,
+   "end": 222
+  },
+  {
+   "name": "AlphabetConverter::createMultiLetterConverter",
+   "ccn": 1,
+   "nloc": 16,
+   "params": 4,
+   "start": 234,
+   "end": 255
+  },
+  {
+   "name": "AlphabetConverter::checkUsableEncodingCount",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 1,
+   "start": 263,
+   "end": 270
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 11,
+   "params": 3,
+   "start": 280,
+   "end": 294
+  }
+ ],
+ "valid": true
+}

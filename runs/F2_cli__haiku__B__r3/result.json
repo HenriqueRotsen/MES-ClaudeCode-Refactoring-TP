@@ -1,0 +1,125 @@
+{
+ "run_id": "F2_cli__haiku__B__r3",
+ "task": "F2_cli",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 3,
+ "prompt_sha256": "050cd2dd077b49dbd169d9edfd9a935da0d0bc50177226410fccda54664f7de8",
+ "base_commit": "3a53a351a66bc5634bea646008f884148864bdac",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 52,
+ "agent": {
+  "tool_calls": {
+   "Bash": 3,
+   "Read": 1,
+   "Edit": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 6,
+  "duration_ms": 51401,
+  "duration_api_ms": 32391,
+  "total_cost_usd": 0.00965434,
+  "session_id": "32d44fed-0b0e-48aa-acad-e5a268e4fbcb",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 12,
+   "output_tokens": 8098,
+   "cache_creation_input_tokens": 21204,
+   "cache_read_input_tokens": 136334
+  },
+  "final_message": "I refactored `flatten` in `PosixParser.java`. Its cyclomatic complexity went from 15 to 3, every method I created or changed is at or below 5, and `mvn -B clean test` passes.\n\n**Complexity (lizard, CCN)**\n- `flatten`: 15 \u2192 3\n- Extracted methods:\n  - `processToken`: 5\n  - `processLongOptionToken`: 5\n  - `processShortOptionToken`: 4\n  - `processSingleHyphenLongOptionPrefix`: 2\n\n**Structure**\n`flatten` now runs the same loop: `init()`, null check, `processToken`, then `addRemaining(iter)` on every iteration. `processToken` dispatches on the token's shape in the same order as before (bare `-`/`--`, then `--\u2026`, then `-\u2026`, then non-option). The single-hyphen branch splits into a direct short-option path, a burst path via the existing `burstToken`, and a long-option-prefix path.\n\n**Behaviour**\n- Branch order, side-effect order, thrown exceptions and public/protected signatures are unchanged.\n- The one small change: `getMatchingOptions` is now called once in the single-hyphen path instead of twice. It has no side effects (it builds a fresh list), so this is not observable.\n- No new parameter lists exceed 4 parameters, and no streams, lambdas or new collections were added in the hot path.\n\n**Tests**\n- `mvn -B clean test`: BUILD SUCCESS, 1002 run, 0 failures, 0 errors, 61 skipped. The skips come from existing test sources that I did not touch.\n- `git diff --stat` shows only `src/main/java/org/apache/commons/cli/PosixParser.java` changed; nothing under `src/test`.\n\nI did not commit the change."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ],
+  "insertions": 85,
+  "deletions": 37,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/cli/PosixParser.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 1002,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 61,
+  "baseline_tests": 1002,
+  "seconds": 13
+ },
+ "method_before": {
+  "ccn": 15,
+  "nloc": 46
+ },
+ "method_after": {
+  "ccn": 3,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 7,
+  "max_ccn": 15,
+  "sum_ccn": 33,
+  "avg_ccn": 4.71,
+  "n_ccn_gt10": 1,
+  "nloc": 92
+ },
+ "file_after": {
+  "n_funcs": 11,
+  "max_ccn": 6,
+  "sum_ccn": 37,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 107
+ },
+ "new_funcs": [
+  {
+   "name": "PosixParser::processToken",
+   "ccn": 5,
+   "nloc": 11,
+   "params": 2,
+   "start": 161,
+   "end": 172
+  },
+  {
+   "name": "PosixParser::processLongOptionToken",
+   "ccn": 5,
+   "nloc": 17,
+   "params": 2,
+   "start": 181,
+   "end": 197
+  },
+  {
+   "name": "PosixParser::processShortOptionToken",
+   "ccn": 4,
+   "nloc": 12,
+   "params": 2,
+   "start": 207,
+   "end": 219
+  },
+  {
+   "name": "PosixParser::processSingleHyphenLongOptionPrefix",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 3,
+   "start": 229,
+   "end": 236
+  }
+ ],
+ "valid": true
+}

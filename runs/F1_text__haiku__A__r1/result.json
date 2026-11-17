@@ -1,0 +1,124 @@
+{
+ "run_id": "F1_text__haiku__A__r1",
+ "task": "F1_text",
+ "model": "claude-haiku-5-5",
+ "condition": "A_sem_claude_md",
+ "rep": 1,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 76,
+ "agent": {
+  "tool_calls": {
+   "Bash": 4,
+   "Edit": 1
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 6,
+  "duration_ms": 75249,
+  "duration_api_ms": 30977,
+  "total_cost_usd": 0.00897905,
+  "session_id": "a7fad300-c315-419e-8432-e4cbf309679b",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 12,
+   "output_tokens": 8132,
+   "cache_creation_input_tokens": 18299,
+   "cache_read_input_tokens": 125205
+  },
+  "final_message": "O m\u00e9todo `createConverter` foi refatorado e a su\u00edte completa passa com `mvn -B clean test` (2043 testes, 0 falhas, 0 erros, 3 ignorados, BUILD SUCCESS).\n\nO \u00fanico arquivo alterado \u00e9 `src/main/java/org/apache/commons/text/AlphabetConverter.java`. Nenhum arquivo de teste foi tocado, e n\u00e3o fiz commit.\n\nComo ficou a estrutura:\n\n- **`createConverter`** agora s\u00f3 copia os arrays para conjuntos, valida a lista \"do not encode\", escolhe o ramo e delega.\n- **`buildDoNotEncodeMap`** faz a valida\u00e7\u00e3o da lista \"do not encode\" e monta o mapa, com as mesmas mensagens de exce\u00e7\u00e3o.\n- **`createDirectConverter`** cobre o caso em que cada letra original recebe um \u00fanico caractere codificado.\n- **`createMultiCharConverter`** cobre o caso de codifica\u00e7\u00e3o com m\u00faltiplos caracteres, incluindo a checagem de \"pelo menos dois caracteres\" e a chamada a `addSingleEncoding`.\n- **`computeEncodedLetterLength`** cont\u00e9m o c\u00e1lculo do tamanho da letra codificada, com os coment\u00e1rios originais.\n\nEscolhas que tomei:\n\n- **Ordem preservada:** as valida\u00e7\u00f5es ocorrem na mesma sequ\u00eancia de antes, ent\u00e3o a mesma entrada inv\u00e1lida lan\u00e7a a mesma exce\u00e7\u00e3o com a mesma mensagem.\n- **Uma troca de implementa\u00e7\u00e3o sem efeito externo:** no ramo direto, `doNotEncodeMap.containsKey(x)` virou `doNotEncodeCopy.contains(x)`. As duas condi\u00e7\u00f5es s\u00e3o equivalentes, porque o mapa \u00e9 constru\u00eddo exatamente a partir desse conjunto.\n\nAntes de editar, rodei `AlphabetConverterTest` isoladamente como linha de base, e ele passou."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 109,
+  "deletions": 43,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 43
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 18,
+  "max_ccn": 8,
+  "sum_ccn": 51,
+  "avg_ccn": 2.83,
+  "n_ccn_gt10": 0,
+  "nloc": 266
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 21,
+   "params": 3,
+   "start": 152,
+   "end": 174
+  },
+  {
+   "name": "AlphabetConverter::createDirectConverter",
+   "ccn": 4,
+   "nloc": 25,
+   "params": 3,
+   "start": 184,
+   "end": 215
+  },
+  {
+   "name": "AlphabetConverter::createMultiCharConverter",
+   "ccn": 2,
+   "nloc": 27,
+   "params": 4,
+   "start": 227,
+   "end": 257
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 12,
+   "params": 3,
+   "start": 267,
+   "end": 285
+  }
+ ],
+ "valid": true
+}

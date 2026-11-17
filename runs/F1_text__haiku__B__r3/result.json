@@ -1,0 +1,139 @@
+{
+ "run_id": "F1_text__haiku__B__r3",
+ "task": "F1_text",
+ "model": "claude-haiku-5-5",
+ "condition": "B_com_claude_md",
+ "rep": 3,
+ "prompt_sha256": "26316ecf72049cbdf48a374727decefaf0ac47e6b2de00c4b3d12656eacb455d",
+ "base_commit": "af5dd3acf6cb05b8ac58494aa7c8dff96d8c0e83",
+ "tool_versions": {
+  "claude": "2.1.325",
+  "java": "openjdk version \"21.0.13.0.3\" 2026-10-24",
+  "mvn": "Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)",
+  "lizard": "1.26.1"
+ },
+ "claude_exit": 0,
+ "timed_out": false,
+ "wall_seconds": 111,
+ "agent": {
+  "tool_calls": {
+   "Bash": 6
+  },
+  "mvn_calls": 2,
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 7,
+  "duration_ms": 110490,
+  "duration_api_ms": 39987,
+  "total_cost_usd": 0.0111476,
+  "session_id": "446213af-a6d3-4337-ab33-a645e8071f5f",
+  "api_error_status": null,
+  "terminal_reason": "completed",
+  "tokens": {
+   "input_tokens": 14,
+   "output_tokens": 9634,
+   "cache_creation_input_tokens": 23102,
+   "cache_read_input_tokens": 170880
+  },
+  "final_message": "A refatora\u00e7\u00e3o de `createConverter` est\u00e1 conclu\u00edda. A su\u00edte `mvn -B clean test` passa: 2043 testes, 0 falhas, 0 erros, 3 skipped. Os 3 skipped j\u00e1 existiam antes da mudan\u00e7a.\n\n**M\u00e9trica (lizard, CCN)**\n- `createConverter`: **10 \u2192 2**. Est\u00e1 dentro da meta de \u2264 10.\n- M\u00e9todos extra\u00eddos, todos com CCN \u2264 4:\n  - `buildDoNotEncodeMap` (4): valida a lista \"do not encode\" e monta o mapa.\n  - `createSingleLetterConverter` (3): caminho em que cada letra vira um \u00fanico caractere de codifica\u00e7\u00e3o.\n  - `nextEncodingCodePoint` (2): avan\u00e7a o iterador pulando os caracteres reservados.\n  - `createMultiLetterConverter` (1): caminho de m\u00faltiplos caracteres.\n  - `checkEncodingAlphabetSize` (2): valida o m\u00ednimo de dois caracteres de codifica\u00e7\u00e3o.\n  - `computeEncodedLetterLength` (2): calcula o tamanho da letra codificada.\n\n**Decis\u00f5es que tomei**\n- `createConverter` ficou s\u00f3 com a montagem das c\u00f3pias dos conjuntos e a escolha do caminho. A ordem das valida\u00e7\u00f5es foi mantida: primeiro \"do not encode\", depois o caminho de tamanho igual ou a checagem do tamanho m\u00ednimo.\n- Em `createSingleLetterConverter`, troquei `doNotEncodeCopy.contains(next)` por `doNotEncodeMap.containsKey(next)`. O mapa tem exatamente as mesmas chaves do conjunto, ent\u00e3o o comportamento \u00e9 id\u00eantico, e assim o m\u00e9todo n\u00e3o precisa do conjunto.\n- Nenhum m\u00e9todo extra\u00eddo tem mais de 4 par\u00e2metros. Nenhum retorna informa\u00e7\u00e3o por efeito colateral.\n- N\u00e3o h\u00e1 streams, lambdas, nem aloca\u00e7\u00f5es novas dentro de la\u00e7os quentes. `addSingleEncoding` e os demais m\u00e9todos n\u00e3o foram alterados.\n\n**Restri\u00e7\u00f5es**\n- Nenhum arquivo em `src/test` foi tocado. `git diff --stat` mostra s\u00f3 `AlphabetConverter.java` (104 inser\u00e7\u00f5es, 44 remo\u00e7\u00f5es).\n- N\u00e3o usei `@Disabled`, `-DskipTests` nem alterei a configura\u00e7\u00e3o de build.\n\nN\u00e3o fiz commit, porque voc\u00ea n\u00e3o pediu. As altera\u00e7\u00f5es est\u00e3o s\u00f3 no working tree."
+ },
+ "diff": {
+  "files_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ],
+  "insertions": 104,
+  "deletions": 44,
+  "test_files_changed": [],
+  "build_files_changed": [],
+  "claude_md_changed": false,
+  "target_file_changed": true,
+  "main_java_changed": [
+   "src/main/java/org/apache/commons/text/AlphabetConverter.java"
+  ]
+ },
+ "tests": {
+  "exit": 0,
+  "build_success": true,
+  "tests": 2043,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "baseline_tests": 2043,
+  "seconds": 43
+ },
+ "method_before": {
+  "ccn": 10,
+  "nloc": 70
+ },
+ "method_after": {
+  "ccn": 2,
+  "nloc": 13
+ },
+ "file_before": {
+  "n_funcs": 14,
+  "max_ccn": 10,
+  "sum_ccn": 47,
+  "avg_ccn": 3.36,
+  "n_ccn_gt10": 0,
+  "nloc": 238
+ },
+ "file_after": {
+  "n_funcs": 20,
+  "max_ccn": 8,
+  "sum_ccn": 53,
+  "avg_ccn": 2.65,
+  "n_ccn_gt10": 0,
+  "nloc": 250
+ },
+ "new_funcs": [
+  {
+   "name": "AlphabetConverter::buildDoNotEncodeMap",
+   "ccn": 4,
+   "nloc": 19,
+   "params": 3,
+   "start": 151,
+   "end": 171
+  },
+  {
+   "name": "AlphabetConverter::createSingleLetterConverter",
+   "ccn": 3,
+   "nloc": 18,
+   "params": 3,
+   "start": 181,
+   "end": 202
+  },
+  {
+   "name": "AlphabetConverter::nextEncodingCodePoint",
+   "ccn": 2,
+   "nloc": 7,
+   "params": 2,
+   "start": 211,
+   "end": 217
+  },
+  {
+   "name": "AlphabetConverter::createMultiLetterConverter",
+   "ccn": 1,
+   "nloc": 8,
+   "params": 4,
+   "start": 229,
+   "end": 238
+  },
+  {
+   "name": "AlphabetConverter::checkEncodingAlphabetSize",
+   "ccn": 2,
+   "nloc": 8,
+   "params": 2,
+   "start": 247,
+   "end": 254
+  },
+  {
+   "name": "AlphabetConverter::computeEncodedLetterLength",
+   "ccn": 2,
+   "nloc": 9,
+   "params": 3,
+   "start": 264,
+   "end": 279
+  }
+ ],
+ "valid": true
+}

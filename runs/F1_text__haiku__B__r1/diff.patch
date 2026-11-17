@@ -1,0 +1,234 @@
+diff --git a/src/main/java/org/apache/commons/text/AlphabetConverter.java b/src/main/java/org/apache/commons/text/AlphabetConverter.java
+index a70cf5f..aec090d 100644
+--- a/src/main/java/org/apache/commons/text/AlphabetConverter.java
++++ b/src/main/java/org/apache/commons/text/AlphabetConverter.java
+@@ -131,62 +131,160 @@ public final class AlphabetConverter {
+         final Set<Integer> encodingCopy = new LinkedHashSet<>(Arrays.asList(encoding));
+         final Set<Integer> doNotEncodeCopy = new LinkedHashSet<>(Arrays.asList(doNotEncode));
+ 
+-        final Map<Integer, String> originalToEncoded = new LinkedHashMap<>();
+-        final Map<String, String> encodedToOriginal = new LinkedHashMap<>();
+-        final Map<Integer, String> doNotEncodeMap = new HashMap<>();
++        final Map<Integer, String> doNotEncodeMap = buildDoNotEncodeMap(originalCopy, encodingCopy, doNotEncodeCopy);
+ 
+-        final int encodedLetterLength;
++        if (encodingCopy.size() >= originalCopy.size()) {
++            return createSingleLetterConverter(originalCopy, encodingCopy, doNotEncodeCopy, doNotEncodeMap);
++        }
++        return createMultiLetterConverter(originalCopy, encodingCopy, doNotEncodeCopy, doNotEncodeMap);
++    }
+ 
++    /**
++     * Validates the 'do not encode' list against both alphabets and maps each of its code points to its string form.
++     *
++     * @param originalCopy    the original alphabet.
++     * @param encodingCopy    the encoding alphabet.
++     * @param doNotEncodeCopy the code points that must not be encoded.
++     * @return a map from each 'do not encode' code point to its string form.
++     * @throws IllegalArgumentException if a 'do not encode' code point is missing from either alphabet.
++     */
++    private static Map<Integer, String> buildDoNotEncodeMap(final Set<Integer> originalCopy,
++                                                            final Set<Integer> encodingCopy,
++                                                            final Set<Integer> doNotEncodeCopy) {
++        final Map<Integer, String> doNotEncodeMap = new HashMap<>();
+         for (final int i : doNotEncodeCopy) {
+-            if (!originalCopy.contains(i)) {
+-                throw new IllegalArgumentException(
+-                        "Can not use 'do not encode' list because original "
+-                                + "alphabet does not contain '"
+-                                + codePointToString(i) + "'");
+-            }
+-
+-            if (!encodingCopy.contains(i)) {
+-                throw new IllegalArgumentException(
+-                        "Can not use 'do not encode' list because encoding alphabet does not contain '"
+-                                + codePointToString(i) + "'");
+-            }
+-
++            requireInOriginalAlphabet(i, originalCopy);
++            requireInEncodingAlphabet(i, encodingCopy);
+             doNotEncodeMap.put(i, codePointToString(i));
+         }
++        return doNotEncodeMap;
++    }
+ 
+-        if (encodingCopy.size() >= originalCopy.size()) {
+-            encodedLetterLength = 1;
+-
+-            final Iterator<Integer> it = encodingCopy.iterator();
++    /**
++     * Ensures a 'do not encode' code point is part of the original alphabet.
++     *
++     * @param codePoint   the code point to check.
++     * @param originalCopy the original alphabet.
++     * @throws IllegalArgumentException if the code point is not in the original alphabet.
++     */
++    private static void requireInOriginalAlphabet(final int codePoint, final Set<Integer> originalCopy) {
++        if (!originalCopy.contains(codePoint)) {
++            throw new IllegalArgumentException(
++                    "Can not use 'do not encode' list because original "
++                            + "alphabet does not contain '"
++                            + codePointToString(codePoint) + "'");
++        }
++    }
+ 
+-            for (final int originalLetter : originalCopy) {
+-                final String originalLetterAsString = codePointToString(originalLetter);
++    /**
++     * Ensures a 'do not encode' code point is part of the encoding alphabet.
++     *
++     * @param codePoint   the code point to check.
++     * @param encodingCopy the encoding alphabet.
++     * @throws IllegalArgumentException if the code point is not in the encoding alphabet.
++     */
++    private static void requireInEncodingAlphabet(final int codePoint, final Set<Integer> encodingCopy) {
++        if (!encodingCopy.contains(codePoint)) {
++            throw new IllegalArgumentException(
++                    "Can not use 'do not encode' list because encoding alphabet does not contain '"
++                            + codePointToString(codePoint) + "'");
++        }
++    }
+ 
+-                if (doNotEncodeMap.containsKey(originalLetter)) {
+-                    originalToEncoded.put(originalLetter, originalLetterAsString);
+-                    encodedToOriginal.put(originalLetterAsString, originalLetterAsString);
+-                } else {
+-                    Integer next = it.next();
++    /**
++     * Builds a converter in which every original letter is encoded by a single encoding letter.
++     *
++     * @param originalCopy    the original alphabet.
++     * @param encodingCopy    the encoding alphabet.
++     * @param doNotEncodeCopy the code points that must not be encoded.
++     * @param doNotEncodeMap  the string form of each 'do not encode' code point.
++     * @return the new AlphabetConverter.
++     */
++    private static AlphabetConverter createSingleLetterConverter(final Set<Integer> originalCopy,
++                                                                 final Set<Integer> encodingCopy,
++                                                                 final Set<Integer> doNotEncodeCopy,
++                                                                 final Map<Integer, String> doNotEncodeMap) {
++        final Map<Integer, String> originalToEncoded = new LinkedHashMap<>();
++        final Map<String, String> encodedToOriginal = new LinkedHashMap<>();
++        final Iterator<Integer> it = encodingCopy.iterator();
+ 
+-                    while (doNotEncodeCopy.contains(next)) {
+-                        next = it.next();
+-                    }
++        for (final int originalLetter : originalCopy) {
++            final String originalLetterAsString = codePointToString(originalLetter);
+ 
+-                    final String encodedLetter = codePointToString(next);
++            if (doNotEncodeMap.containsKey(originalLetter)) {
++                originalToEncoded.put(originalLetter, originalLetterAsString);
++                encodedToOriginal.put(originalLetterAsString, originalLetterAsString);
++            } else {
++                final String encodedLetter = codePointToString(nextEncodableCodePoint(it, doNotEncodeCopy));
+ 
+-                    originalToEncoded.put(originalLetter, encodedLetter);
+-                    encodedToOriginal.put(encodedLetter, originalLetterAsString);
+-                }
++                originalToEncoded.put(originalLetter, encodedLetter);
++                encodedToOriginal.put(encodedLetter, originalLetterAsString);
+             }
++        }
+ 
+-            return new AlphabetConverter(originalToEncoded, encodedToOriginal, encodedLetterLength);
++        return new AlphabetConverter(originalToEncoded, encodedToOriginal, 1);
++    }
+ 
++    /**
++     * Advances the encoding iterator past any 'do not encode' code points and returns the next usable one.
++     *
++     * @param it              iterator over the encoding alphabet.
++     * @param doNotEncodeCopy the code points that must not be used for encoding.
++     * @return the next encoding code point that is not in the 'do not encode' list.
++     */
++    private static Integer nextEncodableCodePoint(final Iterator<Integer> it, final Set<Integer> doNotEncodeCopy) {
++        Integer next = it.next();
++        while (doNotEncodeCopy.contains(next)) {
++            next = it.next();
+         }
+-        if (encodingCopy.size() - doNotEncodeCopy.size() < 2) {
++        return next;
++    }
++
++    /**
++     * Builds a converter in which original letters are encoded by strings of several encoding letters.
++     *
++     * @param originalCopy    the original alphabet.
++     * @param encodingCopy    the encoding alphabet.
++     * @param doNotEncodeCopy the code points that must not be encoded.
++     * @param doNotEncodeMap  the string form of each 'do not encode' code point.
++     * @return the new AlphabetConverter.
++     * @throws IllegalArgumentException if fewer than two usable encoding characters remain.
++     */
++    private static AlphabetConverter createMultiLetterConverter(final Set<Integer> originalCopy,
++                                                                final Set<Integer> encodingCopy,
++                                                                final Set<Integer> doNotEncodeCopy,
++                                                                final Map<Integer, String> doNotEncodeMap) {
++        final int encodedLetterLength = computeEncodedLetterLength(originalCopy, encodingCopy, doNotEncodeCopy);
++
++        final AlphabetConverter ac = new AlphabetConverter(new LinkedHashMap<>(), new LinkedHashMap<>(), encodedLetterLength);
++
++        ac.addSingleEncoding(encodedLetterLength,
++                StringUtils.EMPTY,
++                encodingCopy,
++                originalCopy.iterator(),
++                doNotEncodeMap);
++
++        return ac;
++    }
++
++    /**
++     * Computes how many encoding characters are needed to represent every original letter, taking the 'do not encode' list into account.
++     *
++     * @param originalCopy    the original alphabet.
++     * @param encodingCopy    the encoding alphabet.
++     * @param doNotEncodeCopy the code points that must not be encoded.
++     * @return the length of each encoded letter.
++     * @throws IllegalArgumentException if fewer than two usable encoding characters remain.
++     */
++    private static int computeEncodedLetterLength(final Set<Integer> originalCopy,
++                                                  final Set<Integer> encodingCopy,
++                                                  final Set<Integer> doNotEncodeCopy) {
++        final int usableEncodingSize = encodingCopy.size() - doNotEncodeCopy.size();
++        if (usableEncodingSize < 2) {
+             throw new IllegalArgumentException(
+                     "Must have at least two encoding characters (excluding "
+                             + "those in the 'do not encode' list), but has "
+-                            + (encodingCopy.size() - doNotEncodeCopy.size()));
++                            + usableEncodingSize);
+         }
+         // we start with one which is our minimum, and because we do the
+         // first division outside the loop
+@@ -194,28 +292,14 @@ public final class AlphabetConverter {
+ 
+         // the first division takes into account that the doNotEncode
+         // letters can't be in the leftmost place
+-        int lettersLeft = (originalCopy.size() - doNotEncodeCopy.size())
+-                / (encodingCopy.size() - doNotEncodeCopy.size());
++        int lettersLeft = (originalCopy.size() - doNotEncodeCopy.size()) / usableEncodingSize;
+ 
+         while (lettersLeft / encodingCopy.size() >= 1) {
+             lettersLeft /= encodingCopy.size();
+             lettersSoFar++;
+         }
+ 
+-        encodedLetterLength = lettersSoFar + 1;
+-
+-        final AlphabetConverter ac =
+-                new AlphabetConverter(originalToEncoded,
+-                        encodedToOriginal,
+-                        encodedLetterLength);
+-
+-        ac.addSingleEncoding(encodedLetterLength,
+-                StringUtils.EMPTY,
+-                encodingCopy,
+-                originalCopy.iterator(),
+-                doNotEncodeMap);
+-
+-        return ac;
++        return lettersSoFar + 1;
+     }
+ 
+     /**
