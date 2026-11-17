@@ -79,6 +79,27 @@ Síntese por modelo e condição (médias de 12 execuções):
 - A complexidade muda de lugar e não desaparece: a CC total do arquivo aumentou em 47 das 48 execuções. Sem contexto, 10 métodos extraídos nasceram com CC acima de 10; com contexto, nenhum.
 - Um modelo menor com bom contexto venceu um maior: o Haiku B teve a menor CC final, a cerca de 1/8 do custo do Sonnet B.
 
+### Coesão e acoplamento (CK)
+
+A complexidade ciclomática não diz se o *design* melhorou. Por isso, medimos coesão e acoplamento antes e depois de cada execução com o [CK](https://github.com/mauricioaniche/ck) 0.7.0, usando o script [`experiment/ck_analysis.py`](experiment/ck_analysis.py). O script aplica o `diff.patch` de cada execução sobre o commit base. Os resultados estão em `results/ck_runs.csv` e `results/ck_summary.json`.
+
+| Métrica (classe ou arquivo do método-alvo) | A · sem CLAUDE.md | B · com CLAUDE.md |
+|---|---|---|
+| LCOM\* da classe (coesão; maior = pior) | piorou em 24/24 (+0,08) | piorou em 23/24 (+0,05) |
+| CBO da classe (acoplamento) | inalterado em 24/24 | inalterado em 22/24 |
+| Σ CBO do arquivo | +0 | +4,3 (todo vindo do Haiku no jsoup) |
+| Classes novas no arquivo | 0 | +1,4 (Haiku no jsoup: +11) |
+| Σ RFC do arquivo | +9% | +12% |
+| Métodos novos no arquivo | +8,3 | +14,2 |
+
+**Leitura:**
+
+- **Acoplamento:** praticamente neutro. As refatorações extraíram métodos `private` dentro da mesma classe.
+- **Coesão (LCOM\*):** piorou em 47 de 48 execuções. Os métodos novos recebem o estado por parâmetro em vez de compartilhar campos, e a classe vira mais um "agregado de funções".
+- **Exceção:** o Haiku com `CLAUDE.md` no jsoup introduziu tipos novos (enum de handlers, `Map` de lambdas), o que aumentou o acoplamento do arquivo em cerca de 19%.
+- **Conclusão:** o agente melhora a legibilidade local (CC por método), mas não melhora coesão nem acoplamento. Ele transforma o problema em vez de resolver o design.
+- **Métricas descartadas:** TCC e LCC deram 0 em todas as classes, antes e depois, e não foram usadas.
+
 Dois pilotos com Opus 5.5 (grupo A) estão em [`runs/_pilots_opus`](runs/_pilots_opus) e ficaram fora da análise principal.
 
 ## Estrutura
@@ -90,6 +111,7 @@ experiment/
   CLAUDE.md           # manifesto da condição B
   runner.py           # harness: plan | baseline | run
   analyze.py          # agrega runs/*/result.json -> results/
+  ck_analysis.py      # coesão/acoplamento antes e depois com CK 0.7.0
   save_token.sh, new_token.sh  # utilitários para gravar o token OAuth
 results/
   runs.csv            # uma linha por execução
@@ -122,6 +144,6 @@ python3 experiment/analyze.py
 ## Limitações
 
 - Um único método por faixa e 3 réplicas por célula.
-- Uma única métrica estrutural: a complexidade ciclomática medida pelo lizard.
+- Métricas estruturais limitadas: CC (lizard) e CK (LCOM\*, CBO, RFC); TCC/LCC não informativos.
 - O desempenho do Gson e do jsoup depois da refatoração não foi medido.
 - Os repositórios são públicos e podem fazer parte dos dados de treino dos modelos.

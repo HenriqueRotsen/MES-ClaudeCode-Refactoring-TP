@@ -1,0 +1,149 @@
+{
+ "condition": {
+  "A": {
+   "n": 24,
+   "delta_cls_lcom_star": 0.084,
+   "runs_lcom_star_worse": 24,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 9.2,
+   "delta_file_methods": 8.3
+  },
+  "B": {
+   "n": 24,
+   "delta_cls_lcom_star": 0.054,
+   "runs_lcom_star_worse": 23,
+   "runs_cls_cbo_changed": 2,
+   "delta_file_cbo_sum": 4.33,
+   "delta_file_classes": 1.42,
+   "delta_file_rfc_sum_pct": 11.9,
+   "delta_file_methods": 14.2
+  }
+ },
+ "model+condition": {
+  "haiku-5-5|A": {
+   "n": 12,
+   "delta_cls_lcom_star": 0.089,
+   "runs_lcom_star_worse": 12,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 10.1,
+   "delta_file_methods": 8.9
+  },
+  "haiku-5-5|B": {
+   "n": 12,
+   "delta_cls_lcom_star": 0.024,
+   "runs_lcom_star_worse": 11,
+   "runs_cls_cbo_changed": 2,
+   "delta_file_cbo_sum": 8.67,
+   "delta_file_classes": 2.83,
+   "delta_file_rfc_sum_pct": 13.8,
+   "delta_file_methods": 17.2
+  },
+  "sonnet-5-5|A": {
+   "n": 12,
+   "delta_cls_lcom_star": 0.079,
+   "runs_lcom_star_worse": 12,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 8.4,
+   "delta_file_methods": 7.7
+  },
+  "sonnet-5-5|B": {
+   "n": 12,
+   "delta_cls_lcom_star": 0.084,
+   "runs_lcom_star_worse": 12,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 9.9,
+   "delta_file_methods": 11.2
+  }
+ },
+ "task+condition": {
+  "F1_text|A": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.082,
+   "runs_lcom_star_worse": 6,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 9.7,
+   "delta_file_methods": 3.5
+  },
+  "F1_text|B": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.1,
+   "runs_lcom_star_worse": 6,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 13.0,
+   "delta_file_methods": 4.7
+  },
+  "F2_cli|A": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.09,
+   "runs_lcom_star_worse": 6,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 10.9,
+   "delta_file_methods": 3.2
+  },
+  "F2_cli|B": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.094,
+   "runs_lcom_star_worse": 6,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 11.5,
+   "delta_file_methods": 3.3
+  },
+  "F3_gson|A": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.008,
+   "runs_lcom_star_worse": 6,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 12.6,
+   "delta_file_methods": 7.3
+  },
+  "F3_gson|B": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.01,
+   "runs_lcom_star_worse": 6,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 16.7,
+   "delta_file_methods": 9.7
+  },
+  "F4_jsoup|A": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.156,
+   "runs_lcom_star_worse": 6,
+   "runs_cls_cbo_changed": 0,
+   "delta_file_cbo_sum": 0.0,
+   "delta_file_classes": 0.0,
+   "delta_file_rfc_sum_pct": 3.6,
+   "delta_file_methods": 19.2
+  },
+  "F4_jsoup|B": {
+   "n": 6,
+   "delta_cls_lcom_star": 0.011,
+   "runs_lcom_star_worse": 5,
+   "runs_cls_cbo_changed": 2,
+   "delta_file_cbo_sum": 17.33,
+   "delta_file_classes": 5.67,
+   "delta_file_rfc_sum_pct": 6.4,
+   "delta_file_methods": 39.0
+  }
+ },
+ "note": "TCC e LCC = 0 em todas as classes antes e depois (CK 0.7.0): n\u00e3o informativos aqui."
+}
